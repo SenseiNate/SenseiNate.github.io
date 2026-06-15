@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Nathan Bienvenu — Veteran. Engineer. AI Founder.</title>
+<title>Nathan Bienvenu | Veteran. Engineer. AI Founder.</title>
+<script>document.documentElement.classList.add('js');</script>
 <meta name="description" content="Air Force veteran turned AI founder. Program management, digital engineering, and AI tools that ship." />
 
 <!-- Open Graph (shows a clean card when you share the link) -->
-<meta property="og:title" content="Nathan Bienvenu — Veteran. Engineer. AI Founder." />
+<meta property="og:title" content="Nathan Bienvenu | Veteran. Engineer. AI Founder." />
 <meta property="og:description" content="Air Force veteran turned AI founder. I build tools that do the work, not the talking." />
 <meta property="og:type" content="website" />
 
@@ -145,6 +146,12 @@
   @media (max-width:720px){
     .banner nav{ display:none; }
   }
+  .scroll-prog{
+    position:absolute; left:0; bottom:-1px; height:2px; width:0;
+    background:var(--amber);
+    box-shadow:0 0 10px rgba(255,176,0,.55);
+    z-index:2;
+  }
 
   /* ============================================================
      HERO
@@ -270,19 +277,19 @@
   .idcard .head b{ color:var(--amber); }
   .idcard dl{ margin:0; padding:6px 14px 14px; }
   .idcard .row{
-    display:flex; justify-content:space-between; gap:14px;
-    padding:11px 0;
+    display:grid; grid-template-columns:82px 1fr; gap:16px; align-items:baseline;
+    padding:12px 0;
     border-bottom:1px dashed var(--line-soft);
   }
   .idcard .row:last-child{ border-bottom:none; }
   .idcard dt{
     font-family:"IBM Plex Mono", monospace;
-    font-size:11.5px; letter-spacing:.1em; text-transform:uppercase;
+    font-size:10.5px; letter-spacing:.12em; text-transform:uppercase;
     color:var(--faint);
   }
   .idcard dd{
-    margin:0; font-size:14px; font-weight:500; text-align:right;
-    color:var(--text);
+    margin:0; font-size:14.5px; font-weight:500; text-align:left;
+    color:var(--text); text-wrap:balance;
   }
   .idcard dd .cl{ color:var(--amber); }
 
@@ -291,7 +298,7 @@
      ============================================================ */
   .about-grid{ display:grid; grid-template-columns:1fr; gap:40px; }
   @media (min-width:860px){
-    .about-grid{ grid-template-columns:.9fr 1.1fr; gap:64px; }
+    .about-grid{ grid-template-columns:1.25fr .75fr; gap:60px; align-items:start; }
   }
   .about-body p{ margin:0 0 20px; color:var(--text); font-size:1.06rem; }
   .about-body p.lead{ font-size:1.2rem; line-height:1.5; }
@@ -371,11 +378,15 @@
     border:1px solid var(--line);
     background:var(--panel);
     display:flex; flex-direction:column;
-    transition:border-color .25s, transform .25s;
+    --revY:0px; --hovY:0px;
+    transform:translateY(calc(var(--revY) + var(--hovY)));
+    transition:border-color .25s, transform .3s ease, opacity .55s ease;
   }
-  .card:hover{ border-color:var(--amber-dim); transform:translateY(-4px); }
+  .js .card{ opacity:0; --revY:24px; }
+  .card.in{ opacity:1; --revY:0px; }
+  .card:hover{ border-color:var(--amber-dim); --hovY:-5px; }
 
-  /* screenshot frame — terminal/browser chrome */
+  /* screenshot frame: terminal/browser chrome */
   .shot{
     border-bottom:1px solid var(--line);
     background:var(--panel-2);
@@ -403,7 +414,7 @@
     background:
       radial-gradient(closest-side, #ffffff, #eef0f4 88%);
   }
-  .shot-logo img{ width:100%; height:auto; display:block; }
+  .shot-logo img{ width:100%; height:auto; display:block; mix-blend-mode:multiply; }
 
   /* generic line-mark tile (no brand image needed) */
   .shot-mark{
@@ -500,11 +511,36 @@
   }
   .classification b{ color:var(--muted); }
 
-  /* scroll reveal */
-  .reveal-up{ opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease; }
+  /* ---------- scroll choreography ---------- */
+  /* single-block fade (about prose, creds) */
+  .js .reveal-up{ opacity:0; transform:translateY(22px); }
+  .reveal-up{ transition:opacity .6s ease, transform .6s ease; }
   .reveal-up.in{ opacity:1; transform:none; }
+
+  /* staggered children (stats, skill blocks) */
+  .js [data-stagger] > *{ opacity:0; transform:translateY(16px); }
+  [data-stagger] > *{ transition:opacity .55s ease, transform .55s ease; }
+  [data-stagger].in > *{ opacity:1; transform:none; }
+  [data-stagger].in > *:nth-child(1){ transition-delay:.04s; }
+  [data-stagger].in > *:nth-child(2){ transition-delay:.11s; }
+  [data-stagger].in > *:nth-child(3){ transition-delay:.18s; }
+  [data-stagger].in > *:nth-child(4){ transition-delay:.25s; }
+
+  /* eyebrow "declassify" wipe on entry (echoes the hero name) */
+  .eyebrow{ position:relative; overflow:hidden; }
+  .js .eyebrow::before{
+    content:""; position:absolute; inset:0; z-index:2;
+    background:var(--redact); transform-origin:right;
+    transition:transform .6s cubic-bezier(.7,0,.2,1);
+  }
+  .js .eyebrow.in::before{ transform:scaleX(0); }
+
+  .foot-cta{ margin-top:26px; }
+
   @media (prefers-reduced-motion: reduce){
-    .reveal-up{ opacity:1; transform:none; transition:none; }
+    .js .reveal-up, .js [data-stagger] > *, .js .card{ opacity:1; --revY:0px; transform:none; }
+    .reveal-up, [data-stagger] > *{ transition:none; }
+    .js .eyebrow::before{ display:none; }
   }
 </style>
 </head>
@@ -521,6 +557,7 @@
     </nav>
     <div class="live mono"><span class="dot" aria-hidden="true"></span>Status: Building</div>
   </div>
+  <div class="scroll-prog" id="prog" aria-hidden="true"></div>
 </header>
 
 <main>
@@ -534,7 +571,7 @@
         <span class="ln"><span class="reveal r2">Bienvenu</span></span>
       </h1>
       <p class="oneliner">I build <b>AI tools that do the work</b>, not the talking.</p>
-      <p class="hero-sub">Ten-plus years executing where it counts — Air Force, Northrop Grumman, GE Healthcare, BAE Systems. Same discipline, pointed at AI. I ship, then I let the work speak.</p>
+      <p class="hero-sub">Ten-plus years executing where it counts: Air Force, Northrop Grumman, GE Healthcare, BAE Systems. Same discipline, now pointed at AI. I ship, then I let the work speak.</p>
       <div class="cta-row">
         <a class="btn solid" href="#work">See the work <span class="arr">↗</span></a>
         <a class="btn" href="https://github.com/SenseiNate" target="_blank" rel="noopener">GitHub <span class="arr">↗</span></a>
@@ -544,10 +581,11 @@
     <aside class="idcard" aria-label="Quick facts">
       <div class="head mono"><span>// ID&nbsp;BLOCK</span><b>VERIFIED</b></div>
       <dl>
-        <div class="row"><dt>Role</dt><dd>PM2 Eng — BAE Systems</dd></div>
+        <div class="row"><dt>Role</dt><dd>PM2 Engineering</dd></div>
+        <div class="row"><dt>Employer</dt><dd>BAE Systems</dd></div>
         <div class="row"><dt>Clearance</dt><dd><span class="cl">Active TS</span></dd></div>
-        <div class="row"><dt>Service</dt><dd>U.S. Air Force vet</dd></div>
-        <div class="row"><dt>Education</dt><dd>MBA · BS Aero</dd></div>
+        <div class="row"><dt>Service</dt><dd>USAF Veteran</dd></div>
+        <div class="row"><dt>Education</dt><dd>MBA, BS Aerospace</dd></div>
         <div class="row"><dt>Based</dt><dd>United States</dd></div>
       </dl>
     </aside>
@@ -560,15 +598,16 @@
     <p class="eyebrow">// About</p>
     <div class="about-grid">
       <div class="about-body reveal-up">
-        <p class="lead">No bootcamp origin story. No thought-leader act. Tattoos, a TS clearance, an MBA, and a habit of finishing what I start.</p>
-        <p>I spent a decade in rooms most people need a badge to enter — <b>Air Force, Northrop Grumman, GE Healthcare, BAE Systems</b>. Program management and digital engineering: the unglamorous work of making complex things actually ship on time, on scope, with the stakes real.</p>
-        <p>Now I point that same discipline at AI. I'm a non-traditional founder — the tattooed veteran who learned to code and started building. I prototype, I ship, and I keep what earns its keep.</p>
+        <p class="lead">No bootcamp origin story. Ten years of high-consequence work, now pointed at AI.</p>
+        <p>I came up in the Air Force as a munitions systems specialist. I tracked <b>6.6 million pieces of sensitive inventory across 57 accounts with zero discrepancies</b>, ran an 18-person team over a $73M asset portfolio, and held a 100% quality-assurance pass rate for seven straight years. When the margin for error is zero, you learn to build systems that don't fail.</p>
+        <p>Then I carried that into engineering. At <b>Northrop Grumman</b> I rebuilt a legacy compliance framework and automated it, cutting cycle time in half. At <b>GE Healthcare</b> I shipped an automated onboarding engine that took client verification from five days to four hours, plus a data pipeline that reconciled 208,000 records to clear a $20M discrepancy with zero errors.</p>
+        <p>At <b>BAE Systems</b> I build the AI. I shipped an internal LLM tool that killed manual documentation work and gave engineers back 10+ hours a week, cut programmatic overhead 60%, and made senior lead inside 60 days. Same discipline, new tools. Non-traditional founder, tattoos and a TS clearance included. I'd rather show you the work than talk about it.</p>
       </div>
-      <div class="stats reveal-up" aria-label="Career at a glance">
-        <div class="stat"><div class="num">10+</div><div class="lbl">Years executing</div></div>
-        <div class="stat"><div class="num">4</div><div class="lbl">Defense &amp; med orgs</div></div>
-        <div class="stat"><div class="num">TS</div><div class="lbl">Active clearance</div></div>
-        <div class="stat"><div class="num">2</div><div class="lbl">Products shipped</div></div>
+      <div class="stats" data-stagger aria-label="Career at a glance">
+        <div class="stat"><div class="num">10+</div><div class="lbl">Years in high-stakes ops</div></div>
+        <div class="stat"><div class="num">6.6M</div><div class="lbl">Assets tracked, zero errors</div></div>
+        <div class="stat"><div class="num">$20M</div><div class="lbl">Data anomaly resolved</div></div>
+        <div class="stat"><div class="num">60%</div><div class="lbl">Overhead automated away</div></div>
       </div>
     </div>
   </div>
@@ -578,7 +617,7 @@
 <section id="skills">
   <div class="wrap">
     <p class="eyebrow">// Skillset</p>
-    <div class="skill-cols reveal-up">
+    <div class="skill-cols" data-stagger>
       <div class="skill-block">
         <h3>// Lead</h3>
         <p class="role">Run the program</p>
@@ -586,7 +625,7 @@
           <span class="tag">Program management</span>
           <span class="tag">Systems thinking</span>
           <span class="tag">Risk &amp; schedule</span>
-          <span class="tag">Stakeholder wrangling</span>
+          <span class="tag">Cross-functional leadership</span>
           <span class="tag">Defense delivery</span>
         </div>
       </div>
@@ -598,6 +637,7 @@
           <span class="tag">Requirements</span>
           <span class="tag">Process automation</span>
           <span class="tag">Toolchain integration</span>
+          <span class="tag">SysML / DOORS</span>
         </div>
       </div>
       <div class="skill-block">
@@ -613,8 +653,8 @@
       </div>
     </div>
     <div class="creds mono reveal-up">
-      <span><b>›</b> MBA — Southern New Hampshire University</span>
-      <span><b>›</b> BS — Aviation / Aerospace</span>
+      <span><b>›</b> MBA · Southern New Hampshire University</span>
+      <span><b>›</b> BS · Aviation / Aerospace</span>
       <span><b>›</b> U.S. Air Force veteran</span>
     </div>
   </div>
@@ -627,7 +667,7 @@
     <div class="proj-grid">
 
       <!-- FIGURED -->
-      <article class="card reveal-up">
+      <article class="card">
         <div class="shot">
           <div class="shot-bar">
             <div class="lights" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -637,13 +677,13 @@
                replace this whole .shot-logo div with:
                <img src="figured.png" alt="Figured app screenshot" class="shot-img"> -->
           <div class="shot-logo">
-            <img src="figured-logo.png" alt="Figured" />
+            <img src="data:image/jpeg;base64,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" alt="Figured" />
           </div>
         </div>
         <div class="card-body">
           <div class="label">Live <span class="pill">AI Tutor</span></div>
           <h3>Figured</h3>
-          <p>An <b>AI Socratic tutor that refuses to hand you the answer.</b> It asks the next question instead — pushing you to reason your way there. Built to teach the thinking, not sell the shortcut.</p>
+          <p>An <b>AI Socratic tutor that refuses to hand you the answer.</b> It asks the next question instead, pushing you to reason your way there. Built to teach the thinking, not sell the shortcut.</p>
           <div class="card-tags">
             <span class="t">Python</span><span class="t">LLM</span><span class="t">Streamlit</span><span class="t">Prompting</span>
           </div>
@@ -655,11 +695,11 @@
       </article>
 
       <!-- REDDIT PAIN SCANNER -->
-      <article class="card reveal-up">
+      <article class="card">
         <div class="shot">
           <div class="shot-bar">
             <div class="lights" aria-hidden="true"><i></i><i></i><i></i></div>
-            <span class="url">scanner.py — python cli tool</span>
+            <span class="url">scanner.py · python cli tool</span>
           </div>
           <!-- SWAP IN A REAL SCREENSHOT WHEN READY:
                replace this whole .shot-mark div with:
@@ -689,14 +729,14 @@
         <div class="card-body">
           <div class="label">Tool <span class="pill">Market Research</span></div>
           <h3>Reddit Pain Scanner</h3>
-          <p>Automated market research that <b>scans 25+ subreddits</b> and uses AI to surface real, recurring pain — the problems people actually complain about. The scan grows or shrinks to fit the hunt.</p>
+          <p>Automated market research that <b>scans 25+ subreddits</b> and uses AI to surface real, recurring pain: the problems people actually complain about. The scan grows or shrinks to fit the hunt.</p>
           <div class="card-tags">
             <span class="t">Python</span><span class="t">Reddit API</span><span class="t">AI/ML</span><span class="t">Automation</span>
           </div>
           <div class="card-actions">
             <a class="btn solid" href="https://github.com/SenseiNate/business-ventures/blob/main/Reddit%20Scanner/scanner.py" target="_blank" rel="noopener">View code <span class="arr">↗</span></a>
           </div>
-          <p style="margin:18px 0 0; font-size:.85rem; color:var(--faint);">Internal tool — no public demo, but the code's open.</p>
+          <p style="margin:18px 0 0; font-size:.85rem; color:var(--faint);">Internal tool, no public demo, but the code's open.</p>
         </div>
       </article>
 
@@ -712,25 +752,44 @@
       <div>
         <h2>Let's build<br>something.</h2>
         <p class="foot-sub">If you've got a hard problem and want someone who ships, reach out.</p>
+        <a class="btn solid foot-cta" href="mailto:REPLACE_WITH_YOUR_EMAIL@example.com?subject=Saw%20your%20portfolio">Email me <span class="arr">↗</span></a>
       </div>
       <nav class="foot-links" aria-label="Links">
+        <a href="mailto:REPLACE_WITH_YOUR_EMAIL@example.com"><span class="arr">›</span> REPLACE_WITH_YOUR_EMAIL@example.com</a>
         <a href="https://github.com/SenseiNate" target="_blank" rel="noopener"><span class="arr">›</span> github.com/SenseiNate</a>
-        <a href="https://figuredai.streamlit.app" target="_blank" rel="noopener"><span class="arr">›</span> Figured — live</a>
         <a href="https://www.linkedin.com/in/n-bienvenu/" target="_blank" rel="noopener"><span class="arr">›</span> LinkedIn</a>
+        <a href="https://figuredai.streamlit.app" target="_blank" rel="noopener"><span class="arr">›</span> Figured, live</a>
       </nav>
     </div>
     <div class="classification">
       <span>// <b>Built &amp; deployed by me.</b> No template.</span>
-      <span>Nathan Bienvenu — <b id="yr"></b></span>
+      <span>Nathan Bienvenu · <b id="yr"></b></span>
     </div>
   </div>
 </footer>
 
 <script>
+  document.documentElement.classList.add('js');
+
   // current year
   document.getElementById('yr').textContent = new Date().getFullYear();
 
-  // scroll reveal (respects reduced motion via CSS fallback)
+  // scroll progress bar
+  const prog = document.getElementById('prog');
+  function updateProg(){
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    prog.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+  }
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking){ requestAnimationFrame(() => { updateProg(); ticking = false; }); ticking = true; }
+  }, { passive:true });
+  window.addEventListener('resize', updateProg, { passive:true });
+  updateProg();
+
+  // reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal-up, [data-stagger], .card, .eyebrow');
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!reduce && 'IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
@@ -738,9 +797,9 @@
         if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal-up').forEach(el => io.observe(el));
+    revealEls.forEach(el => io.observe(el));
   } else {
-    document.querySelectorAll('.reveal-up').forEach(el => el.classList.add('in'));
+    revealEls.forEach(el => el.classList.add('in'));
   }
 </script>
 </body>
