@@ -393,28 +393,6 @@
     margin-left:6px;
     white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
   }
-  /* PLACEHOLDER: replace the .shot-placeholder div with
-     <img src="figured.png" alt="Figured screenshot" class="shot-img"> */
-  .shot-placeholder{
-    aspect-ratio:16/10;
-    display:flex; flex-direction:column;
-    align-items:center; justify-content:center;
-    gap:12px;
-    color:var(--faint);
-    background:
-      repeating-linear-gradient(45deg, transparent 0 14px, rgba(255,255,255,.012) 14px 28px),
-      radial-gradient(closest-side, rgba(255,176,0,.06), transparent 75%);
-  }
-  .shot-placeholder .icon{
-    width:42px; height:42px;
-    border:1px solid var(--line); border-radius:3px;
-    display:flex; align-items:center; justify-content:center;
-    color:var(--amber);
-  }
-  .shot-placeholder span{
-    font-family:"IBM Plex Mono", monospace;
-    font-size:11px; letter-spacing:.16em; text-transform:uppercase;
-  }
   .shot-img{ display:block; width:100%; aspect-ratio:16/10; object-fit:cover; }
 
   /* branded wordmark tile (until a running-app screenshot is added) */
@@ -426,6 +404,36 @@
       radial-gradient(closest-side, #ffffff, #eef0f4 88%);
   }
   .shot-logo img{ width:100%; height:auto; display:block; }
+
+  /* generic line-mark tile (no brand image needed) */
+  .shot-mark{
+    aspect-ratio:16/10;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:16px;
+    background:
+      radial-gradient(closest-side, rgba(255,176,0,.07), transparent 75%),
+      repeating-linear-gradient(45deg, transparent 0 14px, rgba(255,255,255,.012) 14px 28px);
+  }
+  .shot-mark svg{ width:78px; height:78px; color:var(--amber); }
+  .shot-mark .mk-label{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--muted);
+  }
+  /* radar sweep: rotates inside the lens while the card is hovered/focused */
+  .shot-mark .sweep{
+    transform-box:view-box; transform-origin:40px 40px;
+    opacity:0; transition:opacity .25s;
+  }
+  .card:hover .shot-mark .sweep,
+  .card:focus-within .shot-mark .sweep{
+    opacity:.9;
+    animation:radar 2.4s linear infinite;
+  }
+  @keyframes radar{ to{ transform:rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce){
+    .shot-mark .sweep{ display:none; }
+  }
 
   .card-body{ padding:26px 24px 28px; display:flex; flex-direction:column; flex:1; }
   .card-body .label{
@@ -653,12 +661,29 @@
             <div class="lights" aria-hidden="true"><i></i><i></i><i></i></div>
             <span class="url">scanner.py — python cli tool</span>
           </div>
-          <!-- SWAP IN A REAL SCREENSHOT:
-               replace this whole .shot-placeholder div with:
+          <!-- SWAP IN A REAL SCREENSHOT WHEN READY:
+               replace this whole .shot-mark div with:
                <img src="reddit-scanner.png" alt="Reddit Pain Scanner screenshot" class="shot-img"> -->
-          <div class="shot-placeholder">
-            <div class="icon" aria-hidden="true">⌗</div>
-            <span>Screenshot — Pain Scanner</span>
+          <div class="shot-mark">
+            <svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Reddit Pain Scanner">
+              <defs>
+                <linearGradient id="sweepFade" gradientUnits="userSpaceOnUse" x1="40" y1="13" x2="17.9" y2="24.5">
+                  <stop offset="0" stop-color="currentColor" stop-opacity=".45"/>
+                  <stop offset="1" stop-color="currentColor" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <circle cx="40" cy="40" r="28" stroke="currentColor" stroke-width="3"/>
+              <line x1="60" y1="60" x2="82" y2="82" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+              <line x1="26" y1="53" x2="55" y2="53" stroke="currentColor" stroke-width="2" opacity=".45"/>
+              <rect x="30" y="42" width="5" height="11" fill="currentColor"/>
+              <rect x="38" y="33" width="5" height="20" fill="currentColor"/>
+              <rect x="46" y="38" width="5" height="15" fill="currentColor"/>
+              <g class="sweep">
+                <path d="M40 40 L17.9 24.5 A27 27 0 0 1 40 13 Z" fill="url(#sweepFade)"/>
+                <line x1="40" y1="40" x2="40" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </g>
+            </svg>
+            <span class="mk-label">Reddit Pain Scanner</span>
           </div>
         </div>
         <div class="card-body">
