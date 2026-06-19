@@ -429,8 +429,11 @@
      PROJECTS
      ============================================================ */
   .proj-grid{ display:grid; grid-template-columns:1fr; gap:28px; }
-  @media (min-width:860px){
+  @media (min-width:700px){
     .proj-grid{ grid-template-columns:1fr 1fr; }
+  }
+  @media (min-width:1080px){
+    .proj-grid{ grid-template-columns:repeat(3,1fr); }
   }
 
   .card{
@@ -594,7 +597,32 @@
   }
   .js .eyebrow.in::before{ transform:scaleX(0); }
 
-  .foot-cta{ margin-top:26px; }
+  .foot-cta{ margin-top:26px; display:flex; flex-wrap:wrap; align-items:center; gap:12px; }
+
+  .copy-btn{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:12px; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--muted);
+    background:transparent; border:1px solid var(--line);
+    padding:13px 16px; cursor:pointer;
+    display:inline-flex; align-items:center; gap:8px;
+    transition:border-color .2s, color .2s;
+  }
+  .copy-btn:hover{ border-color:var(--amber-dim); color:var(--text); }
+  .copy-btn svg{ width:14px; height:14px; flex:none; }
+  .copy-btn .ok{ color:var(--amber); display:none; }
+  .copy-btn.done .lbl{ display:none; }
+  .copy-btn.done .ok{ display:inline; }
+
+  .foot-links .copyable{
+    display:flex; align-items:center; gap:8px;
+    background:none; border:none; padding:0; cursor:pointer;
+    font:inherit; color:inherit; text-align:left;
+  }
+  .foot-links .copyable:hover{ color:var(--amber); }
+  .foot-links .copyable .ok{ color:var(--amber); display:none; }
+  .foot-links .copyable.done .addr{ display:none; }
+  .foot-links .copyable.done .ok{ display:inline; }
 
   /* ---------- cursor-follow cards (spotlight + tilt) ---------- */
   [data-glow]{ position:relative; }
@@ -807,7 +835,7 @@
         <div class="shot">
           <div class="shot-bar">
             <div class="lights" aria-hidden="true"><i></i><i></i><i></i></div>
-            <span class="url">https://figured-ai.streamlit.app/</span>
+            <span class="url">figuredai.streamlit.app</span>
           </div>
           <!-- SWAP IN A RUNNING-APP SCREENSHOT WHEN READY:
                replace this whole .shot-logo div with:
@@ -824,8 +852,8 @@
             <span class="t">Python</span><span class="t">LLM</span><span class="t">Streamlit</span><span class="t">Prompting</span>
           </div>
           <div class="card-actions">
-            <a class="btn solid" href="https://figured-ai.streamlit.app/" target="_blank" rel="noopener">Open live app <span class="arr">↗</span></a>
-            <a class="btn" href="https://github.com/SenseiNate/business-ventures/blob/main/Figured/App/app.py" target="_blank" rel="noopener">Code <span class="arr">↗</span></a>
+            <a class="btn solid" href="https://figuredai.streamlit.app" target="_blank" rel="noopener">Open live app <span class="arr">↗</span></a>
+            <a class="btn" href="https://github.com/SenseiNate/business-ventures/tree/main/Figured" target="_blank" rel="noopener">Code <span class="arr">↗</span></a>
           </div>
         </div>
       </article>
@@ -850,6 +878,41 @@
           </div>
           <div class="card-actions">
             <a class="btn solid" href="https://github.com/SenseiNate/business-ventures/blob/main/Web%20Scraper%20Agent/web_scraper_agent.py" target="_blank" rel="noopener">View code <span class="arr">↗</span></a>
+          </div>
+          <p style="margin:18px 0 0; font-size:.85rem; color:var(--faint);">Internal tool, no public demo, but the code's open.</p>
+        </div>
+      </article>
+
+      <!-- JOB MATCHER -->
+      <article class="card" data-glow data-tilt>
+        <div class="shot">
+          <div class="shot-bar">
+            <div class="lights" aria-hidden="true"><i></i><i></i><i></i></div>
+            <span class="url">job_matcher.py · python cli tool</span>
+          </div>
+          <div class="shot-mark">
+            <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+              <circle cx="40" cy="40" r="26"/>
+              <circle cx="40" cy="40" r="15"/>
+              <circle cx="40" cy="40" r="3" fill="currentColor" stroke="none"/>
+              <line x1="40" y1="4" x2="40" y2="16"/>
+              <line x1="40" y1="64" x2="40" y2="76"/>
+              <line x1="4" y1="40" x2="16" y2="40"/>
+              <line x1="64" y1="40" x2="76" y2="40"/>
+              <path class="sweep" d="M40 40 L40 14 A26 26 0 0 1 63 27 Z" fill="rgba(255,176,0,.18)" stroke="none"/>
+            </svg>
+            <span class="mk-label">match scan</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="label">Tool <span class="pill">Job Search</span></div>
+          <h3>Job Matcher</h3>
+          <p>Forked from Web Scraper Agent. Takes a <b>distilled profile of my real experience</b> and searches job boards for open roles, scoring every listing against it for actual fit, not keyword overlap. Surfaces pay where it's disclosed, estimates it honestly where it's not, and ranks the rest.</p>
+          <div class="card-tags">
+            <span class="t">Python</span><span class="t">Claude API</span><span class="t">AI/ML</span><span class="t">Automation</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn solid" href="https://github.com/SenseiNate/business-ventures/blob/main/Job%20Hunting%20Tool/job_matcher.py" target="_blank" rel="noopener">View code <span class="arr">↗</span></a>
           </div>
           <p style="margin:18px 0 0; font-size:.85rem; color:var(--faint);">Internal tool, no public demo, but the code's open.</p>
         </div>
@@ -896,13 +959,24 @@
       <div>
         <h2>Let's build<br>something.</h2>
         <p class="foot-sub">If you've got a hard problem and want someone who ships, reach out.</p>
-        <a class="btn solid foot-cta" href="mailto:Nathanbienvenu97@gmail.com?subject=Saw%20your%20portfolio">Email me <span class="arr">↗</span></a>
+        <div class="foot-cta">
+          <a class="btn solid" href="mailto:Nathanbienvenu97@gmail.com?subject=Saw%20your%20portfolio">Email me <span class="arr">↗</span></a>
+          <button type="button" class="copy-btn" data-copy-email aria-label="Copy email address">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="1"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg>
+            <span class="lbl">Copy email</span>
+            <span class="ok">Copied ✓</span>
+          </button>
+        </div>
       </div>
       <nav class="foot-links" aria-label="Links">
-        <a href="mailto:Nathanbienvenu97@gmail.com"><span class="arr">›</span> Nathanbienvenu97@gmail.com</a>
+        <button type="button" class="copyable" data-copy-email>
+          <span class="arr">›</span>
+          <span class="addr">Nathanbienvenu97@gmail.com</span>
+          <span class="ok">Copied to clipboard ✓</span>
+        </button>
         <a href="https://github.com/SenseiNate" target="_blank" rel="noopener"><span class="arr">›</span> github.com/SenseiNate</a>
         <a href="https://www.linkedin.com/in/n-bienvenu/" target="_blank" rel="noopener"><span class="arr">›</span> LinkedIn</a>
-        <a href="https://figured-ai.streamlit.app/" target="_blank" rel="noopener"><span class="arr">›</span> Figured, live</a>
+        <a href="https://figuredai.streamlit.app" target="_blank" rel="noopener"><span class="arr">›</span> Figured, live</a>
       </nav>
     </div>
     <div class="classification">
@@ -917,6 +991,25 @@
 
   // current year
   document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // copy-email fallback (for desktop visitors with no mailto handler configured)
+  document.querySelectorAll('[data-copy-email]').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const email = 'Nathanbienvenu97@gmail.com';
+      try {
+        await navigator.clipboard.writeText(email);
+      } catch {
+        const ta = document.createElement('textarea');
+        ta.value = email; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); } catch {}
+        document.body.removeChild(ta);
+      }
+      btn.classList.add('done');
+      clearTimeout(btn._t);
+      btn._t = setTimeout(() => btn.classList.remove('done'), 2200);
+    });
+  });
 
   // scroll progress bar
   const prog = document.getElementById('prog');
