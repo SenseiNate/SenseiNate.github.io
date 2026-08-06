@@ -205,29 +205,6 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
 .nav-links a:hover{color:var(--chrome)}
 .nav-links a.on{color:var(--chrome)}
 
-/* ══════════════════════════════════════════════════════════════════
-   SCROLL RAIL — where you are on the page
-   ══════════════════════════════════════════════════════════════════ */
-.rail-nav{position:fixed;right:18px;top:50%;transform:translate(0,-50%);z-index:65;
-  display:flex;flex-direction:column;gap:.1rem;padding:.5rem .4rem;--gl-ring:7px;
-  opacity:0;transition:opacity .45s ease,transform .45s var(--glide)}
-.rail-nav.lit{opacity:1}
-/* the product track runs cards into the gutter, so the rail gets out of the way */
-.rail-nav.tucked{opacity:0;pointer-events:none;transform:translate(20px,-50%)}
-.rn{position:relative;display:flex;align-items:center;justify-content:flex-end;
-  gap:.6rem;padding:.34rem .4rem;cursor:pointer}
-.rn i{display:block;width:16px;height:3px;border-radius:100px;background:rgba(255,255,255,.22);
-  flex:none;transition:width .45s var(--spring),background .45s ease,box-shadow .45s ease}
-.rn:hover i{background:rgba(255,255,255,.5)}
-.rn.on i{width:26px;background:var(--cyan);box-shadow:0 0 12px rgba(0,240,255,.8)}
-.rn s{position:absolute;right:calc(100% + .5rem);text-decoration:none;white-space:nowrap;
-  font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--chrome);background:rgba(10,13,20,.7);backdrop-filter:blur(10px);
-  padding:.24rem .6rem;border-radius:100px;border:1px solid rgba(255,255,255,.12);
-  opacity:0;transform:translateX(6px);transition:opacity .3s ease,transform .3s var(--settle);
-  pointer-events:none}
-.rn:hover s{opacity:1;transform:translateX(0)}
-.rn.on s{background:rgba(0,240,255,.12);border-color:rgba(0,240,255,.3);color:var(--cyan)}
 
 
 /* ══════════════════════════════════════════════════════════════════
@@ -505,7 +482,6 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
   .product{width:min(86vw,760px);grid-template-columns:1fr}
   .demo{min-height:210px;order:2}
   .product-meta{order:1}
-  .rail-nav{display:none}
 }
 @media(max-width:720px){
   :root{--gl-ring:10px}
@@ -565,16 +541,6 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
   </div>
 </nav>
 
-<aside class="rail-nav gl" id="railNav" aria-label="Section progress">
-  <a class="rn" href="#top" data-sec="top"><s>Top</s><i></i></a>
-  <a class="rn" href="#metrics" data-sec="metrics"><s>Scale</s><i></i></a>
-  <a class="rn" href="#about" data-sec="about"><s>About</s><i></i></a>
-  <a class="rn" href="#capability" data-sec="capability"><s>Skills</s><i></i></a>
-  <a class="rn" href="#record" data-sec="record"><s>Record</s><i></i></a>
-  <a class="rn" href="#credentials" data-sec="credentials"><s>Credentials</s><i></i></a>
-  <a class="rn" href="#shipped" data-sec="shipped"><s>Shipped</s><i></i></a>
-  <a class="rn" href="#contact" data-sec="contact"><s>Contact</s><i></i></a>
-</aside>
 
 <!-- ═══ [00] HERO ═══════════════════════════════════════════════ -->
 <header class="hero" id="top">
@@ -1103,7 +1069,7 @@ if(document.fonts && document.fonts.ready) document.fonts.ready.then(moveThumb);
 select(0, false);
 
 /* ── 8. scroll state: nav, rail, progress, parallax ────────────── */
-var nav = $('#nav'), navThumb = $('#navThumb'), railNav = $('#railNav');
+var nav = $('#nav'), navThumb = $('#navThumb');
 var heroLift = $$('.hero h1, .hero .sub, .hero-actions');
 heroLift.forEach(function(el){ el.classList.add('hero-lift'); });
 var navLinks = $$('#navLinks a'), rns = $$('.rn');
@@ -1138,15 +1104,16 @@ function scrollState(){
 
   var past = y > vh*0.6;
   nav.classList.toggle('lit', past);
-  railNav.classList.toggle('lit', past);
-  if(pin){
-    var pt = pin.offsetTop, pb = pt + pin.offsetHeight;
-    railNav.classList.toggle('tucked', horizontal && y + vh*0.5 > pt && y < pb);
-  }
-
-  /* whichever section owns the middle of the viewport wins */
+  /* whichever section owns the middle of the viewport wins, except at the
+     very bottom: the last section can never reach the viewport midpoint
+     because there's no page left below it to scroll into. */
+  var atBottom = (y + vh) >= document.body.scrollHeight - 2;
   var mid = y + vh*0.42, cur = sections[0];
-  sections.forEach(function(s){ if(s.offsetTop <= mid) cur = s; });
+  if (atBottom) {
+    cur = sections[sections.length - 1];
+  } else {
+    sections.forEach(function(s){ if(s.offsetTop <= mid) cur = s; });
+  }
   if(cur && cur.id !== lastSec){
     lastSec = cur.id;
     rns.forEach(function(r){ r.classList.toggle('on', r.dataset.sec === lastSec); });
