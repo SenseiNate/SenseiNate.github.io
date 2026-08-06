@@ -122,13 +122,10 @@ a{color:inherit;text-decoration:none}
   pointer-events:none;z-index:3;
 }
 .gl > *{position:relative;z-index:2}
-@supports (corner-shape: squircle){
-  .gl,.btn,.sk,.chip,.status{corner-shape:squircle}
-}
 .gl.thin{--gl-ring:8px;border-radius:var(--r-md)}
 /* strips with a sliding thumb get no lens ring: the static inner outline
    reads as a second pill left behind when the thumb moves */
-.nav::before,.seg::before{display:none}
+.nav::before{display:none}
 .gl.pill{--gl-ring:6px;border-radius:100px}
 
 /* a glass bead that trails the pointer with spring lag. transform-only on a
@@ -166,10 +163,6 @@ a{color:inherit;text-decoration:none}
 /* ══════════════════════════════════════════════════════════════════
    TYPE
    ══════════════════════════════════════════════════════════════════ */
-.eyebrow{font-family:'JetBrains Mono',monospace;font-size:.68rem;font-weight:500;
-  letter-spacing:.22em;text-transform:uppercase;color:var(--dim);
-  display:flex;align-items:center;gap:.7rem;margin-bottom:1.3rem}
-.eyebrow::before{content:'';width:26px;height:1px;background:var(--cyan);flex:none}
 
 h1,h2,h3,h4{font-family:'Sora',sans-serif;color:var(--chrome);line-height:1.08;
   font-weight:700;letter-spacing:-.025em}
@@ -178,9 +171,6 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
 .lede{font-size:clamp(.98rem,1.45vw,1.13rem);max-width:64ch;color:var(--text)}
 .lede strong{color:var(--chrome);font-weight:500}
 
-/* headline decode-on-enter */
-.dec{display:inline-block}
-.dec.scrambling{color:var(--cyan);-webkit-text-fill-color:var(--cyan)}
 
 /* ══════════════════════════════════════════════════════════════════
    LAYOUT
@@ -239,10 +229,6 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
 .rn:hover s{opacity:1;transform:translateX(0)}
 .rn.on s{background:rgba(0,240,255,.12);border-color:rgba(0,240,255,.3);color:var(--cyan)}
 
-/* top progress hairline */
-.prog{position:fixed;top:0;left:0;height:2px;z-index:80;width:100%;transform-origin:0 50%;
-  transform:scaleX(0);background:linear-gradient(90deg,rgba(0,240,255,0),var(--cyan),#8C78FF);
-  box-shadow:0 0 12px rgba(0,240,255,.7)}
 
 /* ══════════════════════════════════════════════════════════════════
    BUTTON — gel capsule
@@ -282,10 +268,10 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
 /* ══════════════════════════════════════════════════════════════════
    [00] HERO
    ══════════════════════════════════════════════════════════════════ */
-.hero{position:relative;z-index:2;min-height:100svh;display:flex;align-items:center;
-  padding:120px var(--gutter) 70px}
+.hero{position:relative;z-index:2;min-height:84svh;display:flex;align-items:center;
+  padding:84px var(--gutter) 52px}
 .hero-grid{max-width:var(--maxw);margin:0 auto;width:100%;
-  display:grid;grid-template-columns:1.32fr .98fr;gap:clamp(28px,4vw,64px);align-items:center}
+  display:grid;grid-template-columns:1.46fr .9fr;gap:clamp(26px,3.4vw,56px);align-items:center}
 .status{display:inline-flex;align-items:center;gap:.55rem;padding:.42rem 1rem;border-radius:100px;
   border:1px solid rgba(0,240,255,.26);background:rgba(0,240,255,.08);
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
@@ -293,7 +279,7 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
   font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.16em;
   text-transform:uppercase;color:var(--cyan);margin-bottom:1.7rem}
 
-.hero h1{font-size:clamp(2.9rem,8.4vw,6.2rem);font-weight:800;letter-spacing:-.045em;
+.hero h1{font-size:clamp(1.85rem,7.6vw,5.6rem);font-weight:800;letter-spacing:-.048em;
   margin-bottom:0;color:var(--chrome)}
 .hero h1 .ln{display:block;overflow:hidden}
 .hero h1 .ch{display:inline-block;
@@ -302,18 +288,15 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
   transform:translateY(105%);opacity:0}
 .lit-in .hero h1 .ch{animation:chIn .95s var(--settle) forwards;animation-delay:var(--cd,0s)}
 @keyframes chIn{to{transform:translateY(0);opacity:1}}
-.hero .sub{font-size:clamp(1rem,1.55vw,1.2rem);font-weight:300;color:var(--text);
-  margin-top:1.5rem;line-height:1.6;max-width:41ch;text-wrap:pretty}
+.hero .sub{font-size:clamp(1.02rem,1.7vw,1.28rem);font-weight:300;color:var(--text);
+  margin-top:1.9rem;line-height:1.6;max-width:41ch;text-wrap:pretty}
 .hero .sub em{font-style:normal;color:var(--chrome);font-weight:500}
-.hero-actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2.4rem}
+.hero-actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2.7rem}
 
 .core{padding:1.6rem}
-.core-label{display:flex;align-items:center;justify-content:space-between;
-  font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--faint);padding-bottom:.85rem;border-bottom:1px solid rgba(255,255,255,.09)}
-.core-label .ver{color:var(--amber);display:flex;align-items:center;gap:.4rem}
 .core-row{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
   padding:.74rem 0;border-bottom:1px solid rgba(255,255,255,.055)}
+.core-row:first-child{padding-top:0}
 .core-row:last-child{border-bottom:none;padding-bottom:0}
 .core-row dt{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.13em;
   text-transform:uppercase;color:var(--faint);flex:none}
@@ -352,7 +335,6 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
 .pin-stage::before{left:0;background:linear-gradient(90deg,rgba(10,13,20,.9),transparent)}
 .pin-stage::after{right:0;background:linear-gradient(270deg,rgba(10,13,20,.9),transparent)}
 .pin-head{max-width:var(--maxw);margin:0 auto clamp(16px,2.2vh,28px);width:100%}
-.pin-head .eyebrow{margin-bottom:.8rem}
 .pin-head .row{display:flex;justify-content:space-between;align-items:baseline;gap:2rem}
 .pin-head h2{margin-bottom:0}
 .dots{display:flex;align-items:center;gap:.55rem;flex:none;padding-bottom:.4rem}
@@ -376,7 +358,7 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
   box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
 .product-links{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
 
-.demo{padding:1.2rem;display:flex;flex-direction:column;min-height:clamp(300px,42vh,400px);overflow:hidden}
+.demo{padding:1.3rem;display:flex;flex-direction:column;min-height:clamp(310px,50vh,460px);overflow:hidden}
 .demo-bar{display:flex;align-items:center;gap:.5rem;padding-bottom:.8rem;margin-bottom:.9rem;
   border-bottom:1px solid rgba(255,255,255,.07);
   font-family:'JetBrains Mono',monospace;font-size:.59rem;letter-spacing:.1em;color:var(--faint)}
@@ -428,11 +410,6 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
 .role-body li::before{content:'';position:absolute;left:0;top:.6em;width:4px;height:4px;
   border-radius:50%;background:var(--cyan);opacity:.6;box-shadow:0 0 6px rgba(0,240,255,.5)}
 .role-body li strong{color:var(--chrome);font-weight:500}
-.role-metrics{display:flex;gap:.42rem;flex-wrap:wrap;margin-top:1.05rem;
-  padding-top:1rem;border-top:1px solid rgba(255,255,255,.07)}
-.rm{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.06em;
-  padding:.32rem .62rem;border-radius:7px;color:var(--cyan);background:rgba(0,240,255,.08);
-  border:1px solid rgba(0,240,255,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
 
 /* ══════════════════════════════════════════════════════════════════
    [04] SCALE
@@ -463,18 +440,20 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
 /* the capsule must not be the scroller: an absolutely positioned border is a
    child of the scroll content, so it scrolled too and stranded its rounded cap
    in the middle of the strip. */
-.seg{position:relative;padding:.4rem;margin:1.6rem 0 1.5rem;--gl-ring:8px;overflow:hidden}
-.seg-track{position:relative;display:flex;gap:.15rem;overflow-x:auto;scrollbar-width:none;
-  scroll-behavior:smooth}
+/* a rounded pill sliding inside a rounded capsule read as two competing shapes.
+   flat tabs with a sliding underline, plus snap points so it can never rest
+   halfway across a label. */
+.seg{position:relative;margin:1.5rem 0 1.4rem;border-bottom:1px solid rgba(255,255,255,.10)}
+.seg-track{position:relative;display:flex;gap:.35rem;overflow-x:auto;scrollbar-width:none;
+  scroll-behavior:smooth;scroll-snap-type:x mandatory}
 .seg-track::-webkit-scrollbar{display:none}
-.seg-thumb{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:100px;z-index:1;
-  background:linear-gradient(180deg,rgba(0,240,255,.32),rgba(0,150,190,.1));
-  border:1px solid rgba(0,240,255,.4);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 4px 16px rgba(0,240,255,.3);
+.seg-thumb{position:absolute;left:0;bottom:-1px;height:2px;width:0;z-index:1;border-radius:2px;
+  background:var(--cyan);box-shadow:0 0 12px rgba(0,240,255,.75);
   transition:transform .42s var(--glide),width .42s var(--glide)}
 .seg button{position:relative;z-index:2;border:none;background:none;cursor:pointer;
+  scroll-snap-align:center;
   font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;
-  color:var(--dim);padding:.62rem 1rem;border-radius:100px;white-space:nowrap;
+  color:var(--dim);padding:.7rem .9rem 1rem;white-space:nowrap;
   transition:color .35s ease}
 .seg button:hover{color:var(--chrome)}
 .seg button.on{color:#EFFEFF}
@@ -541,7 +520,7 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
   .product{width:100%}
   .dots{display:none}
   .hero{min-height:auto;padding-top:128px}
-  .hero h1{font-size:clamp(2.4rem,11.5vw,3.4rem)}
+  .hero h1{font-size:clamp(1.7rem,8.2vw,2.6rem)}
   .scroll-cue{display:none}
   .core-row{flex-direction:column;align-items:flex-start;gap:.25rem}
   .core-row dd{text-align:left}
@@ -573,7 +552,6 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
 <div class="grid-floor"></div>
 <div class="grain"></div>
 <div class="bead" id="bead"><i></i></div>
-<div class="prog" id="prog"></div>
 
 <nav class="nav gl" id="nav" aria-label="Primary">
   <a href="#top" class="nav-mark">N<span>·</span>BIENVENU</a>
@@ -603,10 +581,9 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
   <div class="hero-grid">
     <div>
       <h1 data-split>
-        <span class="ln">Nathan</span>
-        <span class="ln">Bienvenu</span>
+        <span class="ln">Nathan Bienvenu</span>
       </h1>
-      <p class="sub reveal">Systems engineer and program manager. Seven years in the Air Force, then Northrop Grumman, GE Healthcare, and BAE Systems. <em>I build AI tools on the side and I use all of them.</em></p>
+      <p class="sub reveal">Ten years of <em>systems engineering, program management, and product ownership</em>.</p>
       <div class="hero-actions reveal">
         <a href="#shipped" class="btn solid" data-magnet><span class="gloss"></span><span class="txt">See what I built</span></a>
         <a href="#record" class="btn" data-magnet><span class="gloss"></span><span class="txt">Read the record</span></a>
@@ -614,13 +591,12 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
     </div>
 
     <div class="gl core reveal tilt" data-tilt data-ripple>
-      <div class="core-label"><span>Operator record</span><span class="ver">● Verified</span></div>
       <dl>
-        <div class="core-row"><dt>Role</dt><dd>Engineering Project Manager</dd></div>
-        <div class="core-row"><dt>Employer</dt><dd>BAE Systems, Inc.</dd></div>
+        <div class="core-row"><dt>Current Role</dt><dd>Engineering Project Manager</dd></div>
+        <div class="core-row"><dt>Current Employer</dt><dd>BAE Systems, Inc.</dd></div>
         <div class="core-row"><dt>Clearance</dt><dd class="gold">Active Top Secret</dd></div>
-        <div class="core-row"><dt>Service</dt><dd>USAF Veteran, 7 years</dd></div>
-        <div class="core-row"><dt>Education</dt><dd>MBA &amp; BS Aviation/Aerospace</dd></div>
+        <div class="core-row"><dt>Service</dt><dd>United States Air Force Veteran</dd></div>
+        <div class="core-row"><dt>Education</dt><dd>MBA &amp; BS in Aviation (Unmanned Systems)</dd></div>
       </dl>
     </div>
   </div>
@@ -630,7 +606,6 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
 <!-- ═══ [01] SCALE ══════════════════════════════════════════════ -->
 <section class="band" id="metrics">
   <div class="wrap">
-    <div class="band-head"><div class="eyebrow reveal">At scale</div></div>
     <div class="metrics">
       <div class="gl metric reveal tilt" data-tilt data-ripple><span class="fig" data-count="10" data-suffix="+">0</span><span class="cap">Years in<br>high-stakes ops</span></div>
       <div class="gl metric reveal tilt" data-tilt data-ripple><span class="fig" data-count="12" data-prefix="$" data-suffix="B">0</span><span class="cap">Defense portfolio<br>governed</span></div>
@@ -644,9 +619,8 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
 <section class="pin" id="shipped">
   <div class="pin-stage">
     <div class="pin-head">
-      <div class="eyebrow">Shipped</div>
       <div class="row">
-        <h2><span class="dec" data-dec>Three tools I actually use.</span></h2>
+        <h2>Three tools I actually use.</h2>
         <div class="dots" id="dots"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
       </div>
     </div>
@@ -731,8 +705,7 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
 <section class="band" id="record">
   <div class="wrap">
     <div class="band-head">
-      <div class="eyebrow reveal">Record</div>
-      <h2 class="reveal"><span class="dec" data-dec>Ten years, four organizations.</span></h2>
+      <h2 class="reveal">Ten years, four organizations.</h2>
       <p class="lede reveal">Everything below is something I can walk you through in detail. Nothing here is padded.</p>
     </div>
 
@@ -747,12 +720,8 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
           <li>Primary USG point of contact on the <strong>$60M+ VTSN program</strong>, governing SE interfaces across Johns Hopkins APL, Utah SDL, Northrop Grumman Prime, Vandenberg SFB, and Hill AFB.</li>
           <li>Leading independent government oversight on a <strong>$60M+ contested integration</strong>, analyzing requirements and interface architecture to protect programmatic interests before acceptance.</li>
           <li>Facilitated the foundational data strategy for the <strong>Axiom/Wasatch enterprise cloud hybrid platform</strong>, aligning AWS, Government, SDL, BAE, and Northrop on zero trust, BYOID, and CI/CD with formal CAMEO contributions.</li>
-          <li>Reconciled competing requirements across 5 engineering teams into the authoritative roadmap for a <strong>$12B portfolio</strong>. Promoted to senior lead within 60 days.</li>
+          <li>Reconciled competing requirements across 5 engineering teams into the authoritative roadmap for a <strong>$12B portfolio</strong>, and was given senior lead status within 60 days.</li>
         </ul>
-        <div class="role-metrics">
-          <span class="rm">$12B portfolio</span><span class="rm">$500K misallocation prevented</span>
-          <span class="rm">60% overhead cut</span><span class="rm">200+ engineers served</span>
-        </div>
       </div>
     </article>
 
@@ -769,10 +738,6 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
           <li>Led human factors and usability engineering against <strong>IEC 60601, FDA, and HIPAA</strong>, coordinating clinical testing across domestic and international sites.</li>
           <li>Sole GE Healthcare engineer at the international AAOS conference, demoing to hundreds of physicians and routing feedback into product.</li>
         </ul>
-        <div class="role-metrics">
-          <span class="rm">5 days → 4 hours</span><span class="rm">120+ defects resolved</span>
-          <span class="rm">MTTR down 35%</span><span class="rm">3 excellence awards</span>
-        </div>
       </div>
     </article>
 
@@ -789,10 +754,6 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
           <li>Redesigned a legacy governance framework with automated rule updates, cutting cycle time <strong>50%</strong>. Earned the BRAVO to Our Stars Award.</li>
           <li>Ran a comprehensive FMEA that surfaced and mitigated <strong>15 critical single points of failure</strong> before fielding.</li>
         </ul>
-        <div class="role-metrics">
-          <span class="rm">500+ requirements, zero rework</span><span class="rm">100% audit pass</span>
-          <span class="rm">50% cycle time cut</span>
-        </div>
       </div>
     </article>
 
@@ -809,10 +770,6 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
           <li>Built an inventory validation system verifying <strong>6.6M individual assets</strong> with zero tracking discrepancies.</li>
           <li>Executed ITAR-compliant packaging, inspection, and international shipment of controlled munitions.</li>
         </ul>
-        <div class="role-metrics">
-          <span class="rm">$7.9B fleet</span><span class="rm">6.6M assets, zero errors</span>
-          <span class="rm">18-person team</span><span class="rm">7 yrs at 100% QA</span>
-        </div>
       </div>
     </article>
   </div>
@@ -823,14 +780,13 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
   <div class="wrap">
     <div class="cap-top band-head" style="max-width:none">
       <div>
-        <div class="eyebrow reveal">Capability</div>
-        <h2 class="reveal"><span class="dec" data-dec>Pick a domain.</span></h2>
-        <p class="lede reveal">Sorted by what each thing is actually for. Tap through.</p>
+        <h2 class="reveal">What I work with.</h2>
+        <p class="lede reveal">Six domains I work in day to day. Pick one.</p>
       </div>
       <div class="cap-count reveal"><b data-count="104">0</b>tracked<br>capabilities</div>
     </div>
 
-    <div class="seg gl reveal" role="tablist" aria-label="Capability domains">
+    <div class="seg reveal" role="tablist" aria-label="Capability domains">
       <div class="seg-track" id="seg">
         <span class="seg-thumb" id="segThumb"></span>
       </div>
@@ -846,8 +802,7 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
 <section class="band" id="about">
   <div class="wrap">
     <div class="band-head">
-      <div class="eyebrow reveal">About</div>
-      <h2 class="reveal"><span class="dec" data-dec>How I got here.</span></h2>
+      <h2 class="reveal">How I got here.</h2>
       <p class="lede reveal">Ten years in three parts.</p>
     </div>
     <div class="gl about-slab reveal" data-ripple>
@@ -861,7 +816,7 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
       </div>
       <div class="chapter">
         <span class="ch-n">Now</span>
-        <p>The AI tools came out of the same habit. I kept running into problems in my own week that software should have already solved, so I built the software. I use every one of them.</p>
+        <p>The AI tools came out of the same habit. I kept running into problems in my own work that software should have already solved, so I built the software. I use every one of them.</p>
       </div>
     </div>
   </div>
@@ -870,7 +825,6 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
 <!-- ═══ [06] CREDENTIALS ════════════════════════════════════════ -->
 <section class="band" id="credentials">
   <div class="wrap">
-    <div class="band-head"><div class="eyebrow reveal">Credentials</div></div>
     <div class="creds">
       <div class="gl cred reveal tilt" data-tilt data-ripple>
         <div class="kind">Degree</div><h3>MBA, Business Administration</h3>
@@ -896,8 +850,7 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
 <section class="band" id="contact">
   <div class="wrap">
     <div class="gl contact-slab reveal" data-ripple>
-      <div class="eyebrow" style="justify-content:center">Contact</div>
-      <h2><span class="dec" data-dec>Get in touch</span></h2>
+      <h2>Get in touch</h2>
       <div class="contact-actions">
         <a class="btn solid" data-magnet href="mailto:Nathanbienvenu97@gmail.com?subject=Saw%20your%20portfolio">
           <span class="gloss"></span>
@@ -1033,32 +986,6 @@ if(!reduced){
   });
 }
 
-/* ── 5. decode-on-enter headings ───────────────────────────────── */
-var GLYPH = '#$%&/\\<>[]{}0123456789ABCDEFXYZ*+=~';
-function decode(el){
-  var final = el.dataset.txt || el.textContent;
-  el.dataset.txt = final;
-  if(reduced){ el.textContent = final; return; }
-  /* time-based, not frame-based, so it lands in the same 900ms on any
-     display and can never stall mid-scramble */
-  var DUR = 900, t0 = performance.now();
-  el.classList.add('scrambling');
-  function done(){ el.textContent = final; el.classList.remove('scrambling'); }
-  var safety = setTimeout(done, DUR + 260);
-  (function tick(now){
-    var p = Math.min((now - t0) / DUR, 1);
-    var settled = Math.floor(p * final.length * 1.25);
-    var out = '';
-    for(var i=0;i<final.length;i++){
-      if(final[i] === ' '){ out += ' '; continue; }
-      out += (i < settled) ? final[i] : GLYPH[(Math.random()*GLYPH.length)|0];
-    }
-    el.textContent = out;
-    if(p < 1) requestAnimationFrame(tick);
-    else { clearTimeout(safety); done(); }
-  })(t0);
-}
-
 /* ── 6. reveal + counters + decode ─────────────────────────────── */
 function countUp(el){
   var target = parseFloat(el.dataset.count),
@@ -1080,7 +1007,6 @@ var revealIO = new IntersectionObserver(function(en){
     x.target.classList.add('condensed');
     revealIO.unobserve(x.target);
     var f = x.target.querySelector('[data-count]'); if(f) countUp(f);
-    var d = x.target.querySelector('[data-dec]');   if(d) setTimeout(function(){ decode(d); }, 180);
   });
 }, {threshold:0.14, rootMargin:'0px 0px -6% 0px'});
 
@@ -1091,11 +1017,6 @@ $$('.reveal').forEach(function(el,i){
 addEventListener('load', function(){
   $$('.hero .reveal').forEach(function(el){ el.classList.add('condensed'); });
 });
-/* headings inside the pinned stage sit outside the reveal system */
-var pinDec = new IntersectionObserver(function(en){
-  en.forEach(function(x){ if(x.isIntersecting){ decode(x.target); pinDec.unobserve(x.target); } });
-}, {threshold:0.5});
-$$('.pin-head [data-dec]').forEach(function(el){ pinDec.observe(el); });
 
 /* ── 7. capability engine ──────────────────────────────────────── */
 var SKILLS = {
@@ -1182,7 +1103,7 @@ if(document.fonts && document.fonts.ready) document.fonts.ready.then(moveThumb);
 select(0, false);
 
 /* ── 8. scroll state: nav, rail, progress, parallax ────────────── */
-var nav = $('#nav'), navThumb = $('#navThumb'), railNav = $('#railNav'), prog = $('#prog');
+var nav = $('#nav'), navThumb = $('#navThumb'), railNav = $('#railNav');
 var heroLift = $$('.hero h1, .hero .sub, .hero-actions');
 heroLift.forEach(function(el){ el.classList.add('hero-lift'); });
 var navLinks = $$('#navLinks a'), rns = $$('.rn');
@@ -1204,8 +1125,6 @@ function setNavThumb(sec){
 var lastSec = '';
 function scrollState(){
   var y = scrollY, vh = innerHeight;
-  var max = document.body.scrollHeight - vh;
-  prog.style.transform = 'scaleX(' + (max > 0 ? Math.min(y/max,1) : 0) + ')';
   boxesStale = true;   /* cached rects move with the page */
 
   /* hero content drifts up and out as you scroll past it */
