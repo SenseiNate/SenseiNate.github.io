@@ -33,6 +33,7 @@
   --gl-fill:linear-gradient(148deg,rgba(255,255,255,.13) 0%,rgba(255,255,255,.04) 40%,
     rgba(255,255,255,.025) 66%,rgba(160,235,255,.07) 100%);
   --gl-blur:blur(15px) saturate(195%) brightness(1.07);
+  --gl-blur-move:blur(5px) saturate(175%) brightness(1.06);
   --gl-ring:14px;                                       /* glass thickness */
   --gl-depth:
     inset 0 1.5px 1px rgba(255,255,255,.55),
@@ -122,6 +123,10 @@ a{color:inherit;text-decoration:none}
   pointer-events:none;z-index:3;
 }
 .gl > *{position:relative;z-index:2}
+/* re-blurring every glass panel against a fixed background is the entire cost
+   of scrolling here. drop to a cheap blur only while the page is actually
+   moving; full strength returns the moment anyone stops to look. */
+html.scrolling .gl{backdrop-filter:var(--gl-blur-move);-webkit-backdrop-filter:var(--gl-blur-move)}
 .gl.thin{--gl-ring:8px;border-radius:var(--r-md)}
 /* strips with a sliding thumb get no lens ring: the static inner outline
    reads as a second pill left behind when the thumb moves */
@@ -1054,7 +1059,7 @@ function select(i, fromUser){
   /* slide first, rebuild after. building 20 pills synchronously delayed the
      thumb's first frame by ~270ms and read as a stall. */
   moveThumb();
-  requestAnimationFrame(function(){ paintPills(); });
+  requestAnimationFrame(function(){ paintPills(); requestAnimationFrame(cacheGeo); });
   /* only nudge the strip when the tab is actually clipped, and never the page */
   if(fromUser){
     var b = segBtns[i];
@@ -1088,6 +1093,20 @@ function setNavThumb(sec){
   }
 }
 
+/* geometry cache. reading offsetTop / scrollHeight / getBoundingClientRect
+   during scroll forces a synchronous layout, and doing it ~13 times per frame
+   between style writes is what drops frames. these only change on resize or
+   when a section's own height changes, so cache them. */
+var geo = {docH:0, tops:[], pinTop:0, pinH:0, padL:0, cards:[]};
+function cacheGeo(){
+  geo.docH   = document.body.scrollHeight;
+  geo.tops   = sections.map(function(s){ return s.offsetTop; });
+  geo.pinTop = pin ? pin.offsetTop : 0;
+  geo.pinH   = pin ? pin.offsetHeight : 0;
+  geo.padL   = stage ? parseFloat(getComputedStyle(stage).paddingLeft) : 0;
+  geo.cards  = cards.map(function(c){ return {l:c.offsetLeft, w:c.offsetWidth}; });
+}
+
 var lastSec = '';
 function scrollState(){
   var y = scrollY, vh = innerHeight;
@@ -1107,12 +1126,12 @@ function scrollState(){
   /* whichever section owns the middle of the viewport wins, except at the
      very bottom: the last section can never reach the viewport midpoint
      because there's no page left below it to scroll into. */
-  var atBottom = (y + vh) >= document.body.scrollHeight - 2;
+  var atBottom = (y + vh) >= geo.docH - 2;
   var mid = y + vh*0.42, cur = sections[0];
   if (atBottom) {
     cur = sections[sections.length - 1];
   } else {
-    sections.forEach(function(s){ if(s.offsetTop <= mid) cur = s; });
+    for (var q = 0; q < sections.length; q++) if (geo.tops[q] <= mid) cur = sections[q];
   }
   if(cur && cur.id !== lastSec){
     lastSec = cur.id;
@@ -1135,19 +1154,20 @@ function measure(){
   horizontal = innerWidth > 720 && !reduced;
   if(!horizontal){
     track.style.transform = ''; pin.style.height = '';
-    cards.forEach(play); scrollState(); return;
+    cards.forEach(play); cacheGeo(); scrollState(); return;
   }
   var pad = parseFloat(getComputedStyle(stage).paddingLeft) * 2;
   travel = Math.max(0, track.scrollWidth - (innerWidth - pad));
   /* sideways distance is fixed, but the vertical scroll it costs is not.
      0.55 keeps the effect and stops it feeling like a trap. */
   pin.style.height = (innerHeight + travel * 0.55) + 'px';
+  cacheGeo();
   drive();
 }
 function drive(){
   if(!horizontal) return;
-  var span = pin.offsetHeight - innerHeight;
-  var p = span > 0 ? (scrollY - pin.offsetTop)/span : 0;
+  var span = geo.pinH - innerHeight;
+  var p = span > 0 ? (scrollY - geo.pinTop)/span : 0;
   p = Math.max(0, Math.min(1, p));
   track.style.transform = 'translate3d(' + (-p*travel) + 'px,0,0)';
   var idx = Math.min(cards.length-1, Math.round(p*(cards.length-1)));
@@ -1155,19 +1175,31 @@ function drive(){
     activeCard = idx;
     dots.forEach(function(d,i){ d.classList.toggle('on', i === idx); });
   }
-  var mid = innerWidth/2;
-  cards.forEach(function(c){
-    var r = c.getBoundingClientRect();
-    if(r.left < innerWidth*0.75 && r.right > 0) play(c);
+  /* card positions derived from cached layout plus the track offset,
+     so there are no rect reads during scroll */
+  var mid = innerWidth/2, shift = geo.padL - p*travel;
+  for(var k = 0; k < cards.length; k++){
+    var g = geo.cards[k], left = g.l + shift, right = left + g.w;
+    if(left < innerWidth*0.75 && right > 0) play(cards[k]);
     if(!reduced){
-      var d = Math.min(1, Math.abs((r.left + r.width/2) - mid) / (innerWidth*0.85));
-      c.style.opacity = (1 - d*0.45).toFixed(3);
+      var d = Math.min(1, Math.abs((left + g.w/2) - mid) / (innerWidth*0.85));
+      cards[k].style.opacity = (1 - d*0.45).toFixed(3);
     }
-  });
+  }
+}
+
+var scrollCls, scrolling = false;
+function markScrolling(){
+  if(!scrolling){ scrolling = true; document.documentElement.classList.add('scrolling'); }
+  clearTimeout(scrollCls);
+  scrollCls = setTimeout(function(){
+    scrolling = false; document.documentElement.classList.remove('scrolling');
+  }, 140);
 }
 
 var ticking = false;
 addEventListener('scroll', function(){
+  markScrolling();
   if(ticking) return;
   ticking = true;
   requestAnimationFrame(function(){ drive(); scrollState(); ticking = false; });
