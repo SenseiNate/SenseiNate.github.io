@@ -261,7 +261,14 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
 .hero .sub{font-size:clamp(1.02rem,1.7vw,1.28rem);font-weight:300;color:var(--text);
   margin-top:1.9rem;line-height:1.6;max-width:41ch;text-wrap:pretty}
 .hero .sub em{font-style:normal;color:var(--chrome);font-weight:500}
-.hero-actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2.7rem}
+/* the ask. four titles read as scattered without the second line turning
+   them into one claim, so the two always travel together. */
+.seeking{margin-top:1.9rem;padding-top:1.35rem;max-width:52ch;
+  border-top:1px solid rgba(255,255,255,.11)}
+.seeking b{display:block;font-family:'Inter Tight',sans-serif;font-weight:500;
+  font-size:clamp(.95rem,1.15vw,1.04rem);line-height:1.5;color:var(--chrome);margin-bottom:.45rem}
+.seeking span{display:block;font-size:clamp(.86rem,1vw,.94rem);line-height:1.55;color:var(--dim)}
+.hero-actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2.2rem}
 
 .core{padding:1.6rem}
 .core-row{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
@@ -542,6 +549,10 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
         <span class="ln">Nathan Bienvenu</span>
       </h1>
       <p class="sub reveal">Ten years across <em>systems engineering, program management, and product ownership</em> in aerospace, medical devices, and complex enterprise systems.</p>
+      <div class="seeking reveal">
+        <b>Open to Technical Program Manager, Product, Systems Engineering, and Chief of Staff roles.</b>
+        <span>Different titles for the same work: own the program, align the organizations, ship on the date.</span>
+      </div>
       <div class="hero-actions reveal">
         <a href="#record" class="btn solid" data-magnet><span class="gloss"></span><span class="txt">See the record</span></a>
         <a href="#contact" class="btn" data-magnet><span class="gloss"></span><span class="txt">Get in touch</span></a>
