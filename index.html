@@ -133,18 +133,6 @@ html.scrolling .gl{backdrop-filter:var(--gl-blur-move);-webkit-backdrop-filter:v
 .nav::before{display:none}
 .gl.pill{--gl-ring:6px;border-radius:100px}
 
-/* a glass bead that trails the pointer with spring lag. transform-only on a
-   single layer, so it costs nothing, unlike the cursor light it replaces. */
-.bead{position:fixed;top:0;left:0;width:30px;height:30px;margin:-15px 0 0 -15px;
-  z-index:92;pointer-events:none;opacity:0;transition:opacity .35s ease;will-change:transform}
-.bead.on{opacity:1}
-.bead i{display:block;width:100%;height:100%;border-radius:50%;
-  background:radial-gradient(circle at 35% 28%,rgba(255,255,255,.95) 0%,
-    rgba(190,245,255,.42) 38%,rgba(0,240,255,.10) 62%,rgba(0,240,255,0) 72%);
-  box-shadow:0 0 22px rgba(0,240,255,.45),inset 0 1px 2px rgba(255,255,255,.9);
-  transition:transform .45s var(--spring),opacity .3s ease}
-.bead.grab i{transform:scale(2.3);opacity:.75}
-.bead.press i{transform:scale(1.35)}
 
 /* hero drifts away as you leave it */
 .hero-lift{}
@@ -532,7 +520,6 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
 </div>
 <div class="grid-floor"></div>
 <div class="grain"></div>
-<div class="bead" id="bead"><i></i></div>
 
 <nav class="nav gl" id="nav" aria-label="Primary">
   <a href="#top" class="nav-mark">N<span>·</span>BIENVENU</a>
@@ -920,25 +907,7 @@ if(fine){
   addEventListener('pointermove', function(e){
     px = e.clientX; py = e.clientY;
     if(!pq){ pq = true; requestAnimationFrame(applyPointer); }
-    bead.classList.add('on');
-    if(!beadRunning){ beadRunning = true; requestAnimationFrame(beadStep); }
   }, {passive:true});
-  addEventListener('pointerdown', function(){ bead.classList.add('press'); }, {passive:true});
-  addEventListener('pointerup',   function(){ bead.classList.remove('press'); }, {passive:true});
-  addEventListener('pointerover', function(e){
-    bead.classList.toggle('grab', !!(e.target.closest && e.target.closest('a,button,.sk')));
-  }, {passive:true});
-  addEventListener('pointerleave', function(){ bead.classList.remove('on'); }, {passive:true});
-}
-
-/* ── the trailing bead. lerps toward the pointer and parks itself. ── */
-var bead = $('#bead'), bx = 0, by = 0, beadRunning = false;
-function beadStep(){
-  bx += (px - bx) * 0.16;
-  by += (py - by) * 0.16;
-  bead.style.transform = 'translate3d(' + bx.toFixed(1) + 'px,' + by.toFixed(1) + 'px,0)';
-  if(Math.abs(px - bx) > 0.4 || Math.abs(py - by) > 0.4) requestAnimationFrame(beadStep);
-  else beadRunning = false;
 }
 
 /* ── 4. liquid ripple on press ─────────────────────────────────── */
