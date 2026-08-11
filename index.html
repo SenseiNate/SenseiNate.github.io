@@ -535,7 +535,7 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
     <a href="#about" data-sec="about">About</a>
     <a href="#capability" data-sec="capability">Skills</a>
     <a href="#record" data-sec="record">Record</a>
-    <a href="#shipped" data-sec="shipped">Shipped</a>
+    <a href="#built" data-sec="built">Built</a>
     <a href="#contact" data-sec="contact">Contact</a>
   </div>
 </nav>
@@ -729,87 +729,17 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
   </div>
 </section>
 
-<!-- ═══ [06] SHIPPED ════════════════════════════════════════════ -->
-<section class="pin" id="shipped">
+<!-- ═══ [06] BUILT ════════════════════════════════════════════ -->
+<section class="pin" id="built">
   <div class="pin-stage">
     <div class="pin-head">
       <div class="row">
-        <h2>Four tools, built with AI assistance.</h2>
+        <h2>Four tools and workflows, built with AI.</h2>
         <div class="dots" id="dots"><i class="dot on"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
       </div>
     </div>
 
     <div class="track" id="track">
-
-      <article class="gl product" data-demo data-ripple>
-        <div class="product-meta">
-          <div class="tool-tag">AI Tutor <s>/ python</s></div>
-          <h3>Figured</h3>
-          <p>A Socratic learning tool that <strong>refuses to give the answer</strong>. It asks the next question instead, until you reason your way there. Zero to production in 72 hours.</p>
-          <div class="chips">
-            <span class="chip">Python</span><span class="chip">Claude API</span>
-            <span class="chip">Streamlit</span><span class="chip">Prompt design</span>
-          </div>
-          <div class="product-links">
-            <a class="btn" data-magnet href="https://github.com/SenseiNate/business-ventures/tree/main/Figured/App/app.py" target="_blank" rel="noopener"><span class="gloss"></span><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9.4 16.6 4.8 12l4.6-4.6L8 6l-6 6 6 6zm5.2 0 4.6-4.6-4.6-4.6L16 6l6 6-6 6z"/></svg></span><span class="txt">Show me the code</span></a>
-          </div>
-        </div>
-        <div class="well demo">
-          <div class="demo-bar"><i></i> app.py · socratic session</div>
-          <div class="msg you" style="--d:.2s">What happens when you divide by zero?</div>
-          <div class="msg them" style="--d:1.1s">What is dividing actually asking? 10 ÷ 2 asks how many 2s fit inside 10.</div>
-          <div class="msg you" style="--d:2.2s">So how many 0s fit in 10... none? Or infinite?</div>
-          <div class="msg them" style="--d:3.3s">You just found the problem yourself. Both can't be true at once.</div>
-          <div class="verdict" style="margin-top:auto">answer given: <b>never</b> · questions asked: 4</div>
-        </div>
-      </article>
-
-      <article class="gl product" data-demo data-ripple>
-        <div class="product-meta">
-          <div class="tool-tag">Research agent <s>/ cli</s></div>
-          <h3>Web Scraper Agent</h3>
-          <p>Give it a plain-language goal. It runs two search passes, scores every result against what you <strong>actually asked</strong>, and throws out anything short of a perfect match. You get a sourced report, not a pile of links.</p>
-          <div class="chips">
-            <span class="chip">Python</span><span class="chip">Claude API</span>
-            <span class="chip">Web search tool</span><span class="chip">Tournament scoring</span>
-          </div>
-          <div class="product-links">
-            <a class="btn" data-magnet href="https://github.com/SenseiNate/business-ventures/blob/main/Web%20Scraper%20Agent/web_scraper_agent.py" target="_blank" rel="noopener"><span class="gloss"></span><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9.4 16.6 4.8 12l4.6-4.6L8 6l-6 6 6 6zm5.2 0 4.6-4.6-4.6-4.6L16 6l6 6-6 6z"/></svg></span><span class="txt">Show me the code</span></a>
-          </div>
-        </div>
-        <div class="well demo">
-          <div class="demo-bar"><i></i> web_scraper_agent.py · scoring pass</div>
-          <div class="score-row" style="--d:.15s"><span class="src">institutional / policy brief</span><span class="meter"><i style="--w:100%"></i></span><span>5/5</span></div>
-          <div class="score-row" style="--d:.4s"><span class="src">institutional / research paper</span><span class="meter"><i style="--w:100%"></i></span><span>5/5</span></div>
-          <div class="score-row" style="--d:.65s"><span class="src kill">aggregator listicle</span><span class="meter"><i style="--w:60%"></i></span><span class="kill">3/5</span></div>
-          <div class="score-row" style="--d:.9s"><span class="src">social / first-person thread</span><span class="meter"><i style="--w:100%"></i></span><span>5/5</span></div>
-          <div class="score-row" style="--d:1.15s"><span class="src kill">news piece quoting a user</span><span class="meter"><i style="--w:20%"></i></span><span class="kill">1/5</span></div>
-          <div class="verdict">28 candidates reviewed · <b>3 survived</b> · report saved</div>
-        </div>
-      </article>
-
-      <article class="gl product" data-demo data-ripple>
-        <div class="product-meta">
-          <div class="tool-tag">Job search <s>/ cli</s></div>
-          <h3>Job Matcher</h3>
-          <p>Forked from the research agent. It takes a <strong>distilled profile of real experience</strong>, searches job boards, and scores each listing for genuine fit rather than keyword overlap. Built for me first, which is the only reason it works.</p>
-          <div class="chips">
-            <span class="chip">Python</span><span class="chip">Claude API</span>
-            <span class="chip">Two-stage pipeline</span><span class="chip">Fit scoring</span>
-          </div>
-          <div class="product-links">
-            <a class="btn" data-magnet href="https://github.com/SenseiNate/business-ventures/blob/main/Job%20Hunting%20Tool/job_matcher.py" target="_blank" rel="noopener"><span class="gloss"></span><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9.4 16.6 4.8 12l4.6-4.6L8 6l-6 6 6 6zm5.2 0 4.6-4.6-4.6-4.6L16 6l6 6-6 6z"/></svg></span><span class="txt">Show me the code</span></a>
-          </div>
-        </div>
-        <div class="well demo">
-          <div class="demo-bar"><i></i> job_matcher.py · fit scan</div>
-          <div class="match" style="--d:.2s"><span class="role">Senior PM, Digital Engineering<s>defense prime</s></span><span class="pct hi">92%</span></div>
-          <div class="match" style="--d:.5s"><span class="role">Systems Engineer III, Ground Systems<s>space sector</s></span><span class="pct hi">87%</span></div>
-          <div class="match" style="--d:.8s"><span class="role">AI Product Manager<s>commercial</s></span><span class="pct mid">74%</span></div>
-          <div class="match" style="--d:1.1s"><span class="role">Program Manager, Sustainment<s>defense prime</s></span><span class="pct lo">61%</span></div>
-          <div class="verdict">scored on <b>evidence</b>, not keyword overlap</div>
-        </div>
-      </article>
 
       <article class="gl product" data-demo data-ripple>
         <div class="product-meta">
@@ -833,6 +763,77 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
           <div class="verdict">every story traced to your data bank · <b>nothing invented</b></div>
         </div>
       </article>
+
+      <article class="gl product" data-demo data-ripple>
+        <div class="product-meta">
+          <div class="tool-tag">AI Tutor <s>/ python</s></div>
+          <h3>Figured</h3>
+          <p>A learning tool that <strong>refuses to give you the answer</strong>. Ask it anything and it asks you a better question back, one at a time, until you get there yourself. Built on the idea that being handed an answer teaches you nothing, while being walked to one teaches you the method. Python, Claude API and Streamlit, zero to production in 72 hours.</p>
+          <div class="chips">
+            <span class="chip">Python</span><span class="chip">Claude API</span>
+            <span class="chip">Streamlit</span><span class="chip">Prompt design</span>
+          </div>
+          <div class="product-links">
+            <a class="btn" data-magnet href="https://github.com/SenseiNate/business-ventures/tree/main/Figured/App/app.py" target="_blank" rel="noopener"><span class="gloss"></span><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9.4 16.6 4.8 12l4.6-4.6L8 6l-6 6 6 6zm5.2 0 4.6-4.6-4.6-4.6L16 6l6 6-6 6z"/></svg></span><span class="txt">Show me the code</span></a>
+          </div>
+        </div>
+        <div class="well demo">
+          <div class="demo-bar"><i></i> app.py · socratic session</div>
+          <div class="msg you" style="--d:.2s">What happens when you divide by zero?</div>
+          <div class="msg them" style="--d:1.1s">What is dividing actually asking? 10 ÷ 2 asks how many 2s fit inside 10.</div>
+          <div class="msg you" style="--d:2.2s">So how many 0s fit in 10... none? Or infinite?</div>
+          <div class="msg them" style="--d:3.3s">You just found the problem yourself. Both can't be true at once.</div>
+          <div class="verdict" style="margin-top:auto">answer given: <b>never</b> · questions asked: 4</div>
+        </div>
+      </article>
+
+      <article class="gl product" data-demo data-ripple>
+        <div class="product-meta">
+          <div class="tool-tag">Research agent <s>/ cli</s></div>
+          <h3>Web Scraper Agent</h3>
+          <p>Answer four questions about what you are looking for and why. It runs two separate passes, one across published sources and one across first-person forum threads, then scores every result against your <strong>stated goal</strong> and discards anything short of a perfect match. A typical run keeps three results out of thirty. You get a sourced report, not a pile of links.</p>
+          <div class="chips">
+            <span class="chip">Python</span><span class="chip">Claude API</span>
+            <span class="chip">Web search tool</span><span class="chip">Tournament scoring</span>
+          </div>
+          <div class="product-links">
+            <a class="btn" data-magnet href="https://github.com/SenseiNate/business-ventures/blob/main/Web%20Scraper%20Agent/web_scraper_agent.py" target="_blank" rel="noopener"><span class="gloss"></span><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9.4 16.6 4.8 12l4.6-4.6L8 6l-6 6 6 6zm5.2 0 4.6-4.6-4.6-4.6L16 6l6 6-6 6z"/></svg></span><span class="txt">Show me the code</span></a>
+          </div>
+        </div>
+        <div class="well demo">
+          <div class="demo-bar"><i></i> web_scraper_agent.py · scoring pass</div>
+          <div class="score-row" style="--d:.15s"><span class="src">institutional / policy brief</span><span class="meter"><i style="--w:100%"></i></span><span>5/5</span></div>
+          <div class="score-row" style="--d:.4s"><span class="src">institutional / research paper</span><span class="meter"><i style="--w:100%"></i></span><span>5/5</span></div>
+          <div class="score-row" style="--d:.65s"><span class="src kill">aggregator listicle</span><span class="meter"><i style="--w:60%"></i></span><span class="kill">3/5</span></div>
+          <div class="score-row" style="--d:.9s"><span class="src">social / first-person thread</span><span class="meter"><i style="--w:100%"></i></span><span>5/5</span></div>
+          <div class="score-row" style="--d:1.15s"><span class="src kill">news piece quoting a user</span><span class="meter"><i style="--w:20%"></i></span><span class="kill">1/5</span></div>
+          <div class="verdict">28 candidates reviewed · <b>3 survived</b> · report saved</div>
+        </div>
+      </article>
+
+      <article class="gl product" data-demo data-ripple>
+        <div class="product-meta">
+          <div class="tool-tag">Job search <s>/ cli</s></div>
+          <h3>Job Matcher</h3>
+          <p>Forked from the research agent. It condenses years of real accomplishments into a cached profile once, then scores live listings against <strong>that evidence</strong> instead of keywords, so a posting stuffed with the right buzzwords still fails if the record does not back it up. Pay estimates only run on listings that already cleared the bar, which keeps the API bill honest.</p>
+          <div class="chips">
+            <span class="chip">Python</span><span class="chip">Claude API</span>
+            <span class="chip">Two-stage pipeline</span><span class="chip">Fit scoring</span>
+          </div>
+          <div class="product-links">
+            <a class="btn" data-magnet href="https://github.com/SenseiNate/business-ventures/blob/main/Job%20Hunting%20Tool/job_matcher.py" target="_blank" rel="noopener"><span class="gloss"></span><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9.4 16.6 4.8 12l4.6-4.6L8 6l-6 6 6 6zm5.2 0 4.6-4.6-4.6-4.6L16 6l6 6-6 6z"/></svg></span><span class="txt">Show me the code</span></a>
+          </div>
+        </div>
+        <div class="well demo">
+          <div class="demo-bar"><i></i> job_matcher.py · fit scan</div>
+          <div class="match" style="--d:.2s"><span class="role">Senior PM, Digital Engineering<s>defense prime</s></span><span class="pct hi">92%</span></div>
+          <div class="match" style="--d:.5s"><span class="role">Systems Engineer III, Ground Systems<s>space sector</s></span><span class="pct hi">87%</span></div>
+          <div class="match" style="--d:.8s"><span class="role">AI Product Manager<s>commercial</s></span><span class="pct mid">74%</span></div>
+          <div class="match" style="--d:1.1s"><span class="role">Program Manager, Sustainment<s>defense prime</s></span><span class="pct lo">61%</span></div>
+          <div class="verdict">scored on <b>evidence</b>, not keyword overlap</div>
+        </div>
+      </article>
+
 
     </div>
   </div>
@@ -1081,7 +1082,7 @@ var nav = $('#nav'), navThumb = $('#navThumb');
 var heroLift = $$('.hero h1, .hero .sub, .hero-actions');
 heroLift.forEach(function(el){ el.classList.add('hero-lift'); });
 var navLinks = $$('#navLinks a'), rns = $$('.rn');
-var sections = ['top','metrics','about','capability','record','credentials','shipped','contact']
+var sections = ['top','metrics','about','capability','record','credentials','built','contact']
   .map(function(id){ return document.getElementById(id); }).filter(Boolean);
 
 function setNavThumb(sec){
@@ -1144,7 +1145,7 @@ function scrollState(){
 }
 
 /* ── 9. horizontal product track ───────────────────────────────── */
-var pin = $('#shipped'), stage = $('.pin-stage'), track = $('#track');
+var pin = $('#built'), stage = $('.pin-stage'), track = $('#track');
 var dots = $$('#dots .dot'), cards = [].slice.call(track.children);
 var horizontal = false, travel = 0, activeCard = -1;
 
