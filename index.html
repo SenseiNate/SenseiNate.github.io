@@ -388,6 +388,19 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
   border-radius:50%;background:var(--cyan);opacity:.6;box-shadow:0 0 6px rgba(0,240,255,.5)}
 .role-body li strong{color:var(--chrome);font-weight:500}
 
+
+/* ══════════════════════════════════════════════════════════════════
+   [01] SYSTEM — the four roles argued as one system of systems
+   ══════════════════════════════════════════════════════════════════ */
+#system{padding-top:calc(var(--band) * .5);padding-bottom:calc(var(--band) * .5)}
+.sos{position:relative;width:100%;aspect-ratio:16/7.4;max-height:460px;min-height:280px}
+.sos canvas{width:100%;height:100%;display:block}
+.sos-note{max-width:58ch;margin:.4rem auto 0;text-align:center;
+  font-size:clamp(.9rem,1.1vw,1rem);line-height:1.6;color:var(--dim)}
+.sos-note b{color:var(--text);font-weight:400}
+@media(max-width:720px){
+  .sos{aspect-ratio:1/1;max-height:none;min-height:0}
+}
 /* ══════════════════════════════════════════════════════════════════
    [04] SCALE
    ══════════════════════════════════════════════════════════════════ */
@@ -448,6 +461,29 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
 .sk:hover{color:#F2FEFF;border-color:rgba(0,240,255,.62);transform:translateY(-2px) scale(1.04);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 0 20px rgba(0,240,255,.4)}
 @keyframes skIn{to{opacity:1;transform:none}}
+
+/* ══════════════════════════════════════════════════════════════════
+   [05] CASE — the one place that shows judgment, not output
+   ══════════════════════════════════════════════════════════════════ */
+.case{padding:clamp(24px,3.4vw,48px)}
+.case-head{display:flex;justify-content:space-between;align-items:baseline;
+  gap:1.5rem;flex-wrap:wrap;padding-bottom:1.3rem;margin-bottom:1.7rem;
+  border-bottom:1px solid rgba(255,255,255,.09)}
+.case-head h3{font-size:clamp(1.15rem,1.9vw,1.45rem);font-weight:700}
+.case-tag{font-family:'JetBrains Mono',monospace;font-size:.63rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--faint);white-space:nowrap}
+.beats{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(22px,2.8vw,40px)}
+.beat{position:relative;padding-left:1.15rem}
+.beat::before{content:'';position:absolute;left:0;top:.42em;width:3px;height:calc(100% - .7em);
+  border-radius:3px;background:rgba(0,240,255,.32)}
+.beat h4{font-family:'JetBrains Mono',monospace;font-size:.63rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--cyan);font-weight:500;margin-bottom:.6rem}
+.beat p{font-size:.9rem;line-height:1.68;color:var(--text)}
+.beat p strong{color:var(--chrome);font-weight:500}
+.case-close{margin-top:1.8rem;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.09);
+  font-size:clamp(.93rem,1.15vw,1.02rem);line-height:1.62;color:var(--text);max-width:76ch}
+.case-close b{color:var(--chrome);font-weight:500}
+@media(max-width:860px){ .beats{grid-template-columns:1fr} }
 
 /* ══════════════════════════════════════════════════════════════════
    [06] CREDENTIALS
@@ -535,6 +571,7 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
     <a href="#about" data-sec="about">About</a>
     <a href="#capability" data-sec="capability">Skills</a>
     <a href="#record" data-sec="record">Record</a>
+    <a href="#case" data-sec="case">Case</a>
     <a href="#built" data-sec="built">Built</a>
     <a href="#contact" data-sec="contact">Contact</a>
   </div>
@@ -572,7 +609,16 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
   <div class="scroll-cue"><i></i>Scroll</div>
 </header>
 
-<!-- ═══ [01] SCALE ══════════════════════════════════════════════ -->
+
+<!-- ═══ [01] SYSTEM ═════════════════════════════════════════════ -->
+<section class="band" id="system">
+  <div class="wrap">
+    <div class="sos reveal"><canvas id="sosCanvas"></canvas></div>
+    <p class="sos-note reveal">Six capabilities, one system. The roles are just <b>different names for what emerges when they interact</b>.</p>
+  </div>
+</section>
+
+<!-- ═══ [02] SCALE ══════════════════════════════════════════════ -->
 <section class="band" id="metrics">
   <div class="wrap">
     <div class="metrics">
@@ -705,7 +751,45 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
   </div>
 </section>
 
-<!-- ═══ [05] CREDENTIALS ════════════════════════════════════════ -->
+<!-- ═══ [05] CASE ═══════════════════════════════════════════════ -->
+<section class="band" id="case">
+  <div class="wrap">
+    <div class="band-head">
+      <h2 class="reveal">One decision, in detail.</h2>
+      <p class="lede reveal">Bullets show what shipped. This shows how I decided.</p>
+    </div>
+
+    <article class="gl case reveal" data-ripple>
+      <div class="case-head">
+        <h3>Contesting a $60M+ integration</h3>
+        <span class="case-tag">BAE Systems · ongoing</span>
+      </div>
+
+      <div class="beats">
+        <div class="beat">
+          <h4>The situation</h4>
+          <p>A <strong>$60M+ enterprise data infrastructure product</strong> was moving toward acceptance inside a critical delivery window. The formal review was on track and on schedule. Accepting on time was the path of least resistance for everyone involved, including me.</p>
+        </div>
+        <div class="beat">
+          <h4>What I found</h4>
+          <p>Reading the contractor deliverables against the actual program requirements, the two did not line up. There were <strong>requirements ambiguities and interface gaps</strong> the formal review was not structured to catch, and a programmatic dependency being carried forward that the technical case did not support.</p>
+        </div>
+        <div class="beat">
+          <h4>What I decided</h4>
+          <p>Raising it meant contesting a $60M+ integration on my own read, against schedule pressure, <strong>without formal authority</strong> over any of the organizations involved. I chose to build the case rather than flag a concern: formed a dedicated partner team, ran an independent systems engineering and financial analysis, and put the gap in writing where it could be evaluated on its merits.</p>
+        </div>
+        <div class="beat">
+          <h4>What it protected</h4>
+          <p>The analysis prevented acceptance of an unsound dependency and avoided <strong>hundreds of hours of rework</strong> and rescope cost that would have surfaced after acceptance, when the leverage to fix it is gone. Recognized with an ISC Exceptional Individual award for cross-organizational influence without formal authority.</p>
+        </div>
+      </div>
+
+      <p class="case-close">The part worth saying out loud: <b>the review was passing.</b> Nobody asked for a second look, and the schedule cost of raising it was immediate while the cost of staying quiet was deferred and someone else's problem. That is the actual job — noticing the process is measuring the wrong thing, and being willing to be the friction.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ═══ [06] CREDENTIALS ════════════════════════════════════════ -->
 <section class="band" id="credentials">
   <div class="wrap">
     <div class="creds">
@@ -729,7 +813,7 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
   </div>
 </section>
 
-<!-- ═══ [06] BUILT ════════════════════════════════════════════ -->
+<!-- ═══ [07] BUILT ════════════════════════════════════════════ -->
 <section class="pin" id="built">
   <div class="pin-stage">
     <div class="pin-head">
@@ -839,7 +923,7 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
   </div>
 </section>
 
-<!-- ═══ [07] CONTACT ════════════════════════════════════════════ -->
+<!-- ═══ [08] CONTACT ════════════════════════════════════════════ -->
 <section class="band" id="contact">
   <div class="wrap">
     <div class="gl contact-slab reveal" data-ripple>
@@ -1082,7 +1166,7 @@ var nav = $('#nav'), navThumb = $('#navThumb');
 var heroLift = $$('.hero h1, .hero .sub, .hero-actions');
 heroLift.forEach(function(el){ el.classList.add('hero-lift'); });
 var navLinks = $$('#navLinks a'), rns = $$('.rn');
-var sections = ['top','metrics','about','capability','record','credentials','built','contact']
+var sections = ['top','system','metrics','about','capability','record','case','credentials','built','contact']
   .map(function(id){ return document.getElementById(id); }).filter(Boolean);
 
 function setNavThumb(sec){
@@ -1143,6 +1227,144 @@ function scrollState(){
     setNavThumb(lastSec);
   }
 }
+
+
+/* ── 10. system of systems: a point cloud that resolves out of disorder ──
+   six capability clusters plus every interface between them, rotating on a
+   tilted axis so the structure passes edge-on and compresses, then reopens.
+   canvas 2D and hand-rolled projection: no library, no build step. */
+(function(){
+  var cv = document.getElementById('sosCanvas');
+  if(!cv) return;
+  var ctx = cv.getContext('2d');
+  var DPR = Math.min(devicePixelRatio || 1, 2), W = 0, H = 0;
+
+  var NODES = [{label:'REQUIREMENTS'},{label:'INTERFACES'},{label:'GOVERNANCE'},
+               {label:'RISK'},{label:'STAKEHOLDERS'},{label:'DELIVERY'}];
+  var NN = NODES.length;
+  NODES.forEach(function(nd,i){
+    var a = (i/NN)*Math.PI*2;
+    nd.x = Math.cos(a); nd.y = Math.sin(a)*0.34; nd.z = Math.sin(a);
+  });
+
+  /* fewer particles on phones: same picture, a fraction of the fill cost */
+  var small = innerWidth < 760;
+  var PER_NODE = small ? 900 : 2200, PER_EDGE = small ? 210 : 520;
+  var P = [];
+  function rnd(v){ return (Math.random()-0.5)*v; }
+
+  NODES.forEach(function(nd,i){
+    for(var k=0;k<PER_NODE;k++){
+      var r = Math.pow(Math.random(),0.6)*0.19;
+      var th = Math.random()*Math.PI*2, ph = Math.acos(2*Math.random()-1);
+      P.push({hx:nd.x+r*Math.sin(ph)*Math.cos(th), hy:nd.y+r*Math.cos(ph),
+              hz:nd.z+r*Math.sin(ph)*Math.sin(th), edge:false,
+              sx:rnd(5.0), sy:rnd(3.2), sz:rnd(5.0), seed:Math.random()});
+    }
+  });
+  for(var a2=0;a2<NN;a2++) for(var b2=a2+1;b2<NN;b2++){
+    var A = NODES[a2], B = NODES[b2];
+    for(var k2=0;k2<PER_EDGE;k2++){
+      var t2 = (k2+0.5)/PER_EDGE;
+      P.push({hx:A.x+(B.x-A.x)*t2+rnd(0.035), hy:A.y+(B.y-A.y)*t2+rnd(0.035),
+              hz:A.z+(B.z-A.z)*t2+rnd(0.035), edge:true,
+              sx:rnd(5.0), sy:rnd(3.2), sz:rnd(5.0), seed:Math.random()});
+    }
+  }
+
+  /* 20k+ fillRect calls a frame cost more than the rest of the page combined.
+     writing into a pixel buffer and blitting once is far cheaper. */
+  var img = null, buf = null, BW = 0, BH = 0;
+  function sizeCanvas(){
+    var r = cv.getBoundingClientRect();
+    W = r.width; H = r.height;
+    if(!W || !H) return;
+    BW = Math.max(1, Math.round(W*DPR)); BH = Math.max(1, Math.round(H*DPR));
+    cv.width = BW; cv.height = BH;
+    ctx.setTransform(1,0,0,1,0,0);
+    img = ctx.createImageData(BW, BH);
+    buf = new Uint32Array(img.data.buffer);
+  }
+  sizeCanvas();
+  var szT; addEventListener('resize', function(){
+    clearTimeout(szT); szT = setTimeout(sizeCanvas, 150);
+  });
+
+  var running = false, t0 = 0;
+  /* only animate while it is actually on screen */
+  var io = new IntersectionObserver(function(en){
+    en.forEach(function(x){
+      if(x.isIntersecting && !running){
+        running = true; t0 = performance.now(); requestAnimationFrame(draw);
+      } else if(!x.isIntersecting){ running = false; }
+    });
+  }, {threshold:0.08});
+  io.observe(cv);
+
+  function draw(now){
+    if(!running) return;
+    var el = (now - t0)/1000;
+    var res, rot;
+    if(reduced){ res = 1; rot = 0.6; }
+    else {
+      res = Math.min(Math.max((el - 0.7)/2.8, 0), 1);
+      res = 1 - Math.pow(1-res, 3);
+      rot = el*0.3;
+    }
+
+    if(!buf) return;
+    buf.fill(0);
+    /* the tilt pushes the lower nodes down, so the structure sits a little
+       above centre and is scaled to keep every cloud inside the frame */
+    var cx = W/2, cy = H*0.46, scale = Math.min(W*0.375, H*0.52);
+    var cosR = Math.cos(rot), sinR = Math.sin(rot);
+    var cosT = Math.cos(0.42), sinT = Math.sin(0.42);
+
+    for(var i=0;i<P.length;i++){
+      var p = P[i];
+      var st = p.seed*0.35;
+      var d = (res-st)/(1-st); if(d<0) d=0; if(d>1) d=1;
+      var x = p.hx + p.sx*(1-d), y = p.hy + p.sy*(1-d), z = p.hz + p.sz*(1-d);
+      var rx = x*cosR - z*sinR, rz = x*sinR + z*cosR;
+      var ry = y*cosT - rz*sinT; rz = y*sinT + rz*cosT;
+      var pr = 2.6/(2.6+rz);
+      var dep = (rz+1.4)/2.8; if(dep<0) dep=0; if(dep>1) dep=1;
+      var al = (0.20 + (1-dep)*0.72) * (0.25 + res*0.75);
+      if(p.edge) al *= 0.34;
+      var A = (al*255)|0; if(A > 255) A = 255; if(A < 3) continue;
+      var col = p.edge ? ((A<<24)|(230<<16)|(205<<8)|130)
+                       : ((A<<24)|(255<<16)|(240<<8)|0);
+      var sxp = ((cx + rx*scale*pr)*DPR)|0, syp = ((cy + ry*scale*pr)*DPR)|0;
+      if(sxp < 0 || syp < 0 || sxp >= BW-1 || syp >= BH-1) continue;
+      var o = syp*BW + sxp;
+      buf[o] = col;
+      if(!p.edge && pr > 1.02){ buf[o+1] = col; buf[o+BW] = col; }
+    }
+
+    ctx.putImageData(img, 0, 0);
+
+    if(res > 0.55){
+      ctx.save(); ctx.scale(DPR, DPR);
+      var la = (res-0.55)/0.45;
+      ctx.font = '500 10px "JetBrains Mono", monospace';
+      ctx.textAlign = 'center';
+      for(var j=0;j<NN;j++){
+        var nd2 = NODES[j];
+        var lx = nd2.x*cosR - nd2.z*sinR, lz = nd2.x*sinR + nd2.z*cosR;
+        var ly = nd2.y*cosT - lz*sinT; lz = nd2.y*sinT + lz*cosT;
+        var lp = 2.6/(2.6+lz);
+        var ld = (lz+1.4)/2.8; if(ld<0) ld=0; if(ld>1) ld=1;
+        ctx.fillStyle = 'rgba(174,184,201,' + (la*(0.30+(1-ld)*0.58)).toFixed(3) + ')';
+        /* keep labels inside the frame on narrow screens */
+        var tx = cx + lx*scale*lp, half = ctx.measureText(nd2.label).width/2 + 4;
+        if(tx < half) tx = half; if(tx > W-half) tx = W-half;
+        ctx.fillText(nd2.label, tx, cy + ly*scale*lp - (0.19*scale+22)*lp);
+      }
+      ctx.restore();
+    }
+    requestAnimationFrame(draw);
+  }
+})();
 
 /* ── 9. horizontal product track ───────────────────────────────── */
 var pin = $('#built'), stage = $('.pin-stage'), track = $('#track');
