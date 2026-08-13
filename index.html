@@ -1189,12 +1189,18 @@ function scrollState(){
   });
 
   var running = false, t0 = 0;
-  /* only animate while it is actually on screen */
+  /* the resolve plays once — after that, re-entering the viewport just
+     resumes rotation from where it left off instead of reforming the
+     cloud from scratch every time someone scrolls past */
+  var resolved = false, rotBase = 0;
   var io = new IntersectionObserver(function(en){
     en.forEach(function(x){
       if(x.isIntersecting && !running){
         running = true; t0 = performance.now(); requestAnimationFrame(draw);
-      } else if(!x.isIntersecting){ running = false; }
+      } else if(!x.isIntersecting && running){
+        rotBase += ((performance.now()-t0)/1000)*0.3;
+        running = false;
+      }
     });
   }, {threshold:0.55});
   io.observe(cv);
@@ -1204,10 +1210,14 @@ function scrollState(){
     var el = (now - t0)/1000;
     var res, rot;
     if(reduced){ res = 1; rot = 0.6; }
+    else if(resolved){
+      res = 1; rot = rotBase + el*0.3;
+    }
     else {
-      res = Math.min(Math.max((el - 0.7)/2.8, 0), 1);
+      res = Math.min(Math.max((el - 0.25)/1.15, 0), 1);
       res = 1 - Math.pow(1-res, 3);
-      rot = el*0.3;
+      if(res >= 1) resolved = true;
+      rot = rotBase + el*0.3;
     }
 
     if(!buf) return;
