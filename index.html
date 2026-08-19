@@ -234,6 +234,10 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
   text-transform:uppercase;color:var(--faint);flex:none}
 .core-row dd{font-size:.91rem;color:var(--chrome);text-align:right}
 .core-row dd.gold{color:var(--amber)}
+.core-row dd .prog{color:var(--cyan);font-size:.85em}
+.core-row dd .tag-done{color:var(--faint);font-size:.85em}
+.core-row dd .edu-line{display:block}
+.core-row dd .edu-line + .edu-line{margin-top:.3rem}
 
 .scroll-cue{position:absolute;bottom:1.8rem;left:50%;transform:translateX(-50%);
   font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;
@@ -420,15 +424,19 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
 /* ══════════════════════════════════════════════════════════════════
    [06] CREDENTIALS
    ══════════════════════════════════════════════════════════════════ */
-.creds{display:grid;grid-template-columns:repeat(4,1fr);gap:.95rem}
+.creds{display:grid;grid-template-columns:repeat(5,1fr);gap:.85rem}
 .cred{padding:1.5rem}
 .cred .kind{font-family:'JetBrains Mono',monospace;font-size:.59rem;letter-spacing:.18em;
   text-transform:uppercase;color:var(--faint);margin-bottom:.8rem;display:flex;align-items:center;gap:.45rem}
 .cred.verified .kind{color:var(--amber)}
 .cred.verified .kind::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--amber);
   box-shadow:0 0 8px rgba(255,180,84,.8)}
+.cred.progress .kind{color:var(--cyan)}
+.cred.progress .kind::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--cyan);
+  box-shadow:0 0 8px rgba(0,255,102,.7)}
 .cred h3{font-size:.96rem;font-weight:600;margin-bottom:.35rem;line-height:1.35}
 .cred p{font-size:.78rem;color:var(--dim);line-height:1.5}
+.cred p.accred{font-size:.68rem;color:var(--faint);margin-top:.3rem;letter-spacing:.02em}
 
 /* ══════════════════════════════════════════════════════════════════
    [07] CONTACT
@@ -532,7 +540,10 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
         <div class="core-row"><dt>Current Employer</dt><dd>BAE Systems, Inc.</dd></div>
         <div class="core-row"><dt>Clearance</dt><dd class="gold">Active Top Secret</dd></div>
         <div class="core-row"><dt>Service</dt><dd>United States Air Force Veteran</dd></div>
-        <div class="core-row"><dt>Education</dt><dd>MBA &amp; BS in Aviation (Unmanned Systems)</dd></div>
+        <div class="core-row"><dt>Education</dt><dd>
+          <span class="edu-line">BS CS <span class="prog">In Progress</span></span>
+          <span class="edu-line">MBA &amp; BS in Aviation (Unmanned Systems) <span class="tag-done">Completed</span></span>
+        </dd></div>
       </dl>
     </div>
   </div>
@@ -682,18 +693,24 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
   </div>
 </section>
 
-<!-- ═══ [05] CASE ═══════════════════════════════════════════════ -->
 <!-- ═══ [06] CREDENTIALS ════════════════════════════════════════ -->
 <section class="band" id="credentials">
   <div class="wrap">
     <div class="creds">
+      <div class="gl cred progress reveal tilt" data-tilt data-ripple>
+        <div class="kind">In Progress</div><h3>BS, Computer Science (Postbacc)</h3>
+        <p>Oregon State University · ABET-Accredited Program</p>
+        <p class="accred">36/60 credits · Spring 2026 Dean's List, College of Engineering</p>
+      </div>
       <div class="gl cred reveal tilt" data-tilt data-ripple>
         <div class="kind">Degree</div><h3>MBA, Business Administration</h3>
         <p>Southern New Hampshire University</p>
+        <p class="accred">ACBSP-Accredited Program</p>
       </div>
       <div class="gl cred reveal tilt" data-tilt data-ripple>
         <div class="kind">Degree</div><h3>BS, Aviation / Aerospace (UAS)</h3>
         <p>Everglades University</p>
+        <p class="accred">SACSCOC-Accredited Institution</p>
       </div>
       <div class="gl cred verified reveal tilt" data-tilt data-ripple>
         <div class="kind">Clearance</div><h3>Top Secret</h3>
@@ -985,7 +1002,9 @@ var SKILLS = {
   'AI & build stack':['Python','Claude API','LLM integration','System prompt design',
     'AI agent development','Prompt engineering','Agentic pipelines','Token & cost optimization',
     'Model selection','Streamlit','HTML / CSS / JS','Git','GitHub','REST API integration',
-    'Workflow automation','Data pipelines','Secrets management','AI solution architecture'],
+    'Workflow automation','Data pipelines','Secrets management','AI solution architecture',
+    'C','C++','Object-oriented programming','Data structures & algorithms','Computer architecture',
+    'Systems programming','Discrete mathematics','Node.js','Unix/Linux shells'],
   'Compliance & safety':['High-consequence regulatory compliance','System safety (MIL-STD-882E)',
     'ISO 15288','IEC 60601-1','IEC 62304','ISO 14971','DICOM','FDA regulations',
     'HIPAA','SOC 2','ISO 27001','NIST CSF','Export controls (ITAR)','Zero trust','Enterprise IAM & SSO',
