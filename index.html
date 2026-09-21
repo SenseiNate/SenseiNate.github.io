@@ -362,6 +362,13 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
 .role-body li::before{content:'';position:absolute;left:0;top:.6em;width:4px;height:4px;
   border-radius:50%;background:var(--cyan);opacity:.6;box-shadow:0 0 6px rgba(0,255,102,.5)}
 .role-body li strong{color:var(--chrome);font-weight:500}
+/* program context: describes the program the bullets sit inside, not any one result */
+.role-ctx{font-size:.8rem;line-height:1.6;color:var(--dim);margin-bottom:1.1rem;padding:0 0 1rem 1.05rem;
+  border-bottom:1px solid rgba(138,147,158,.18);position:relative}
+.role-ctx::before{content:'';position:absolute;left:0;top:.2em;bottom:1.2rem;width:2px;background:var(--cyan);opacity:.55}
+.role-ctx b{display:block;font-family:'JetBrains Mono',monospace;font-size:.6rem;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:.35rem}
+.role-ctx strong{color:var(--text);font-weight:500}
 
 
 /* ══════════════════════════════════════════════════════════════════
@@ -611,8 +618,8 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
 <section class="band" id="metrics">
   <div class="wrap">
     <div class="metrics">
-      <div class="gl metric reveal tilt" data-tilt data-ripple><span class="fig" data-count="10" data-suffix="+">0</span><span class="cap">Years in<br>high-stakes ops</span></div>
-      <div class="gl metric reveal tilt" data-tilt data-ripple><span class="fig" data-count="12" data-prefix="$" data-suffix="B">0</span><span class="cap">Program portfolio<br>governed</span></div>
+      <div class="gl metric reveal tilt" data-tilt data-ripple><span class="fig" data-count="10" data-suffix="+">0</span><span class="cap">Years shipping<br>high-stakes systems</span></div>
+      <div class="gl metric reveal tilt" data-tilt data-ripple><span class="fig" data-count="12" data-prefix="$" data-suffix="B">0</span><span class="cap">Portfolio roadmap<br>I built</span></div>
       <div class="gl metric reveal tilt" data-tilt data-ripple><span class="fig" data-count="6.6" data-suffix="M" data-fix="1">0</span><span class="cap">Assets tracked,<br>zero discrepancies</span></div>
       <div class="gl metric reveal tilt" data-tilt data-ripple><span class="fig" data-count="100" data-suffix="%">0</span><span class="cap">QA pass rate,<br>seven years running</span></div>
     </div>
@@ -633,11 +640,11 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
       </div>
       <div class="chapter">
         <span class="ch-n">Since</span>
-        <p>Northrop Grumman taught me formal systems engineering: model-based architecture, requirements traceability, and chairing governance boards. GE Healthcare sharpened that into software systems engineering: data architecture, logging and observability, and testing protocols, built alongside the software engineers who owned the code, then validated with the clinicians who would actually use it.</p>
+        <p>Northrop Grumman taught me formal systems engineering: model-based architecture, requirements traceability, and running cross-functional engineering reviews. GE Healthcare turned that into software systems engineering: data architecture, logging and observability, and continuous testing, built side by side with the engineers who owned the code and validated with the clinicians who used it.</p>
       </div>
       <div class="chapter">
         <span class="ch-n">Now</span>
-        <p>At BAE Systems I own a $60M+ integration program on the customer side and govern technical interfaces across five partner organizations. After my manager left I picked up interim leadership on top of that, so I now run the engineering team as well as the program, including hiring for a new contract, and still do the technical work myself.</p>
+        <p>At BAE Systems I work on a flagship, multi-billion-dollar platform modernization program. I'm the client-side technical owner of a $60M+ integration, holding five partner orgs to one spec. When my manager left I picked up engineering management on top of that, so now I run the team, hire for it, and still do the technical work myself.</p>
       </div>
     </div>
   </div>
@@ -681,13 +688,14 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
         <span class="when">MAY 2025 — PRESENT</span>
       </div>
       <div class="role-body">
+        <p class="role-ctx"><b>Program context</b>A <strong>flagship, multi-billion-dollar platform modernization program</strong> with executive-level visibility, delivered across cross-organizational industry and government partners.</p>
         <ul>
-          <li>Primary customer-side owner of a <strong>$60M+ systems integration program</strong>, governing technical interfaces across five partner organizations including Johns Hopkins APL and Northrop Grumman; independently built and led a contested technical review to protect program and financial interests before acceptance.</li>
-          <li>Led a cross-organizational effort with partner organizations including Johns Hopkins APL and Northrop Grumman, applying prior high-consequence regulatory compliance expertise to bridge certification knowledge gaps and mapping the end-to-end software delivery pipeline from development through independent verification; closed a critical dependency gap, establishing a software delivery pathway across three partner sites supporting sustainment engineering teams.</li>
-          <li>Reconciled competing requirements across 5 engineering teams into the authoritative roadmap for a <strong>$12B portfolio</strong>, and was given senior lead status within 60 days.</li>
-          <li>Independently launched and operated a standalone organizational model through a <strong>14-day blackout with no external support</strong>, achieving 100% operational continuity and zero delivery failures.</li>
-          <li>Stepped into <strong>expanded interim leadership</strong> after a manager's departure, spanning systems engineering, program management, and engineering management: directly manages a mixed engineering team across systems, software, and information security functions, owning performance reviews and career development. Personally interviewed and selected <strong>4 engineers</strong> for a new contract build-out, all offers accepted, and manages them through the contract's move from subcontractor to prime, while continuing hands-on technical delivery.</li>
-          <li>Cut <strong>60% of programmatic overhead</strong> by redesigning technical workflows, compressed a six-month delivery timeline to under three months, and prevented <strong>$500K in misallocated budget</strong> through third-party tool capability assessments.</li>
+          <li>Client-side technical owner of a <strong>$60M+ systems integration</strong> spanning five partner orgs. When the vendor deliverable was headed for sign-off with gaps the formal review wasn't built to catch, spun up an independent technical and financial review and stopped it before acceptance, heading off <strong>hundreds of hours of rework</strong>.</li>
+          <li>Unblocked secure software delivery across <strong>three partner sites</strong>: decomposed the use cases, modeled the full release pipeline (dev, test labs, configuration management, signed and encrypted packaging, independent verification), and brought the certification know-how the team was missing to close the dependency gap.</li>
+          <li>Turned competing requirements from 5 engineering teams into a single roadmap for a <strong>$12B portfolio</strong>. Promoted to senior lead within 60 days.</li>
+          <li>Designed and ran a standalone launch solo through a <strong>14-day holiday freeze</strong> with no one else online: 100% uptime, zero delivery failures.</li>
+          <li>Picked up <strong>engineering management</strong> on an interim basis after my manager left, on top of program and systems engineering ownership. Run a mixed team of systems, software, and security engineers (reviews, growth plans, 1:1s) and hired <strong>4 engineers</strong> for a new contract build-out, every offer accepted, onboarding them ahead of a planned contract ownership transition.</li>
+          <li>Cut <strong>60% of process overhead</strong> by automating engineering workflows, delivered a six-month software tool in under three, and blocked <strong>$500K</strong> in spend on third-party tools that didn't fit the requirements.</li>
         </ul>
       </div>
     </article>
@@ -700,11 +708,11 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
       </div>
       <div class="role-body">
         <ul>
-          <li>Built an automated client-onboarding risk engine compressing clinical verification from <strong>5 days to 4 hours</strong>.</li>
-          <li>Owned end-to-end SE for the <strong>OEC Elite 3D needle trajectory feature</strong>: formal FMEA, hazard analysis, multi-day clinical V&amp;V, shipped with zero post-release issues and global physician adoption.</li>
-          <li>Redesigned a queue management system's underlying data structures, working directly with software engineers to review code and adjust system parameters, <strong>reducing cycle times by 40%</strong>.</li>
-          <li>Designed a unified data logging architecture within the software stack, engineering the error visibility framework that <strong>decreased mean time to resolution by 35%</strong>.</li>
-          <li>Built continuous software testing protocols on agile test beds, resolving <strong>120+ release defects</strong> pre-deployment, and authored the architecture documentation that cut integration onboarding <strong>50%</strong>.</li>
+          <li>Built the backend logic for an automated client-onboarding risk engine, cutting clinical verification from <strong>5 days to 4 hours</strong>.</li>
+          <li>Owned the <strong>OEC Elite 3D needle trajectory feature</strong> end to end, from user need through FMEA, hazard analysis, and multi-day clinical V&amp;V to release: zero post-release defects and adopted by physicians globally.</li>
+          <li>Reworked a queue management system's data structures alongside the software engineers, reviewing code and tuning system parameters to cut <strong>cycle time 40%</strong>.</li>
+          <li>Designed a unified logging and error-visibility architecture across the software stack, cutting <strong>mean time to resolution 35%</strong>.</li>
+          <li>Stood up continuous testing on agile test beds that caught <strong>120+ defects before release</strong>, and wrote the architecture docs that cut integration onboarding <strong>50%</strong>.</li>
         </ul>
       </div>
     </article>
@@ -717,11 +725,11 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
       </div>
       <div class="role-body">
         <ul>
-          <li>Applied model-based systems engineering with Cameo and Teamcenter PLM to a multi-year <strong>infrastructure modernization program</strong>, integrating 500+ high-consequence regulatory requirements with zero rework.</li>
-          <li>Chaired <strong>20+ cross-functional technical governance boards</strong> as the compliance representative, across internal teams, the customer, and subcontractors, including restricted-access environments.</li>
-          <li>Redesigned a legacy governance framework with automated rule updates, cutting cycle time <strong>50%</strong>. Earned the BRAVO to Our Stars Award.</li>
-          <li>Ran a comprehensive FMEA that surfaced and mitigated <strong>15 critical single points of failure</strong> before release.</li>
-          <li>Translated subsystem requirements bidirectionally between regulatory standards and system architecture, documenting in IBM DOORS and importing into Cameo as the <strong>authoritative source of truth</strong> with full model linkage, and served as primary compliance auditor across multiple subsystems.</li>
+          <li>Ran model-based systems engineering in Cameo and Teamcenter PLM on a multi-year <strong>platform modernization program</strong>, integrating 500+ high-consequence requirements with zero rework.</li>
+          <li>Led <strong>20+ cross-functional engineering reviews</strong> as the compliance lead, getting internal teams, the customer, and vendors aligned on decisions.</li>
+          <li>Rebuilt a legacy compliance framework around automated rule updates, cutting decision cycle time <strong>50%</strong> and removing manual developer work. BRAVO to Our Stars Award.</li>
+          <li>Ran a full FMEA that found and closed <strong>15 critical single points of failure</strong> before release.</li>
+          <li>Made IBM DOORS and Cameo one <strong>source of truth</strong>: translated subsystem requirements both ways between standards and architecture with full model linkage, and served as primary compliance auditor across multiple subsystems.</li>
         </ul>
       </div>
     </article>
@@ -729,16 +737,16 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
     <article class="gl role-slab reveal tilt" data-tilt data-ripple>
       <div class="role-side">
         <span class="co">U.S. Air Force</span>
-        <span class="ttl">Munitions Systems Engineer, Active Duty</span>
+        <span class="ttl">Munitions Systems Engineer</span>
         <span class="when">APR 2016 — APR 2023</span>
       </div>
       <div class="role-body">
         <ul>
-          <li>Led an 18-person team over a <strong>$73M high-value asset portfolio</strong> across 57 accounts, 300K+ annual deliveries, and 15,000 operational events, holding a <strong>100% QA pass rate for seven years</strong>.</li>
-          <li>Directed configuration management and reconciliation for <strong>65 aircraft across 5 types</strong> in a <strong>$7.9B fleet</strong>.</li>
-          <li>Built an inventory validation system verifying <strong>6.6M individual assets</strong> with zero tracking discrepancies.</li>
-          <li>Executed export-controlled packaging, inspection, and international shipment of regulated goods.</li>
-          <li>Held <strong>direct rating authority</strong> over a core of 4 to 5 airmen across two bases and four shop assignments, writing formal performance evaluations and award packages, and scaled to lead cross-shop teams of <strong>15 to 20</strong> on large engineering and logistics operations. Mentored an airman outside my chain of supervision who was later selected by the commander for the U.S. Air Force Academy.</li>
+          <li>Led an 18-person team running a <strong>$73M asset portfolio</strong> across 57 accounts, 300K+ annual deliveries, and 15,000 operational events, with a <strong>100% QA pass rate for seven years</strong>.</li>
+          <li>Owned configuration management and reconciliation for <strong>65 aircraft across 5 types</strong> in a <strong>$7.9B fleet</strong>.</li>
+          <li>Built an inventory validation system that verified <strong>6.6M assets</strong> with zero tracking discrepancies.</li>
+          <li>Ran change management for <strong>600+ schedule and inventory changes a week</strong>, keeping 5K production cycles on track.</li>
+          <li>Managed a core of <strong>4 to 5 direct reports</strong> across two sites and four teams, wrote their performance reviews, and scaled to lead cross-team groups of <strong>15 to 20</strong> on large engineering and logistics operations. Mentored an airman outside my reporting line who was later selected for the U.S. Air Force Academy.</li>
         </ul>
       </div>
     </article>
@@ -873,10 +881,10 @@ h3{font-size:clamp(1.12rem,2vw,1.4rem);letter-spacing:-.015em}
         </div>
         <div class="well demo">
           <div class="demo-bar"><i></i> job_matcher.py · fit scan</div>
-          <div class="match" style="--d:.2s"><span class="role">Senior PM, Digital Engineering<s>defense prime</s></span><span class="pct hi">92%</span></div>
+          <div class="match" style="--d:.2s"><span class="role">Senior TPM, Platform Infrastructure<s>big tech</s></span><span class="pct hi">92%</span></div>
           <div class="match" style="--d:.5s"><span class="role">Systems Engineer III, Ground Systems<s>space sector</s></span><span class="pct hi">87%</span></div>
           <div class="match" style="--d:.8s"><span class="role">AI Product Manager<s>commercial</s></span><span class="pct mid">74%</span></div>
-          <div class="match" style="--d:1.1s"><span class="role">Program Manager, Sustainment<s>defense prime</s></span><span class="pct lo">61%</span></div>
+          <div class="match" style="--d:1.1s"><span class="role">Engineering Manager, Hardware Systems<s>medtech</s></span><span class="pct lo">61%</span></div>
           <div class="verdict">scored on <b>evidence</b>, not keyword overlap</div>
         </div>
       </article>
@@ -1042,32 +1050,32 @@ addEventListener('load', function(){
 
 /* ── 7. capability engine ──────────────────────────────────────── */
 var SKILLS = {
-  'Systems engineering':['MBSE','SysML','DoDAF','UAF','Cameo','Teamcenter PLM','IBM DOORS',
+  'Systems engineering':['MBSE','SysML','UAF','Cameo','Teamcenter PLM','IBM DOORS',
     'Requirements management','Traceability architecture','Interface design (ICD/IBD/BDD)',
     'System architecture','Trade-off analysis','FMEA','Hazard analysis','Verification & validation',
-    'SRR / TRR / CDR / TMRR','Test plan development','Human factors engineering','Usability testing',
+    'Design reviews (SRR / TRR / CDR)','Test plan development','Human factors engineering','Usability testing',
     'Configuration management','Sequence diagrams','Use case decomposition','Enterprise architecture',
     'Data architecture','Integration architecture','Microservices architecture'],
   'Program & governance':['Technical program management','Portfolio management','Scope management',
     'Schedule management','Budget management','Risk management','Dependency mapping','Change control',
-    'Technical governance boards','Program management reviews','Multi-org stakeholder alignment',
+    'Cross-functional engineering reviews','Program management reviews','Multi-org stakeholder alignment',
     'Vendor management','Executive briefing',
-    'Milestone tracking','Baseline control','Agile','Scrum','Kanban','Contract & bid support'],
+    'Milestone tracking','Baseline control','Agile','Scrum','Kanban','Proposal & bid support'],
   'AI & build stack':['Python','Claude API','LLM integration','System prompt design',
     'AI agent development','Prompt engineering','Agentic pipelines','Token & cost optimization',
     'Model selection','Streamlit','HTML / CSS / JS','Git','GitHub','REST API integration',
     'Workflow automation','Data pipelines','Secrets management','AI solution architecture',
     'C','C++','Object-oriented programming','Data structures & algorithms','Computer architecture',
     'Systems programming','Discrete mathematics','Node.js','Unix/Linux shells'],
-  'Compliance & safety':['High-consequence regulatory compliance','System safety (MIL-STD-882E)',
+  'Compliance & safety':['High-consequence regulatory compliance','System safety engineering',
     'ISO 15288','IEC 60601-1','IEC 62304','ISO 14971','DICOM','FDA regulations',
-    'HIPAA','ISO 27001','ISO 9100','NIST CSF','Export controls (ITAR)','Zero trust','Enterprise IAM & SSO',
-    'Audit preparation','Hazard analysis (PHA / SHA)','Safety review boards'],
-  'Aerospace & hardware':['Large-scale infrastructure modernization','Vehicle subsystem requirements',
-    'Command & control systems','Ground systems integration','Guidance & control systems',
-    'System function testing','Safety-critical verification','Propulsion systems sustainment',
-    'Sensor & countermeasure systems','Production build cycle management','Field operations',
-    'Airworthiness & sustainment','Part 107 sUAS','UAS operations'],
+    'HIPAA','ISO 27001','ISO 9100','NIST CSF','Export control compliance','Zero trust','Enterprise IAM & SSO',
+    'Audit preparation','Safety & risk reviews'],
+  'Aerospace & hardware':['Platform modernization','Vehicle subsystem requirements',
+    'Mission-critical control systems','Ground systems integration','Guidance & control systems',
+    'System function testing','Safety-critical verification','Propulsion systems',
+    'Sensor systems','Production build cycle management','Field operations',
+    'Airworthiness','Part 107 sUAS','UAS operations'],
   'Leadership & business':['Team leadership','Direct people management','Performance management',
     'Hiring & technical interviewing','Career development planning','Talent management','Mentorship',
     'Cross-functional leadership','Influence without authority','Conflict resolution','Negotiation',
