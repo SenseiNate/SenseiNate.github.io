@@ -480,13 +480,16 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
       <div>
         <p class="ctx">A flagship, multi-billion-dollar platform modernization program, delivered with cross-organizational industry and government partners.</p>
         <ul>
-          <li>Lead integrator on an enterprise integration platform that has grown from <b>$60M at conception to $112M</b> today, owning requirements, modeling, and interface design across organizational boundaries and reporting readiness directly to senior leadership.</li>
+          <li>Lead integrator on an enterprise integration platform that has grown from <b>$60M at conception to $112M</b> today, owning requirements, modeling, and interface design across organizational boundaries and reporting readiness directly to senior leadership. At conception I stopped it being accepted with requirements that were not verifiable as written and models whose blocks and dependency arrows misrepresented the real data flow, which avoided <b>hundreds of hours of rework</b>.</li>
+          <li>Pulled a <b>$60M+ data platform back from likely cancellation</b>. The customer had judged the specification too immature for its requirements baseline review and was leaning toward killing the work. Before anyone asked for it, I went through the spec requirement by requirement and built a <b>60+ item comment matrix, 10 of them rated major</b>, each with a proposed resolution, then led the review with senior customer leadership and the partner organizations. Every recommendation was accepted, and I was handed the call on whether the effort went forward or stopped, including releasing the matrix to the delivery contractor myself.</li>
+          <li>Ran the technical assessment of third-party lakehouse tools for the common data platform, scoring each against NIST security controls and the encryption requirements for the most sensitive data the platform carries. Cut the vendors that failed those controls or charged more for less, chose for long-term sustainment over lowest price, and kept <b>more than $500K</b> from being misallocated.</li>
           <li>Redesigned a seven-year-old model merge process end to end, cutting about <b>5 hours off every weekly merge</b> by stripping the unused project links every branch had to carry and making the model trunk the single source of truth. Ran the first full cycle solo during a 14-day holiday freeze, a sequence that normally takes 5 to 6 engineers, with zero errors and zero rework, then wrote the guide so it never depends on one person again.</li>
-          <li>Built a reusable smart-package analysis tool that replaced manual model-by-model gap hunting with parameterized queries returning results in seconds, cutting roughly <b>60% of the manual review overhead</b> the team spent finding model and requirements gaps.</li>
-          <li>Stopped a contested $60M integration from being accepted with requirements that were not verifiable as written and models whose blocks and dependency arrows misrepresented the real data flow. Built the independent technical and financial case, convinced the customer to fix the specs before moving forward, and avoided <b>hundreds of hours of rework</b>.</li>
-          <li>Picked up engineering management when my manager left, on top of the technical work: run a mixed team of systems, software, and security engineers, own reviews, growth plans and 1:1s, and took hiring from interviewing into full requisition ownership, setting real-dollar compensation ranges with leadership and HR instead of defaulting to grade bands.</li>
-          <li>Interviewed and selected <b>4 engineers</b> across software, security, and systems roles, every offer accepted, and personally trained the newest on requirements management, configuration management, and modeling while the toolset and the team were both changing.</li>
+          <li>Built a reusable smart-package analysis tool, <b>delivered in under 3 months against a 6-month timeline</b>, that replaced manual model-by-model gap hunting with parameterized queries returning results in seconds. It covers every data compliance stream and cut roughly <b>60% of the manual review overhead</b> the team spent finding model and requirements gaps.</li>
+          <li>Closed a dependency gap that was keeping finished software from reaching the field. Gathered the requirements, decomposed the use cases, and rebuilt the logical and behavioral models and sequence diagrams to map the whole pipeline: development, test labs, configuration management, signed and encrypted package construction, independent verification, and release. That stood up a working delivery path <b>across three separate organizations</b>.</li>
+          <li>Picked up engineering management when my manager left, on top of the technical work: run a mixed team of systems, software, and security engineers, own reviews, growth plans and 1:1s. Took hiring from interviewing into full requisition ownership, rewriting two openings that had gone out with word-for-word identical duties into properly leveled roles, with distinct experience thresholds, lead versus hands-on scope, and real compensation ranges set with leadership and HR instead of default grade bands. Those postings were adopted as the team's new baseline.</li>
+          <li>Interviewed and selected <b>4 engineers</b> across software, security, and systems roles, every offer accepted, and screened <b>12 more resumes</b> across two further openings. Personally trained the newest hires on requirements management, configuration management, and modeling while the toolset and the team were both changing.</li>
           <li>Hold the only technical seat on a two-person core team, covering technical and non-technical customer leads and routing overflow to partner teams to protect delivery. Absorbed the data platform owner's departure by ramping on lakehouse architecture and Databricks under live deadlines so the function never went uncovered.</li>
+          <li>Use AI tooling to frame and cross-check requirements against governing standards and what users actually said they needed. On the integration platform it surfaced places where early specifications fell short of the use cases, ahead of the formal review cycle.</li>
         </ul>
       </div>
     </article>
@@ -501,7 +504,9 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
       <div>
         <ul>
           <li>Owned the OEC Elite 3D needle trajectory feature end to end, from the user need through FMEA and hazard analysis to multi-day clinical validation and release: <b>zero post-release defects</b> and adoption by physicians worldwide.</li>
-          <li>Designed the Position Assist save-and-return system: capture a visual outline and axis coordinates during a 3D scan so the arm can move freely and return to the exact saved position, with a red, yellow, and green indicator confirming live alignment against the saved reference. Validated it against international standards and FDA and HIPAA requirements so imaging data could not leak between patients.</li>
+          <li>Designed the Position Assist save-and-return system: capture a visual outline and axis coordinates during a 3D scan so the arm can move freely and return to the exact saved position, with a red, yellow, and green indicator confirming live alignment against the saved reference. Validated it against international standards and FDA and HIPAA requirements so imaging data could not leak between patients <b>on a system serving 100,000+ users</b>.</li>
+          <li>Was the only engineer the company sent to the AAOS annual meeting, demonstrating the imaging systems to <b>hundreds of physicians</b> from the US, Europe, and Asia, acting as the interface between clinical end users and engineering, and turning what they told me into a structured debrief that fed straight back into the product work.</li>
+          <li>Rewrote the user guides across new and existing features and made the first training recordings the platform ever had, producing <b>5 walkthroughs</b> myself and setting the standard the rest of the engineering team then followed.</li>
           <li>Reworked a queue management system's data structures alongside the software engineers, reviewing code and tuning system parameters to cut <b>cycle time 40%</b>.</li>
           <li>Built the backend logic for an automated onboarding risk engine, cutting clinical verification from <b>5 days to 4 hours</b>.</li>
           <li>Stood up continuous testing on agile test beds that caught <b>120+ defects before release</b>, including a UI update that shipped visually identical buttons doing different things.</li>
@@ -518,10 +523,11 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
       </div>
       <div>
         <ul>
-          <li>Caught a configuration and documentation management gap while chairing a review board, where governance had drifted out of line with certification standards. Escalating it triggered a change control board and surfaced an audit failure on another team, and drove corrections across multiple subsystems before design review. Recognized with the BRAVO to Our Stars Award.</li>
+          <li>Caught a configuration and documentation management gap while chairing one of the <b>20+ technical review boards</b> I ran as the compliance representative, across internal teams, the customer, and subcontractors. Governance had drifted out of line with certification standards. Escalating it triggered a change control board and surfaced an audit failure on another team, and drove corrections across multiple subsystems before design review. Recognized with the BRAVO to Our Stars Award.</li>
           <li>Connected the requirements system to the business side's Tableau through a SQL analyst, working around limited scripting access, to auto-generate was-and-is redline comparisons across models and specs. Cut redline compilation by as much as <b>8 hours per person</b> on large specs, gave leadership exact requirements-worked-versus-total numbers, and the approach spread from business operations into compliance, cybersecurity, physical security, and other engineering teams.</li>
           <li>Ran a full FMEA that found and closed <b>15 critical single points of failure</b> before release, most of them sitting at the boundary between embedded software and the hardware and signals it controlled.</li>
           <li>Integrated and decomposed <b>500+ high-consequence compliance requirements</b> across hardware and software teams, building the traceability architecture that produced zero rework.</li>
+          <li>Prepared and presented the compliance documentation packages for high-stakes regulatory audits, which the division passed at <b>100%</b>.</li>
           <li>Taught myself Jira to stand up task, story, and epic tracking across two sub-teams, tagging blockers by organization so leadership could see and escalate across team lines. Both sub-teams hit their design review milestones on schedule.</li>
         </ul>
       </div>
@@ -537,8 +543,9 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
       <div>
         <ul>
           <li>Led an 18-person team running a <b>$73M asset portfolio</b>, holding a <b>100% quality assurance pass rate</b> across a seven-year tenure.</li>
+          <li>Built the operational readiness framework behind a <b>$7.9B asset portfolio</b> across <b>15,000 high-stakes operational events a year</b>, with zero logistics or accountability failures.</li>
           <li>Built a 204-point compliance validation system covering 17 buildings, 61,000 square feet, and <b>6.6M assets</b>, and a weekly change management system handling <b>600+ changes a week</b> across 5,000 production cycles.</li>
-          <li>Diagnosed a defective component lot that would not integrate or communicate with the host platform, traced it through the tracking system, consolidated all <b>26 affected units</b>, and personally repaired and tested them. Recovered 12 and routed 14 to depot, using a repair normally only performed at depot level, with no interruption to operations.</li>
+          <li>Diagnosed a defective component lot that would not integrate or communicate with the host platform, traced it through the tracking system, consolidated all <b>26 affected units</b>, and personally repaired and tested them. Recovered 12 and sent the other 14 up to a higher-tier facility, using a repair normally only done at that level, with no interruption to operations.</li>
           <li>Managed a core of 4 to 5 direct reports across two sites and four teams, wrote their performance reviews, and scaled to lead cross-team groups of 15 to 20. Mentored an airman outside my reporting line who was later selected for the U.S. Air Force Academy.</li>
         </ul>
       </div>
@@ -575,7 +582,7 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
     <div class="caps">
       <div class="cap">
         <h3>Systems engineering</h3>
-        <p>MBSE and SysML in Cameo and Teamcenter PLM, IBM DOORS, internal block and block definition diagrams, activity, use case, requirement and sequence diagrams, requirements management and traceability, interface design, trade-off analysis, FMEA and hazard analysis, verification and validation, SRR, TRR and CDR.</p>
+        <p>MBSE and SysML in Cameo and Teamcenter PLM, IBM DOORS, internal block and block definition diagrams, activity, use case, requirement and sequence diagrams, requirements management and traceability, interface design, trade-off analysis, FMEA and hazard analysis, verification and validation, and the full review chain: SRR, TMRR, TRR, CDR and PMR.</p>
       </div>
       <div class="cap">
         <h3>Program and delivery</h3>
@@ -583,7 +590,7 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
       </div>
       <div class="cap">
         <h3>Software and data</h3>
-        <p>Python for automation and analysis, Git and GitHub, software development lifecycle, Agile and CI/CD, AWS, data modeling and pipelines, zero trust architecture and enterprise identity.</p>
+        <p>Python for automation and analysis, Git and GitHub, software development lifecycle, Agile and CI/CD, AWS, data modeling and pipelines, zero trust architecture and enterprise identity, and AI tooling used on the job to pressure-test requirements against the standards that govern them.</p>
       </div>
       <div class="cap">
         <h3>Regulated and safety-critical</h3>
@@ -623,7 +630,7 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
       <div class="cred">
         <span class="name">BS, Computer Science</span>
         <span class="org">Oregon State University, ABET-accredited program</span>
-        <span class="state">In progress, 36 of 60 credits</span>
+        <span class="state">In progress, 36 of 60 credits, 3.46 GPA, Dean's List</span>
       </div>
       <div class="cred">
         <span class="name">MBA, Business Administration</span>
