@@ -4,24 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nathan Bienvenu | Technical Program and Project Management</title>
-<meta name="description" content="Technical program and project management, built on ten years of hands-on systems engineering and delivery, most of it on systems that belong to more than one organization. Active Top Secret clearance with SCI eligibility.">
+<meta name="description" content="Technical program manager and engineering lead. Over ten years running programs, leading teams, and doing the technical work, mostly on platforms shared by several organizations.">
 <link rel="canonical" href="https://senseinate.github.io/">
 <meta property="og:title" content="Nathan Bienvenu | Technical Program and Project Management">
-<meta property="og:description" content="I find the real constraints in an unfamiliar system, integrate the disconnected parts, and get the whole thing moving. Ten years across systems engineering, program management, and hands-on delivery.">
+<meta property="og:description" content="I find the real constraints in an unfamiliar system, integrate the disconnected parts, and get the whole thing moving. Over ten years running programs, leading teams, and doing the technical work.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://senseinate.github.io/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Nathan Bienvenu | Technical Program and Project Management">
 <meta name="twitter:description" content="I find the real constraints in an unfamiliar system, integrate the disconnected parts, and get the whole thing moving.">
-<meta name="theme-color" content="#F1EFE9">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F1EFE9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101317" media="(prefers-color-scheme: dark)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
 /* ──────────────────────────────────────────────────────────────
    TOKENS
-   A specification document: drafting paper, ink, one spec-blue.
-   Amber is reserved for externally verified credentials only.
+   Off-white paper, ink, one blue. Navy bands mark the three
+   moments that matter. Dark mode follows the device setting.
    ────────────────────────────────────────────────────────────── */
 :root{
   --paper:#F1EFE9;
@@ -38,8 +40,12 @@
   --muted:#62666D;
 
   --accent:#16467C;
+  --accent-hover:#0F3461;
   --accent-tint:#EAEFF6;
-  --verified:#8A5A00;
+  --on-accent:#fff;
+  --nav-bg:rgba(241,239,233,.88);
+  --nav-deep:rgba(20,26,34,.9);
+  --shot-edge:#D9D6CD;
 
   --sans:'Instrument Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   --serif:'Instrument Serif',Georgia,serif;
@@ -48,6 +54,32 @@
   --maxw:1120px;
   --col:68ch;
   --band:clamp(56px,8vh,112px);
+}
+/* Dark: the page drops to near-black and the navy bands lift slightly
+   above it, so they still read as events instead of disappearing. */
+@media (prefers-color-scheme: dark){
+  :root{
+    --paper:#101317;
+    --raised:#161A20;
+    --rule:#2B313A;
+    --rule-soft:#21262D;
+
+    --deep:#18212D;
+    --deep-text:#B3BCC8;
+    --deep-bright:#EDF0F4;
+
+    --ink:#EDEFF2;
+    --body:#BDC3CC;
+    --muted:#939AA4;
+
+    --accent:#8DB6E4;
+    --accent-hover:#B4D0EF;
+    --accent-tint:#1A2533;
+    --on-accent:#0E1620;
+    --nav-bg:rgba(16,19,23,.86);
+    --nav-deep:rgba(24,33,45,.92);
+    --shot-edge:#5A6372;
+  }
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -66,12 +98,12 @@ body{
   overflow-x:hidden;
 }
 a{color:inherit}
-::selection{background:var(--accent);color:#fff}
+::selection{background:var(--accent);color:var(--on-accent)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
 
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip{position:fixed;top:-100px;left:50%;transform:translateX(-50%);z-index:90;
-  padding:.7rem 1.2rem;background:var(--accent);color:#fff;font-size:.86rem;font-weight:600;
+  padding:.7rem 1.2rem;background:var(--accent);color:var(--on-accent);font-size:.86rem;font-weight:600;
   text-decoration:none;border-radius:0 0 3px 3px;transition:top .15s ease}
 .skip:focus{top:0}
 
@@ -93,14 +125,14 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
 /* ──────────────────────────────────────────────────────────────
    NAV
    ────────────────────────────────────────────────────────────── */
-.nav{position:sticky;top:0;z-index:60;background:rgba(241,239,233,.88);
+.nav{position:sticky;top:0;z-index:60;background:var(--nav-bg);
   backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);
   border-bottom:1px solid transparent;transition:border-color .2s ease}
 .nav.stuck{border-bottom-color:var(--rule)}
 /* the bar takes the colour of whatever band it is currently over.
    swapped instantly, never transitioned: animating a background behind
    an active backdrop-filter forces the blur to re-rasterise every frame. */
-.nav.over-deep{background:rgba(20,26,34,.9)}
+.nav.over-deep{background:var(--nav-deep)}
 .nav.over-deep .nav-mark{color:var(--deep-bright)}
 .nav.over-deep .nav-links a{color:#9AA3B1}
 .nav.over-deep .nav-links a:hover,.nav.over-deep .nav-links a.on{color:var(--deep-bright)}
@@ -141,14 +173,14 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
 }
 /* measured in em so the line length tracks the type size, not the viewport */
 @media(min-width:900px){.thesis{width:min(100%,15.5em)}}
-.hero-sub{margin-top:1.7rem;max-width:58ch;color:var(--body);
+.hero-sub{margin-top:1.7rem;max-width:58ch;color:var(--body);text-wrap:pretty;
   font-size:clamp(1rem,1.1vw,1.1rem);line-height:1.58}
 .hero-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2rem}
 .btn{display:inline-flex;align-items:center;padding:.66rem 1.2rem;border-radius:3px;
   font-size:.92rem;font-weight:500;text-decoration:none;border:1px solid var(--accent);
   transition:background .15s ease,color .15s ease}
-.btn-solid{background:var(--accent);color:#fff}
-.btn-solid:hover{background:#0F3461}
+.btn-solid{background:var(--accent);color:var(--on-accent)}
+.btn-solid:hover{background:var(--accent-hover);border-color:var(--accent-hover)}
 .btn-ghost{color:var(--accent);background:transparent}
 .btn-ghost:hover{background:var(--accent-tint)}
 
@@ -159,39 +191,22 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
 .fact dt{color:var(--muted);font-size:.85rem}
 .fact dd{color:var(--ink);font-size:.93rem}
 .fact dd .q{color:var(--muted)}
-.fact dd.verified{color:var(--verified)}
 @media(max-width:520px){
   .fact{grid-template-columns:1fr;gap:.1rem;padding:.6rem 0}
   .fact dt{font-size:.8rem}
 }
 
 /* ──────────────────────────────────────────────────────────────
-   SYSTEM OF SYSTEMS: the one animated moment
+   WHAT I DO: three plain statements on the first navy band.
+   Replaced the particle graphic, which looked good and said nothing.
    ────────────────────────────────────────────────────────────── */
-/* The projection is near-square at its widest, so a 16/9 band left the
-   graphic stranded in 400px of empty black. Two columns instead: the
-   statement reads on the page's own left edge, the graphic takes the rest. */
-.deep-band{background:var(--deep);padding-block:clamp(34px,4.5vh,54px)}
-.sos-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1fr);
-  gap:clamp(26px,4vw,60px);align-items:center}
-.sos-copy h2{color:var(--deep-bright);margin-bottom:.6rem}
-.sos-copy p{color:var(--deep-text);font-size:clamp(.95rem,1vw,1.04rem);max-width:34ch}
-.sos-copy b{color:var(--deep-bright);font-weight:500}
-/* 1.09 is the projection's own worst-case aspect: any wider and the fit is
-   bound by height and the graphic pulls away from the sides. A rotating
-   tilted ring is only that tall at two moments per turn and sits ~30%
-   shorter the rest of the time, so the box is kept small enough that the
-   slack reads as breathing room instead of an empty field. */
-.sos-wrap{position:relative;width:100%;aspect-ratio:1.09/1;max-height:372px;min-height:250px}
-.sos-wrap canvas{width:100%;height:100%;display:block}
-.deep-band .sr{color:var(--deep-bright)}
-@media(max-width:820px){
-  .sos-grid{grid-template-columns:1fr;gap:20px}
-  /* keep the 1.09 ratio when stacked: a full-width box here goes
-     height-bound again and the graphic shrinks away from the sides */
-  .sos-wrap{aspect-ratio:1.09/1;max-width:384px;max-height:352px;margin-inline:auto}
-}
-@media(max-width:820px){.deep-band{padding-block:clamp(28px,4vh,40px)}}
+.deep-band{background:var(--deep);padding-block:clamp(40px,6vh,72px)}
+.deep-band h2{color:var(--deep-bright);margin-bottom:clamp(20px,2.6vw,32px)}
+.does{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(22px,3.4vw,48px)}
+.do{border-top:2px solid #6E9FD6;padding-top:1rem}
+.do h3{color:var(--deep-bright);font-size:1.08rem;margin-bottom:.5rem}
+.do p{color:var(--deep-text);font-size:.95rem;line-height:1.6}
+@media(max-width:820px){.does{grid-template-columns:1fr;gap:24px}}
 
 /* ──────────────────────────────────────────────────────────────
    FIGURES: a measured row, not a card deck
@@ -267,8 +282,6 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
 .cred .name{color:var(--ink);font-weight:500;font-size:.95rem}
 .cred .org{color:var(--muted);font-size:.88rem}
 .cred .state{color:var(--muted);font-size:.82rem;text-align:right}
-.cred.is-verified .name{color:var(--verified)}
-.cred.is-verified .state{color:var(--verified)}
 @media(max-width:720px){
   .cred{grid-template-columns:1fr auto;gap:.1rem .8rem}
   .cred .org{grid-column:1/2}
@@ -278,15 +291,33 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
 /* ──────────────────────────────────────────────────────────────
    BUILT
    ────────────────────────────────────────────────────────────── */
-.builds{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(20px,2.6vw,34px)}
+/* one featured project with its screenshot, then an even row of text cards */
+.feature{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,3.6vw,52px);
+  align-items:center;border-top:1px solid var(--rule);padding-block:1.2rem clamp(30px,4vw,48px)}
+.feature h3{font-size:1.18rem;margin-bottom:.5rem}
+.feature p{font-size:.98rem;color:var(--body)}
+.feature .stack{margin-top:.9rem;color:var(--muted);font-size:.84rem}
+.builds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,2.6vw,34px)}
 .build{border-top:1px solid var(--rule);padding-top:1rem;display:flex;flex-direction:column}
 .build h3{margin-bottom:.4rem}
-.build p{font-size:.92rem;color:var(--body);flex:1}
-.build .stack{margin-top:.8rem;color:var(--muted);font-size:.82rem}
-.build a{margin-top:.6rem;align-self:start;color:var(--accent);font-size:.88rem;
-  text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:1px}
-.build a:hover{color:#0F3461}
-@media(max-width:720px){.builds{grid-template-columns:1fr}}
+.build p{font-size:.92rem;color:var(--body)}
+/* stack and links pin to the bottom so the three cards line up */
+.build .stack{margin-top:auto;padding-top:.8rem;color:var(--muted);font-size:.82rem}
+.links{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;margin-top:.6rem}
+.links a{color:var(--accent);font-size:.88rem;text-decoration:none;
+  border-bottom:1px solid currentColor;padding-bottom:1px}
+.links a:hover{color:var(--accent-hover)}
+/* the report is a light page in both themes, so it gets a real frame:
+   rounded, a hairline border, a soft shadow to lift it off the paper */
+.shot{display:block;line-height:0;background:#fff;border:1px solid var(--shot-edge);border-radius:6px;
+  overflow:hidden;box-shadow:0 1px 2px rgba(20,26,34,.06),0 10px 28px rgba(20,26,34,.09)}
+.shot img{width:100%;height:auto;display:block}
+@media (prefers-color-scheme: dark){
+  .shot{box-shadow:0 12px 32px rgba(0,0,0,.5)}
+  .shot img{filter:brightness(.92)}
+}
+@media(max-width:900px){.builds{grid-template-columns:1fr;gap:26px}}
+@media(max-width:820px){.feature{grid-template-columns:1fr;gap:20px}}
 
 /* ──────────────────────────────────────────────────────────────
    CONTACT + FOOT
@@ -317,8 +348,8 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
 
 /* ──────────────────────────────────────────────────────────────
    DARK SECTIONS
-   Three tonal events spaced down the page: the animation, the
-   story that went wrong, and the close. Everything between is paper.
+   Three navy bands spaced down the page: what I do, the story that
+   went wrong, and the close. Everything between is paper.
    ────────────────────────────────────────────────────────────── */
 .deep{background:var(--deep);color:var(--deep-text)}
 .deep h2,.deep h3{color:var(--deep-bright)}
@@ -364,13 +395,13 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
   "worksFor":{"@type":"Organization","name":"BAE Systems, Inc."},
   "email":"mailto:Nathanbienvenu97@gmail.com",
   "sameAs":["https://www.linkedin.com/in/n-bienvenu/","https://github.com/SenseiNate"],
-  "description":"Technical program and project manager with ten years across program management, systems engineering, and hands-on delivery in aerospace, medical devices, and enterprise platforms. U.S. Air Force veteran with an active Top Secret clearance and SCI eligibility.",
+  "description":"Technical program and project manager with over ten years running programs, leading engineering teams, and doing the technical work across aerospace, medical devices, and enterprise platforms. U.S. Air Force veteran.",
   "alumniOf":[
     {"@type":"CollegeOrUniversity","name":"Oregon State University"},
     {"@type":"CollegeOrUniversity","name":"Southern New Hampshire University"},
     {"@type":"CollegeOrUniversity","name":"Everglades University"}
   ],
-  "knowsAbout":["Systems engineering","System of systems integration","Model-based systems engineering","Requirements management","Technical program management","Engineering management","Verification and validation"]
+  "knowsAbout":["Technical program management","Engineering management","Cross-organizational integration","Requirements management","Systems engineering","Verification and validation"]
 }
 </script>
 </head>
@@ -395,31 +426,40 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
 <header class="hero" id="top">
   <div class="wrap">
     <h1 class="thesis rise" style="--d:.05s">I find the real constraints in an unfamiliar system, integrate the disconnected parts, and get the whole thing moving.</h1>
-    <p class="hero-sub rise" style="--d:.18s">Ten years of complete systems V experience across program, product, project management, and hands-on engineering. I run the team, own the program, and still do the technical work. Most of it is system of systems work: platforms that belong to more than one organization, where no single authority owns the whole thing.</p>
+    <p class="hero-sub rise" style="--d:.18s">Over ten years running programs, leading teams, and doing the technical work, mostly on platforms shared by several organizations where nobody owns the whole thing.</p>
     <div class="hero-actions rise" style="--d:.28s">
       <a class="btn btn-solid" href="#record">See the record</a>
+      <a class="btn btn-ghost" href="Nathan_Bienvenu_Resume.pdf" download>Download resume</a>
       <a class="btn btn-ghost" href="mailto:Nathanbienvenu97@gmail.com?subject=Saw%20your%20portfolio">Get in touch</a>
     </div>
 
     <dl class="facts rise" style="--d:.36s">
       <div class="fact"><dt>Now</dt><dd>Technical Project Manager II, BAE Systems</dd></div>
-      <div class="fact"><dt>Open to</dt><dd>Technical Program Manager, Program Manager, Engineering Manager, Solutions Architect, Test and Evaluation, Systems Engineer</dd></div>
-      <div class="fact"><dt>Clearance</dt><dd class="verified">Active Top Secret, SCI eligibility</dd></div>
-      <div class="fact"><dt>Service</dt><dd>U.S. Air Force veteran</dd></div>
-      <div class="fact"><dt>Education</dt><dd>MBA and BS Aviation / Aerospace. <span class="q">BS Computer Science in progress.</span></dd></div>
+      <div class="fact"><dt>Open to</dt><dd>Technical Program Manager, Engineering Manager, Solutions Architect, Program Manager, Technical Operations</dd></div>
+      <div class="fact"><dt>Industries</dt><dd>Space, tech, gaming, medtech</dd></div>
+      <div class="fact"><dt>Background</dt><dd>U.S. Air Force veteran, MBA</dd></div>
     </dl>
   </div>
 </header>
 
 <!-- ═══ SYSTEM ═════════════════════════════════════════════════ -->
-<section class="deep-band" id="system">
-  <div class="wrap sos-grid">
-    <div class="sos-copy">
-      <h2>Eight capabilities, one system</h2>
-      <p><b>Program owner, engineering manager, systems engineer</b> are just different names for what happens where they meet.</p>
-      <p class="sr">Eight capabilities resolving into one system: strategy, requirements, architecture, governance, risk, stakeholders, capital, and delivery.</p>
+<section class="deep-band" id="what">
+  <div class="wrap">
+    <h2>What I do</h2>
+    <div class="does">
+      <div class="do">
+        <h3>Run programs across organizations</h3>
+        <p>On platforms owned by several companies and government offices at once, I set the requirements and interfaces everyone builds to, and keep schedule, risk, and dependencies moving toward readiness.</p>
+      </div>
+      <div class="do">
+        <h3>Lead and hire teams</h3>
+        <p>I manage a mixed team of systems, software, and security engineers. I hired five more to rebuild the bench and rewrote the requisitions the team now hires from.</p>
+      </div>
+      <div class="do">
+        <h3>Do the technical work myself</h3>
+        <p>Requirements, models, and reviews are still mine. Pulling a $112M platform back from cancellation started with me reading its spec one requirement at a time.</p>
+      </div>
     </div>
-    <div class="sos-wrap"><canvas id="sos"></canvas></div>
   </div>
 </section>
 
@@ -429,7 +469,7 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
     <div class="figure"><b>10+</b><span>Years across engineering, program, and delivery</span></div>
     <div class="figure"><b>$112M</b><span>Integration platform I lead, grown from $60M at conception</span></div>
     <div class="figure"><b>18</b><span>Largest team led, at a 100% pass rate across 204 validations</span></div>
-    <div class="figure"><b>$7.9B</b><span>Asset portfolio under a readiness program I built and ran</span></div>
+    <div class="figure"><b>$7.9B</b><span>Fleet of 63 aircraft whose daily operations I ran</span></div>
   </div>
 </section>
 
@@ -438,7 +478,7 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
   <div class="wrap">
     <div class="sec-head">
       <h2>How I got here</h2>
-      <p class="lede">Ten years in three parts.</p>
+      <p class="lede">A little over ten years, in three parts.</p>
     </div>
     <div class="chapters">
       <div class="chapter">
@@ -476,22 +516,16 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
         <span class="co">BAE Systems, Inc.</span>
         <span class="ttl">Technical Project Manager II</span>
         <span class="when">May 2025 to present</span>
-        <span class="why"><i>Why I'm looking:</i> the contract ends February 2027 when a new prime takes it over.</span>
+        <span class="why"><i>Why I'm looking:</i> the program is transitioning to a new prime contractor.</span>
       </div>
       <div>
         <p class="ctx">A flagship, multi-billion-dollar platform modernization program, delivered with cross-organizational industry and government partners.</p>
         <ul>
-          <li>Lead integrator on an enterprise integration platform that has grown from <b>$60M at conception to $112M</b> today, owning requirements, modeling, and interface design across organizational boundaries and reporting readiness directly to senior leadership. At conception I stopped it being accepted with requirements that were not verifiable as written and models whose blocks and dependency arrows misrepresented the real data flow, which avoided <b>hundreds of hours of rework</b>.</li>
-          <li>Later, at its full <b>$112M+ scope</b>, pulled that same platform <b>back from likely cancellation</b>. The customer had judged the specification too immature for its requirements baseline review and was leaning toward killing the work. Before anyone asked for it, I went through the spec requirement by requirement and built a <b>61-item comment matrix, 10 of them rated major</b>, each with a proposed resolution, then led the review with senior customer leadership and the partner organizations. Every recommendation was accepted, and senior leadership delegated the effort to me to drive on their behalf: approving items in their place, releasing the matrix to the delivery contractor directly, and saying whether the work continued if the contractor did not comply. They kept the formal sign-off. <b>60 of the 61 comments are implemented</b> today, including 9 of the 10 majors.</li>
-          <li>Set where the system boundary had to sit on that platform, keeping it inside the secure enterprise enclave and off the mission-critical system directly, and argued it from my high-consequence compliance background when the delivery contractor pushed to connect it further in. The customer adopted my assessment.</li>
-          <li>Ran the technical assessment of third-party lakehouse tools for the common data platform, scoring each against NIST security controls and the encryption requirements for the most sensitive data the platform carries. Cut the vendors that failed those controls or charged more for less, chose for long-term sustainment over lowest price, and kept <b>more than $500K</b> from being misallocated.</li>
-          <li>Redesigned a seven-year-old model merge process end to end, cutting about <b>5 hours off every weekly merge</b> by stripping the unused project links every branch had to carry and making the model trunk the single source of truth. Ran the first full cycle solo during a 14-day holiday freeze, a sequence that normally takes 5 to 6 engineers, with zero errors and zero rework, then wrote the guide so it never depends on one person again.</li>
-          <li>Built a reusable smart-package analysis tool, <b>delivered in under 3 months against a 6-month timeline</b>, that replaced manual model-by-model gap hunting with parameterized queries returning results in seconds. It covers every data compliance stream and cut roughly <b>60% of the manual review overhead</b> the team spent finding model and requirements gaps. It surfaces unsatisfied requirements, requirements missing a parent or child link, and everything that changed that week, before the merge, so nothing gets built wrong or forgotten.</li>
-          <li>Closed a dependency gap that was keeping finished software from reaching the field. Gathered the requirements, decomposed the use cases, and rebuilt the logical and behavioral models and sequence diagrams to map the whole pipeline: development, test labs, configuration management, signed and encrypted package construction, independent verification, and release. That stood up a working delivery path <b>across three separate organizations</b>.</li>
-          <li>Picked up engineering management when my manager left, on top of the technical work: run a mixed team of systems, software, and security engineers, own reviews, growth plans and 1:1s. Took hiring from interviewing into full requisition ownership, rewriting two openings that had gone out with word-for-word identical duties into properly leveled roles, with distinct experience thresholds, lead versus hands-on scope, and pay ranges set with leadership and HR that actually targeted the experience level the work needed, against a real shortage of systems engineers willing to work this program. Those postings became the team's new baseline and have already produced a hire.</li>
-          <li>Hired <b>5 engineers</b> to rebuild the technical bench: selected 4 across software, security, and systems with every offer accepted, and filled a fifth through the requisition I reworked myself. Screened 12 resumes to decide who was worth interviewing, and will train and onboard all five, including requirements and configuration management and modeling for the systems engineers.</li>
-          <li>Started as the only technical seat on a two-person core team, covering technical and non-technical customer leads and routing overflow to partner teams to protect delivery. Absorbed the data platform owner's departure and took the data and cloud infrastructure function on top of my own scope, so it never went uncovered. The team is growing now, and I am the one taking it on.</li>
-          <li>Use AI tooling to frame and cross-check requirements against governing standards and what users actually said they needed. On the integration platform it surfaced places where early specifications fell short of the use cases, ahead of the formal review cycle.</li>
+          <li>Pulled a <b>$112M+ integration platform</b> I lead <b>back from likely cancellation</b>. The customer had judged its specification too immature for the requirements baseline review and was leaning toward killing the work. Before anyone asked, I went through the spec requirement by requirement, built a <b>61-item comment matrix</b> with 10 rated major and a proposed fix for each, and led the review with senior customer leadership and the partner organizations. Every recommendation was accepted, and leadership delegated the effort to me to drive on their behalf, with the formal sign-off staying with them. <b>60 of the 61 comments are implemented</b> today, including 9 of the 10 majors.</li>
+          <li>Set where that platform's system boundary had to sit, keeping it inside the secure enterprise enclave and off the mission-critical system directly, and argued it from my high-consequence compliance background when the delivery contractor pushed to connect it further in. The customer adopted my assessment.</li>
+          <li>Picked up engineering management when my manager left, on top of the technical work: I run a mixed team of systems, software, and security engineers and own their reviews, growth plans, and 1:1s. Hired <b>5 engineers</b> to rebuild the bench, one of them through two requisitions I rewrote from identical, outdated postings into properly leveled roles, with pay ranges set with leadership and HR to target the experience the work needed. Those postings are now the team's hiring baseline.</li>
+          <li>Ran the technical assessment of third-party lakehouse tools for the common data platform, scoring each against NIST security controls and the encryption requirements for the most sensitive data it carries. Cut the vendors that failed those controls or charged more for less, chose long-term sustainment over lowest price, and kept <b>more than $500K</b> from being misallocated.</li>
+          <li>Built a reusable model analysis tool <b>in under 3 months against a 6-month timeline</b>, replacing manual gap hunting with queries that return results in seconds and cutting roughly <b>60% of the manual review overhead</b>. It flags unsatisfied requirements, broken traceability, and everything that changed that week before the merge, so nothing gets built wrong or forgotten.</li>
         </ul>
       </div>
     </article>
@@ -508,7 +542,6 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
           <li>Owned the OEC Elite 3D needle trajectory feature end to end, from the user need through FMEA and hazard analysis to multi-day clinical validation and release: <b>zero post-release defects</b> and adoption by physicians worldwide.</li>
           <li>Designed the Position Assist save-and-return system: capture a visual outline and axis coordinates during a 3D scan so the arm can move freely and return to the exact saved position, with a red, yellow, and green indicator confirming live alignment against the saved reference. Validated it against international standards and FDA and HIPAA requirements so imaging data could not leak between patients <b>on a system serving 100,000+ users</b>.</li>
           <li>Was the only engineer the company sent to the AAOS annual meeting, demonstrating the imaging systems to <b>hundreds of physicians</b> from the US, Europe, and Asia, acting as the interface between clinical end users and engineering, and turning what they told me into a structured debrief that fed straight back into the product work.</li>
-          <li>Rewrote the user guides across new and existing features and made the first training recordings the platform ever had, producing <b>5 walkthroughs</b> myself and setting the standard the rest of the engineering team then followed.</li>
           <li>Stood up continuous testing on agile test beds that caught <b>120+ defects before release</b>, including a UI update that shipped visually identical buttons doing different things.</li>
         </ul>
       </div>
@@ -527,8 +560,6 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
           <li>Connected the requirements system to the business side's Tableau through a SQL analyst, working around limited scripting access, to auto-generate was-and-is redline comparisons across models and specs. Cut redline compilation by as much as <b>8 hours per person</b> on large specs, gave leadership exact requirements-worked-versus-total numbers, and the approach spread from business operations into compliance, cybersecurity, physical security, and other engineering teams.</li>
           <li>Ran a full FMEA that found and closed <b>15 critical single points of failure</b> before release, most of them sitting at the boundary between embedded software and the hardware and signals it controlled.</li>
           <li>Integrated and decomposed <b>500+ high-consequence compliance requirements</b> across hardware and software teams, building the traceability architecture that produced zero rework. Personally took about 150 of those from top level down to the lowest implementable level before they went out to external suppliers for design sign-off. They cleared board approval to baseline in roughly two review cycles, and the full subsystem was accepted at its design review.</li>
-          <li>Prepared and presented the compliance documentation packages for high-stakes regulatory audits, which the division passed at <b>100%</b>.</li>
-          <li>Taught myself Jira to stand up task, story, and epic tracking across two sub-teams, tagging blockers by organization so leadership could see and escalate across team lines. Both sub-teams hit their design review milestones on schedule.</li>
         </ul>
       </div>
     </article>
@@ -546,8 +577,6 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
           <li>Met a zero-notice executive escalation by mobilizing 10 people, 3 aircraft, and <b>86 tons of cargo in under 18 hours</b>. In the first hour I pulled every required asset's location out of the system, pre-built the work packages and split them across the team with printouts, then lined up the security, safety, logistics, and fuel teams so every asset was inspected, signed off, and ready to load. Separately prepared <b>$8M of reserve inventory</b> and 5 aircraft for a hurricane evacuation, ahead of the timeline we were given.</li>
           <li>Led an 18-person team in four crews over a <b>$73M inventory</b>, running <b>204 validations</b> across 17 buildings and 61,000 square feet to verify <b>6.6M assets at a 100% quality assurance pass rate</b>, and keeping 57 internal customer accounts supplied across 7 business units and 65 aircraft.</li>
           <li>Coordinated delivery for <b>3 large-scale operational exercises</b> spanning <b>54 partner organizations and 240 aircraft</b>, moving 1.2M pounds of materiel at a <b>98.7% on-schedule rate</b>.</li>
-          <li>Managed a core of 4 to 5 direct reports across two sites and four teams, wrote their performance reviews and award packages, and scaled to lead cross-team groups of 15 to 20 for large engineering and logistics operations.</li>
-          <li>Diagnosed a defective component lot that would not integrate or communicate with the host platform, traced it through the tracking system, consolidated all <b>26 affected units</b>, and personally repaired and tested them. Recovered 12 and sent the other 14 up to a higher-tier facility, using a repair normally only done at that level, with no interruption to operations.</li>
         </ul>
       </div>
     </article>
@@ -582,28 +611,28 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
     </div>
     <div class="caps">
       <div class="cap">
-        <h3>Systems engineering</h3>
-        <p>MBSE and SysML in Cameo and Teamcenter PLM, IBM DOORS, internal block and block definition diagrams, activity, use case, requirement and sequence diagrams, requirements management and traceability, interface design, trade-off analysis, FMEA and hazard analysis, verification and validation, system of systems integration across organizational boundaries, and the full review chain: SRR, TMRR, TRR, CDR and PMR.</p>
-      </div>
-      <div class="cap">
         <h3>Program and delivery</h3>
         <p>Technical program management, cross-organizational integration, dependency and risk management, schedule and budget ownership, cross-functional engineering reviews, baseline and configuration management, vendor assessment, executive briefing, Agile and Scrum, Jira and Confluence.</p>
-      </div>
-      <div class="cap">
-        <h3>Software and data</h3>
-        <p>Python for automation and analysis, Git and GitHub, software development lifecycle, Agile and Scrum, continuous software testing on agile test beds, AWS, and AI tooling used on the job to pressure-test requirements against the standards that govern them. Zero trust and enterprise identity I carry at the requirements and integration level, not as hands-on security implementation.</p>
-      </div>
-      <div class="cap">
-        <h3>Regulated and safety-critical</h3>
-        <p>IEC 60601, IEC 62304, ISO 14971, ISO 15288, DICOM, FDA and HIPAA, NIST cybersecurity practices, export control compliance, system safety and hazard analysis, audit preparation, human factors and usability engineering.</p>
       </div>
       <div class="cap">
         <h3>Leadership</h3>
         <p>Direct people management, performance reviews, career development, technical hiring and requisition ownership, mentorship, influence without formal authority, conflict resolution, change management, executive communication.</p>
       </div>
       <div class="cap">
+        <h3>Software and data</h3>
+        <p>Python for automation and analysis, Git and GitHub, software development lifecycle, continuous software testing on agile test beds, AWS, and AI tooling used on the job to pressure-test requirements against the standards that govern them. Zero trust and enterprise identity I carry at the requirements and integration level, not as hands-on security implementation.</p>
+      </div>
+      <div class="cap">
+        <h3>Regulated and safety-critical</h3>
+        <p>IEC 60601, IEC 62304, ISO 14971, ISO 15288, DICOM, FDA and HIPAA, NIST cybersecurity practices, export control compliance, system safety and hazard analysis, audit preparation, human factors and usability engineering.</p>
+      </div>
+      <div class="cap">
         <h3>Domain</h3>
         <p>Aerospace and ground systems integration, medical imaging devices, high-consequence regulatory environments, enterprise cloud and data platforms, unmanned aircraft systems and Part 107 operations.</p>
+      </div>
+      <div class="cap">
+        <h3>Systems engineering</h3>
+        <p>MBSE and SysML in Cameo, IBM DOORS, requirements and traceability, interface design, trade studies, FMEA, verification and validation.</p>
       </div>
     </div>
     <div class="studying">
@@ -618,16 +647,6 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
   <div class="wrap">
     <div class="sec-head"><h2>Credentials</h2></div>
     <div class="creds">
-      <div class="cred is-verified">
-        <span class="name">Top Secret clearance, SCI eligibility</span>
-        <span class="org">U.S. Department of Defense</span>
-        <span class="state">Continuous evaluation</span>
-      </div>
-      <div class="cred is-verified">
-        <span class="name">Part 107 sUAS Remote Pilot</span>
-        <span class="org">Federal Aviation Administration</span>
-        <span class="state">Through May 2027</span>
-      </div>
       <div class="cred">
         <span class="name">MBA, Business Administration</span>
         <span class="org">Southern New Hampshire University, ACBSP-accredited program</span>
@@ -637,6 +656,16 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
         <span class="name">BS, Aviation / Aerospace, Unmanned Systems</span>
         <span class="org">Everglades University, SACSCOC-accredited institution</span>
         <span class="state">2020</span>
+      </div>
+      <div class="cred">
+        <span class="name">Part 107 sUAS Remote Pilot</span>
+        <span class="org">Federal Aviation Administration</span>
+        <span class="state">Through May 2027</span>
+      </div>
+      <div class="cred">
+        <span class="name">Security clearance</span>
+        <span class="org">Top Secret, SCI eligibility</span>
+        <span class="state">Active</span>
       </div>
       <div class="cred">
         <span class="name">BS, Computer Science</span>
@@ -652,38 +681,38 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
   <div class="wrap">
     <div class="sec-head">
       <h2>Built on the side</h2>
-      <p class="lede">I ship these myself, end to end: idea, build, deploy, then find out what I got wrong. Nobody hands me a spec for these, which is exactly why I do them. Side projects, not professional engineering work, and I keep the line clear.</p>
+      <p class="lede">I direct these builds with AI as my pair programmer: I pick the problem, set the requirements, run the evaluations, and make every release call. Side projects, not professional engineering work, and I keep that line clear.</p>
     </div>
-    <div class="builds">
-      <div class="build">
+    <article class="feature">
+      <div class="feature-copy">
         <h3>SlothSpec</h3>
         <p>A requirements reviewer that runs on a laptop with no GPU and never touches the internet. Pointed it at a real 97-page NASA design standard: 333 requirements redlined in under an hour, 42 high-confidence catches.</p>
         <p class="stack">Python, Gemma 4, Ollama, local inference</p>
-        <a href="https://github.com/SenseiNate/slothspec" target="_blank" rel="noopener">Show me the code</a>
+        <div class="links">
+          <a href="https://senseinate.github.io/slothspec/nasa.html" target="_blank" rel="noopener">See the NASA report</a>
+          <a href="https://github.com/SenseiNate/slothspec" target="_blank" rel="noopener">Show me the code</a>
+        </div>
       </div>
+      <a class="shot" href="https://senseinate.github.io/slothspec/nasa.html" target="_blank" rel="noopener"><img src="images/slothspec.webp" width="1200" height="928" alt="One SlothSpec finding: a NASA circuit board requirement flagged as a compound requirement with an escape clause, with the suggested rewrite below it." loading="lazy" decoding="async"></a>
+    </article>
+    <div class="builds">
       <div class="build">
         <h3>Job Hunting Toolkit</h3>
         <p>A free alternative to paid resume services, built as two Claude Projects with nothing to install. Write your real accomplishments down once and it screens postings against your own rules, drafts a tailored resume and cover letter, and turns each interview into a prep card. Constrained by design to use only what you actually wrote, so nothing falls apart on a follow-up question.</p>
         <p class="stack">Claude Projects, system prompt design, zero install</p>
-        <a href="https://github.com/SenseiNate/job-hunting-toolkit" target="_blank" rel="noopener">See the toolkit</a>
+        <div class="links"><a href="https://github.com/SenseiNate/job-hunting-toolkit" target="_blank" rel="noopener">See the toolkit</a></div>
       </div>
       <div class="build">
         <h3>Figured</h3>
         <p>A learning tool that refuses to give you the answer. Ask it anything and it asks you a better question back, one at a time, until you get there yourself. Zero to production in 72 hours.</p>
         <p class="stack">Python, Claude API, Streamlit</p>
-        <a href="https://github.com/SenseiNate/business-ventures/tree/main/Figured/App/app.py" target="_blank" rel="noopener">Show me the code</a>
+        <div class="links"><a href="https://github.com/SenseiNate/business-ventures/tree/main/Figured" target="_blank" rel="noopener">See the project</a></div>
       </div>
       <div class="build">
         <h3>Web Scraper Agent</h3>
         <p>Answers four questions about what you are looking for, then runs two passes, one across published sources and one across first-person forum threads, scoring every result against your stated goal. A typical run keeps three results out of thirty and returns a sourced report instead of a pile of links.</p>
         <p class="stack">Python, Claude API, tournament scoring</p>
-        <a href="https://github.com/SenseiNate/business-ventures/blob/main/Web%20Scraper%20Agent/web_scraper_agent.py" target="_blank" rel="noopener">Show me the code</a>
-      </div>
-      <div class="build">
-        <h3>Job Matcher</h3>
-        <p>Forked from the research agent. It caches a profile of real accomplishments once, then scores live listings against that evidence instead of keywords, so a posting stuffed with the right buzzwords still fails if the record does not back it up.</p>
-        <p class="stack">Python, Claude API, two-stage pipeline</p>
-        <a href="https://github.com/SenseiNate/business-ventures/blob/main/Job%20Hunting%20Tool/job_matcher.py" target="_blank" rel="noopener">Show me the code</a>
+        <div class="links"><a href="https://github.com/SenseiNate/business-ventures/tree/main/Web%20Scraper%20Agent" target="_blank" rel="noopener">See the project</a></div>
       </div>
     </div>
   </div>
@@ -719,14 +748,13 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
       <a class="btn btn-ghost" href="https://www.linkedin.com/in/n-bienvenu/" target="_blank" rel="noopener">LinkedIn</a>
       <a class="btn btn-ghost" href="https://github.com/SenseiNate" target="_blank" rel="noopener">GitHub</a>
     </div>
-    <footer class="foot">Designed and built by me. No template, no framework, one file.</footer>
+    <footer class="foot">Built with Claude as my pair programmer. One file, no framework.</footer>
   </div>
 </section>
 
 <script>
 (function(){
 'use strict';
-var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 var $ = function(s){ return document.querySelector(s); };
 var $$ = function(s){ return [].slice.call(document.querySelectorAll(s)); };
 
@@ -764,191 +792,6 @@ function onScroll(){
 addEventListener('scroll', onScroll, {passive:true});
 onScroll();
 
-/* ── system of systems ────────────────────────────────────────
-   eight capability clusters plus every interface between them,
-   rotating on a tilted axis. a point cloud that resolves out of
-   disorder, once. canvas 2D, hand-rolled projection, no library.
-
-   ~22k particles: writing into a Uint32Array and blitting once
-   with putImageData is far cheaper than per-particle fillRect. */
-(function(){
-  var cv = $('#sos'); if(!cv) return;
-  var ctx = cv.getContext('2d');
-  var DPR = Math.min(devicePixelRatio || 1, 2), W = 0, H = 0;
-
-  var NODES = [{label:'Strategy'},{label:'Requirements'},{label:'Architecture'},
-               {label:'Governance'},{label:'Risk'},{label:'Stakeholders'},
-               {label:'Capital'},{label:'Delivery'}];
-  var NN = NODES.length;
-  NODES.forEach(function(nd,i){
-    var a = (i/NN)*Math.PI*2;
-    nd.x = Math.cos(a); nd.y = Math.sin(a)*0.34; nd.z = Math.sin(a);
-  });
-  /* labels ease toward their resolved spot instead of snapping */
-  var lp = NODES.map(function(){ return {tx:0, ty:0, set:false}; });
-
-  var small = innerWidth < 760;
-  var PER_NODE = small ? 680 : 1700, PER_EDGE = small ? 120 : 300;
-  var P = [];
-  function rnd(v){ return (Math.random()-0.5)*v; }
-
-  NODES.forEach(function(nd){
-    for(var k=0;k<PER_NODE;k++){
-      var r = Math.pow(Math.random(),0.6)*0.155;
-      var th = Math.random()*Math.PI*2, ph = Math.acos(2*Math.random()-1);
-      P.push({hx:nd.x+r*Math.sin(ph)*Math.cos(th), hy:nd.y+r*Math.cos(ph),
-              hz:nd.z+r*Math.sin(ph)*Math.sin(th), edge:false,
-              sx:rnd(5.0), sy:rnd(3.2), sz:rnd(5.0), seed:Math.random()});
-    }
-  });
-  for(var a2=0;a2<NN;a2++) for(var b2=a2+1;b2<NN;b2++){
-    var A = NODES[a2], B = NODES[b2];
-    for(var k2=0;k2<PER_EDGE;k2++){
-      var t2 = (k2+0.5)/PER_EDGE;
-      P.push({hx:A.x+(B.x-A.x)*t2+rnd(0.035), hy:A.y+(B.y-A.y)*t2+rnd(0.035),
-              hz:A.z+(B.z-A.z)*t2+rnd(0.035), edge:true,
-              sx:rnd(5.0), sy:rnd(3.2), sz:rnd(5.0), seed:Math.random()});
-    }
-  }
-
-  var img = null, buf = null, BW = 0, BH = 0;
-  function size(){
-    var r = cv.getBoundingClientRect();
-    W = r.width; H = r.height;
-    if(!W || !H) return;
-    BW = Math.max(1, Math.round(W*DPR)); BH = Math.max(1, Math.round(H*DPR));
-    cv.width = BW; cv.height = BH;
-    ctx.setTransform(1,0,0,1,0,0);
-    img = ctx.createImageData(BW, BH);
-    buf = new Uint32Array(img.data.buffer);
-  }
-  size();
-  var szT; addEventListener('resize', function(){
-    clearTimeout(szT); szT = setTimeout(size, 150);
-  });
-
-  /* the resolve plays once. coming back to it later picks up the
-     rotation where it left off rather than reforming the cloud. */
-  var running = false, t0 = 0, resolved = false, rotBase = 0;
-  var io = new IntersectionObserver(function(en){
-    en.forEach(function(x){
-      if(x.isIntersecting && !running){
-        running = true; t0 = performance.now(); requestAnimationFrame(draw);
-      } else if(!x.isIntersecting && running){
-        rotBase += ((performance.now()-t0)/1000)*0.3;
-        running = false;
-      }
-    });
-  }, {threshold:0.55});
-  io.observe(cv);
-
-  function draw(now){
-    if(!running) return;
-    var el = (now - t0)/1000, res, rot;
-    if(reduced){ res = 1; rot = 0.6; }
-    else if(resolved){ res = 1; rot = rotBase + el*0.3; }
-    else {
-      res = Math.min(Math.max((el - 0.25)/1.15, 0), 1);
-      res = 1 - Math.pow(1-res, 3);
-      if(res >= 1) resolved = true;
-      rot = rotBase + el*0.3;
-    }
-    if(!buf) return;
-    buf.fill(0);
-
-    /* Worst-case projected half-extents over a full rotation, computed
-       numerically rather than guessed: 1.3295S wide by 1.2172S tall with
-       perspective and cluster radius included. The ring is flattened in y
-       and tilted, so the shape is near-square at its widest moment and the
-       band is sized for that. 0.86 reserves the ring of clear space the
-       labels get pushed out into. */
-    var cx = W/2, cy = H*0.50;
-    var scale = Math.min(W*0.5/1.3295, H*0.5/1.2172) * 0.82;
-    var cosR = Math.cos(rot), sinR = Math.sin(rot);
-    var cosT = Math.cos(0.42), sinT = Math.sin(0.42);
-
-    for(var i=0;i<P.length;i++){
-      var p = P[i];
-      var st = p.seed*0.35;
-      var d = (res-st)/(1-st); if(d<0) d=0; if(d>1) d=1;
-      var x = p.hx + p.sx*(1-d), y = p.hy + p.sy*(1-d), z = p.hz + p.sz*(1-d);
-      var rx = x*cosR - z*sinR, rz = x*sinR + z*cosR;
-      var ry = y*cosT - rz*sinT; rz = y*sinT + rz*cosT;
-      var pr = 2.6/(2.6+rz);
-      var dep = (rz+1.4)/2.8; if(dep<0) dep=0; if(dep>1) dep=1;
-      var al = (0.18 + (1-dep)*0.66) * (0.25 + res*0.75);
-      if(p.edge) al *= 0.30;
-      var Aa = (al*255)|0; if(Aa > 255) Aa = 255; if(Aa < 3) continue;
-      /* ABGR. clusters in a light blue, interfaces in dim slate */
-      var col = p.edge ? ((Aa<<24)|(118<<16)|(102<<8)|90)
-                       : ((Aa<<24)|(224<<16)|(184<<8)|143);
-      var sxp = ((cx + rx*scale*pr)*DPR)|0, syp = ((cy + ry*scale*pr)*DPR)|0;
-      if(sxp < 0 || syp < 0 || sxp >= BW-1 || syp >= BH-1) continue;
-      var o = syp*BW + sxp;
-      buf[o] = col;
-      if(!p.edge && pr > 1.02){ buf[o+1] = col; buf[o+BW] = col; }
-    }
-    ctx.putImageData(img, 0, 0);
-
-    if(res > 0.55){
-      ctx.save(); ctx.scale(DPR, DPR);
-      var la = (res-0.55)/0.45;
-      ctx.font = (small ? '500 10.5px ' : '500 12px ') + "'Instrument Sans', sans-serif";
-      var labelH = small ? 12 : 14, items = [];
-      for(var j=0;j<NN;j++){
-        var nd = NODES[j];
-        var lx = nd.x*cosR - nd.z*sinR, lz = nd.x*sinR + nd.z*cosR;
-        var ly = nd.y*cosT - lz*sinT; lz = nd.y*sinT + lz*cosT;
-        var ppr = 2.6/(2.6+lz);
-        var ld = (lz+1.4)/2.8; if(ld<0) ld=0; if(ld>1) ld=1;
-        var bx = cx + lx*scale*ppr, by = cy + ly*scale*ppr;
-        var vx = bx - cx, vy = by - cy, m = Math.sqrt(vx*vx + vy*vy) || 1;
-        var off = (0.045*scale + (small ? 20 : 18))*ppr;
-        var tx = bx + (vx/m)*off, ty = by + (vy/m)*off*0.9 + 3;
-        var wdt = ctx.measureText(nd.label).width, align;
-        if(vx < -12){ align='right'; if(tx < wdt+6) tx = wdt+6; }
-        else if(vx > 12){ align='left'; if(tx > W-wdt-6) tx = W-wdt-6; }
-        else { align='center'; var hf = wdt/2 + 4; if(tx < hf) tx = hf; if(tx > W-hf) tx = W-hf; }
-        if(ty < 12) ty = 12; if(ty > H-6) ty = H-6;
-        items.push({bx:bx,by:by,tx:tx,ty:ty,wdt:wdt,align:align,label:nd.label,
-                    alpha:la*(0.45+(1-ld)*0.55)});
-      }
-      /* push overlapping labels apart before drawing */
-      for(var it=0; it<4; it++){
-        for(var a=0;a<items.length;a++) for(var b=a+1;b<items.length;b++){
-          var A1=items[a], B1=items[b];
-          var ax0 = A1.align==='right' ? A1.tx-A1.wdt : A1.align==='left' ? A1.tx : A1.tx-A1.wdt/2;
-          var bx0 = B1.align==='right' ? B1.tx-B1.wdt : B1.align==='left' ? B1.tx : B1.tx-B1.wdt/2;
-          if(ax0 < bx0+B1.wdt+6 && bx0 < ax0+A1.wdt+6 && Math.abs(A1.ty-B1.ty) < labelH){
-            if(A1.ty <= B1.ty){ A1.ty -= 6; B1.ty += 6; } else { A1.ty += 6; B1.ty -= 6; }
-            if(A1.ty<12) A1.ty=12; if(A1.ty>H-6) A1.ty=H-6;
-            if(B1.ty<12) B1.ty=12; if(B1.ty>H-6) B1.ty=H-6;
-          }
-        }
-      }
-      for(var s=0;s<items.length;s++){
-        var st2 = lp[s];
-        if(!st2.set){ st2.tx=items[s].tx; st2.ty=items[s].ty; st2.set=true; }
-        else { st2.tx += (items[s].tx-st2.tx)*0.16; st2.ty += (items[s].ty-st2.ty)*0.16; }
-        items[s].tx = st2.tx; items[s].ty = st2.ty;
-      }
-      for(var k3=0;k3<items.length;k3++){
-        var t = items[k3];
-        ctx.strokeStyle = 'rgba(143,184,224,' + (t.alpha*0.32).toFixed(3) + ')';
-        ctx.lineWidth = 1;
-        ctx.beginPath(); ctx.moveTo(t.bx, t.by); ctx.lineTo(t.tx, t.ty - 4); ctx.stroke();
-        ctx.textAlign = t.align;
-        /* paper-coloured halo keeps labels legible over a cluster */
-        ctx.lineWidth = 3; ctx.strokeStyle = 'rgba(20,26,34,' + Math.min(1,t.alpha*1.5).toFixed(3) + ')';
-        ctx.strokeText(t.label, t.tx, t.ty);
-        ctx.fillStyle = 'rgba(233,236,241,' + t.alpha.toFixed(3) + ')';
-        ctx.fillText(t.label, t.tx, t.ty);
-      }
-      ctx.restore();
-    }
-    requestAnimationFrame(draw);
-  }
-})();
 })();
 </script>
 </body>
