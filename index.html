@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nathan Bienvenu | Technical Program and Project Management</title>
-<meta name="description" content="Technical program manager and engineering lead. Over ten years running programs, leading teams, and doing the technical work, mostly on platforms shared by several organizations.">
+<title>Nathan Bienvenu | Find the failure. Build the fix. Say it straight.</title>
+<meta name="description" content="I find out why complex systems break, build the fix, and tell you straight what's working. Test and integration, reliability and quality, solutions and implementation, and technical program management, for drones and autonomy, space, tech, and gaming.">
 <link rel="canonical" href="https://senseinate.github.io/">
-<meta property="og:title" content="Nathan Bienvenu | Technical Program and Project Management">
-<meta property="og:description" content="I find the real constraints in an unfamiliar system, integrate the disconnected parts, and get the whole thing moving. Over ten years running programs, leading teams, and doing the technical work.">
+<meta property="og:title" content="Nathan Bienvenu | Find the failure. Build the fix. Say it straight.">
+<meta property="og:description" content="I find out why complex systems break, build the fix, and tell you straight what's working. Test and integration, reliability and quality, solutions and implementation, and technical program management, for drones and autonomy, space, tech, and gaming.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://senseinate.github.io/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Nathan Bienvenu | Technical Program and Project Management">
-<meta name="twitter:description" content="I find the real constraints in an unfamiliar system, integrate the disconnected parts, and get the whole thing moving.">
+<meta name="twitter:title" content="Nathan Bienvenu | Find the failure. Build the fix. Say it straight.">
+<meta name="twitter:description" content="I find out why complex systems break, build the fix, and tell you straight what's working.">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#F1EFE9" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101317" media="(prefers-color-scheme: dark)">
@@ -149,7 +149,15 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
 .nav.over-deep.stuck{border-bottom-color:#2A3341}
 .nav-in{max-width:var(--maxw);margin:0 auto;padding:.9rem var(--gutter);
   display:flex;align-items:baseline;justify-content:space-between;gap:1.4rem}
-.nav-mark{font-weight:600;color:var(--ink);text-decoration:none;font-size:.95rem;letter-spacing:-.01em}
+.nav-mark{font-weight:600;color:var(--ink);text-decoration:none;font-size:.95rem;letter-spacing:-.01em;white-space:nowrap}
+/* the tagline rides next to the name where there is room for it */
+.nav-tag{font-weight:400;color:var(--muted);margin-left:.8rem;padding-left:.8rem;border-left:1px solid var(--rule)}
+.nav.over-deep .nav-tag{color:#9AA3B1;border-left-color:#3A4555}
+@media(max-width:1080px){.nav-tag{display:none}}
+.nav-links a.nav-resume{color:var(--accent);font-weight:600}
+.nav.over-deep .nav-links a.nav-resume{color:#A9CBEC}
+/* on a phone the nav scrolls sideways, so the resume link leads instead of hiding off the end */
+@media(max-width:620px){.nav-links li:last-child{order:-1}}
 .nav-links{display:flex;gap:clamp(.9rem,2vw,1.7rem);list-style:none}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .15s ease}
 .nav-links a:hover,.nav-links a.on{color:var(--ink)}
@@ -278,6 +286,7 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
   display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(22px,3vw,40px)}
 .studying h3{font-size:.93rem;margin-bottom:.4rem;color:var(--muted)}
 .studying p{font-size:.88rem;color:var(--muted);line-height:1.6}
+.studying p + p{margin-top:.55rem}
 @media(max-width:720px){
   .caps{grid-template-columns:1fr;gap:22px}
   .studying{grid-template-columns:1fr;gap:6px}
@@ -404,13 +413,13 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
   "worksFor":{"@type":"Organization","name":"BAE Systems, Inc."},
   "email":"mailto:Nathanbienvenu97@gmail.com",
   "sameAs":["https://www.linkedin.com/in/n-bienvenu/","https://github.com/SenseiNate"],
-  "description":"Technical program and project manager with over ten years running programs, leading engineering teams, and doing the technical work across aerospace, medical devices, and enterprise platforms. U.S. Air Force veteran.",
+  "description":"I find out why complex systems break, build the fix, and tell you straight what's working. Test and integration, reliability and quality, solutions and implementation, and technical program management, for drones and autonomy, space, tech, and gaming. U.S. Air Force veteran.",
   "alumniOf":[
     {"@type":"CollegeOrUniversity","name":"Oregon State University"},
     {"@type":"CollegeOrUniversity","name":"Southern New Hampshire University"},
     {"@type":"CollegeOrUniversity","name":"Everglades University"}
   ],
-  "knowsAbout":["Technical program management","Engineering management","Cross-organizational integration","Requirements management","Systems engineering","Verification and validation"]
+  "knowsAbout":["Test and integration","Reliability and quality","Solutions and implementation","Technical program management"]
 }
 </script>
 </head>
@@ -419,7 +428,7 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
 
 <nav class="nav" id="nav" aria-label="Primary">
   <div class="nav-in">
-    <a href="#top" class="nav-mark">Nathan Bienvenu</a>
+    <a href="#top" class="nav-mark">Nathan Bienvenu<span class="nav-tag">Find the failure. Build the fix. Say it straight.</span></a>
     <ul class="nav-links">
       <li><a href="#about" data-sec="about">About</a></li>
       <li><a href="#record" data-sec="record">Record</a></li>
@@ -427,6 +436,7 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
       <li><a href="#built" data-sec="built">Built</a></li>
       <li><a href="#outside" data-sec="outside">Outside</a></li>
       <li><a href="#contact" data-sec="contact">Contact</a></li>
+      <li><a href="Nathan_Bienvenu_Resume.pdf" class="nav-resume">Resume</a></li>
     </ul>
   </div>
 </nav>
@@ -434,8 +444,8 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
 <!-- ═══ HERO ═══════════════════════════════════════════════════ -->
 <header class="hero" id="top">
   <div class="wrap">
-    <h1 class="thesis rise" style="--d:.05s">I find the real constraints in an unfamiliar system, integrate the disconnected parts, and get the whole thing moving.</h1>
-    <p class="hero-sub rise" style="--d:.18s">Over ten years running programs, leading teams, and doing the technical work, mostly on platforms shared by several organizations where nobody owns the whole thing.</p>
+    <h1 class="thesis rise" style="--d:.05s">I find out why complex systems break, build the fix, and tell you straight what’s working.</h1>
+    <p class="hero-sub rise" style="--d:.18s">Over ten years of it, on aircraft, medical imaging systems, and platforms shared by several organizations where nobody owns the whole thing.</p>
     <div class="hero-actions rise" style="--d:.28s">
       <a class="btn btn-solid" href="#record">See the record</a>
       <a class="btn btn-ghost" href="Nathan_Bienvenu_Resume.pdf" download>Download resume</a>
@@ -444,8 +454,8 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
 
     <dl class="facts rise" style="--d:.36s">
       <div class="fact"><dt>Now</dt><dd>Technical Project Manager II, BAE Systems</dd></div>
-      <div class="fact"><dt>Open to</dt><dd>Technical Program Manager, Engineering Manager, Solutions Architect, Program Manager, Technical Operations</dd></div>
-      <div class="fact"><dt>Industries</dt><dd>Space, tech, gaming, medtech</dd></div>
+      <div class="fact"><dt>Roles</dt><dd>Test and integration, Reliability and quality, Solutions and implementation, Technical program management</dd></div>
+      <div class="fact"><dt>Industries</dt><dd>Drones and autonomy, Space, Tech, Gaming</dd></div>
       <div class="fact"><dt>Background</dt><dd>U.S. Air Force veteran, MBA</dd></div>
     </dl>
   </div>
@@ -457,16 +467,16 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
     <h2>What I do</h2>
     <div class="does">
       <div class="do">
-        <h3>Run programs across organizations</h3>
-        <p>On platforms owned by several companies and government offices at once, I set the requirements and interfaces everyone builds to, and keep schedule, risk, and dependencies moving toward readiness.</p>
+        <h3>Find the failure</h3>
+        <p>An FMEA that closed 15 single points of failure before release. More than 120 defects caught before a medical imaging release shipped. A repeat field failure traced to one bad hardware lot of 26 units.</p>
       </div>
       <div class="do">
-        <h3>Lead and hire teams</h3>
-        <p>I manage a mixed team of systems, software, and security engineers. I hired five more to rebuild the bench and rewrote the requisitions the team now hires from.</p>
+        <h3>Build the fix</h3>
+        <p>When the process is the problem, I build the replacement: a model analysis tool that cut about 60% of manual review, a merge process 5 hours shorter every week, and a tracker a whole operation ran on.</p>
       </div>
       <div class="do">
-        <h3>Do the technical work myself</h3>
-        <p>Requirements, models, and reviews are still mine. Pulling a $112M platform back from cancellation started with me reading its spec one requirement at a time.</p>
+        <h3>Say it straight</h3>
+        <p>I told a customer not to move forward on a $60M+ integration until the spec was fixed, and showed them why. They agreed. That platform has since grown to $112M+.</p>
       </div>
     </div>
   </div>
@@ -476,7 +486,7 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
 <section class="wrap">
   <div class="figures">
     <div class="figure"><b>10+</b><span>Years across engineering, program, and delivery</span></div>
-    <div class="figure"><b>$112M</b><span>Integration platform I lead, grown from $60M at conception</span></div>
+    <div class="figure"><b>$112M+</b><span>Integration platform I lead, grew from $60M+ to $112M+</span></div>
     <div class="figure"><b>18</b><span>Largest team led, at a 100% pass rate across 204 validations</span></div>
     <div class="figure"><b>$7.9B</b><span>Fleet of 63 aircraft whose daily operations I ran</span></div>
   </div>
@@ -500,7 +510,7 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
       </div>
       <div class="chapter">
         <h3>Now</h3>
-        <p>I lead integration on a platform that has grown to $112M inside a much larger modernization program. When my manager left I picked up engineering management on top of it, so I run the team and hire for it, and still do the technical work myself.</p>
+        <p>I lead integration on a platform that grew from $60M+ to $112M+ inside a much larger modernization program. When my manager left I picked up engineering management on top of it, so I run the team and hire for it, and still do the technical work myself.</p>
       </div>
     </div>
   </div>
@@ -620,33 +630,36 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
     </div>
     <div class="caps">
       <div class="cap">
-        <h3>Program and delivery</h3>
-        <p>Technical program management, cross-organizational integration, dependency and risk management, schedule and budget ownership, cross-functional engineering reviews, baseline and configuration management, vendor assessment, executive briefing, Agile and Scrum, Jira and Confluence.</p>
+        <h3>Test and integration</h3>
+        <p>Verification and validation, test planning, normal range and robustness testing, usability testing with clinical users, continuous software testing on agile test beds, model-in-the-loop testing in Cameo, systems integration across organizations, interface design, requirements and traceability in IBM DOORS.</p>
+      </div>
+      <div class="cap">
+        <h3>Reliability and quality</h3>
+        <p>FMEA, system safety and hazard analysis, root cause analysis, defect management, quality assurance, configuration and baseline management, process validation, audit preparation.</p>
+      </div>
+      <div class="cap">
+        <h3>Solutions and implementation</h3>
+        <p>Requirements gathering and use case decomposition, customer-facing technical demos, translating technical detail for non-technical customers, vendor and tool assessment, user guides and training, and AI tooling used on the job to pressure-test requirements against the standards that govern them.</p>
+      </div>
+      <div class="cap">
+        <h3>Technical program management</h3>
+        <p>Cross-organizational integration, dependency and risk management, schedule and budget ownership, cross-functional engineering reviews, executive briefing, Agile and Scrum, Jira and Confluence.</p>
       </div>
       <div class="cap">
         <h3>Leadership</h3>
-        <p>Direct people management, performance reviews, career development, technical hiring and requisition ownership, mentorship, influence without formal authority, conflict resolution, change management, executive communication.</p>
-      </div>
-      <div class="cap">
-        <h3>Software and data</h3>
-        <p>Python for automation and analysis, Git and GitHub, software development lifecycle, continuous software testing on agile test beds, AWS, and AI tooling used on the job to pressure-test requirements against the standards that govern them. Zero trust and enterprise identity I carry at the requirements and integration level, not as hands-on security implementation.</p>
+        <p>Direct people management, performance reviews, career development, technical hiring and requisition ownership, mentorship, influence without formal authority, conflict resolution, change management.</p>
       </div>
       <div class="cap">
         <h3>Regulated and safety-critical</h3>
-        <p>IEC 60601, IEC 62304, ISO 14971, ISO 15288, DICOM, FDA and HIPAA, NIST cybersecurity practices, export control compliance, system safety and hazard analysis, audit preparation, human factors and usability engineering.</p>
-      </div>
-      <div class="cap">
-        <h3>Domain</h3>
-        <p>Aerospace and ground systems integration, medical imaging devices, high-consequence regulatory environments, enterprise cloud and data platforms, unmanned aircraft systems and Part 107 operations.</p>
-      </div>
-      <div class="cap">
-        <h3>Systems engineering</h3>
-        <p>MBSE and SysML in Cameo, IBM DOORS, requirements and traceability, interface design, trade studies, FMEA, verification and validation.</p>
+        <p>IEC 60601, IEC 62304, ISO 14971, ISO 15288, DICOM, FDA and HIPAA, NIST cybersecurity practices, export control compliance, human factors and usability engineering. Zero trust and enterprise identity at the requirements and integration level, not as security implementation.</p>
       </div>
     </div>
     <div class="studying">
       <h3>Learning right now</h3>
+      <div>
+      <p>Python, SQL, and AWS, through 100 Days of Python and small projects. Each one moves out of this box once a finished project is behind it.</p>
       <p>Coursework toward a BS in Computer Science at Oregon State, 36 of 60 credits done: C and C++, JavaScript, data structures and algorithms, computer architecture, systems programming, discrete mathematics, web development and REST APIs. Classroom work, not professional experience, and I would not claim it as either.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -802,7 +815,6 @@ h3{font-size:1.02rem;letter-spacing:-.008em}
     <div class="contact-row">
       <a class="btn btn-solid" href="mailto:Nathanbienvenu97@gmail.com?subject=Saw%20your%20portfolio">Email me</a>
       <a class="btn btn-ghost" href="https://www.linkedin.com/in/n-bienvenu/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn btn-ghost" href="https://github.com/SenseiNate" target="_blank" rel="noopener">GitHub</a>
     </div>
     <footer class="foot">Built with Claude as my pair programmer. One file, no framework.</footer>
   </div>
