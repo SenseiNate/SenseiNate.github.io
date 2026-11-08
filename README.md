@@ -2,7 +2,7 @@
 
 **I find out why complex systems break, build the fix, and tell you straight what's working.**
 
-Find the failure. Build the fix. Say it straight.
+Find what's broken. Fix it. No BS.
 
 **Industries:** Drones and autonomy, Space, Tech, Gaming
 
