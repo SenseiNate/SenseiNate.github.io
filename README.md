@@ -1,15 +1,30 @@
-### Nathan Bienvenu
+## Nathan Bienvenu
 
-**I find out why complex systems break, build the fix, and tell you straight what's working.**
+Systems engineer. Test, reliability, integration.
 
-Find what's broken. Fix it. No BS.
+```
+SIDE A
+01  U.S. Air Force ........ 2016-2023
+02  Northrop Grumman ...... 2023-2024
+03  GE HealthCare ......... 2024-2025
+04  BAE Systems ........... 2025-now
 
-**Industries:** Drones and autonomy, Space, Tech, Gaming
+BONUS
+B1  SlothSpec
+B2  Job Hunting Toolkit
+B3  Figured
+B4  Web Scraper Agent
+```
 
-**Roles:** Test and integration, Reliability and quality, Solutions and implementation, Technical program management
+**Bonus tracks**
 
-Air Force veteran, MBA, and over ten years in test, integration, and delivery on aircraft, medical imaging systems, and platforms shared by several organizations.
+- [SlothSpec](https://github.com/SenseiNate/slothspec): a requirements reviewer that runs on a laptop with no GPU and never touches the internet. Pointed it at a 97-page NASA design standard: 333 requirements redlined, 42 high-confidence catches.
+- [Job Hunting Toolkit](https://github.com/SenseiNate/job-hunting-toolkit): a free alternative to paid resume services. It only uses what you actually wrote.
+- [Figured](https://github.com/SenseiNate/business-ventures/tree/main/Figured): a learning tool that asks you a better question instead of handing you the answer.
+- [Web Scraper Agent](https://github.com/SenseiNate/business-ventures/tree/main/Web%20Scraper%20Agent): two research passes, every result scored against your goal, a sourced report instead of a pile of links.
 
-**Start here:** [SlothSpec](https://github.com/SenseiNate/slothspec), a requirements reviewer that runs on a laptop with no GPU and never touches the internet.
+I direct these builds with AI as my pair programmer. I pick the problem, set the requirements, run the evaluations, and make every release call.
+
+**Looking at:** test and integration, reliability and quality, solutions and implementation, technical program management. Drones and autonomy, space, tech, gaming.
 
 [Portfolio](https://senseinate.github.io) | [LinkedIn](https://www.linkedin.com/in/n-bienvenu/)
