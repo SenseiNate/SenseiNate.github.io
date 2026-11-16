@@ -79,10 +79,6 @@ section + section{border-top:1px solid var(--rule)}
 .notes .intro{margin-top:22px;font-size:1.12rem;color:var(--paper)}
 .intro .u{position:relative;color:var(--paper);white-space:nowrap}
 .intro .u .mark{left:-2%;bottom:-.42em;width:104%;height:.6em}
-.credits{margin-top:36px;border-top:1px solid var(--rule)}
-.credits div{display:grid;grid-template-columns:1fr;gap:2px;padding:12px 0;border-bottom:1px solid var(--rule)}
-.credits dt{font:400 .78rem/1.4 var(--mono);color:var(--faint);letter-spacing:.04em}
-.credits dd{font-size:1rem}
 .cover-links{display:flex;flex-wrap:wrap;gap:12px 22px;margin-top:26px;font:500 .95rem/1.4 var(--mono)}
 .role{margin-top:22px;font:500 1.05rem/1.5 var(--mono);color:var(--soft)}
 .sub{font:700 1.5rem/1.1 var(--head);text-transform:uppercase;margin-top:44px}
@@ -104,6 +100,20 @@ footer h2{margin-bottom:6px}
   #about .wrap > *{grid-column:1/-1}
   #about .wrap > .intro{grid-column:1;grid-row:3}
   #about .face{grid-column:2;grid-row:3;width:190px;height:190px;margin-top:22px}
+}
+
+/* credits: grouped blocks with room to breathe */
+.creds{margin-top:28px;display:grid;grid-template-columns:1fr;gap:40px}
+.cred-head{font:500 .78rem/1.4 var(--mono);color:var(--faint);letter-spacing:.08em;text-transform:uppercase;
+  padding-bottom:10px;border-bottom:1px solid var(--paper)}
+.cred-list{list-style:none}
+.cred-list li{padding:16px 0;border-bottom:1px solid var(--rule)}
+.cred-main{display:block;font-size:1rem;color:var(--paper);line-height:1.45}
+.cred-meta{display:block;margin-top:6px;font:400 .82rem/1.55 var(--mono);color:var(--faint)}
+@media (min-width:640px){
+  .creds{grid-template-columns:1fr 1fr;gap:48px 44px}
+  .cred-group:nth-child(1){grid-column:1/-1}
+  .cred-group:nth-child(2){grid-row:span 2}
 }
 
 /* ── LINER NOTES ───────────────────────────────────────── */
@@ -179,7 +189,7 @@ footer{padding:72px 0 48px;border-top:1px solid var(--rule);font:400 .8rem/1.6 v
 @media (min-width:640px){
   :root{--gut:32px}
   section{padding:88px 0}
-  .credits div,.row{grid-template-columns:11em 1fr;gap:16px;align-items:baseline}
+  .row{grid-template-columns:11em 1fr;gap:16px;align-items:baseline}
   .t-name{font-size:1.6rem}
   .stats{grid-template-columns:repeat(4,1fr)}
 }
@@ -439,16 +449,36 @@ footer{padding:72px 0 48px;border-top:1px solid var(--rule);font:400 .8rem/1.6 v
     <p><span class="tag">Now</span>I'm the integrator between the government, the mission partners, and the prime on a platform that grew from <b>$60M+ to $112M+</b>. When my manager left I picked up engineering management on top of it, so I run the team, hire for it, and still do the technical work.</p>
     <p>None of that was a straight line. A BS, an MBA, and CS classes along the way, all while working full time and raising a family.</p>
 
-    <dl class="credits">
-      <div><dt>Looking for</dt><dd>Test and integration, reliability and quality, solutions and implementation, technical program management</dd></div>
-      <div><dt>In</dt><dd>Drones and autonomy, space, tech, gaming</dd></div>
-      <div><dt>MBA</dt><dd>Southern New Hampshire University, 2024</dd></div>
-      <div><dt>BS</dt><dd>Aviation and Aerospace, Unmanned Systems, Everglades University, 2020</dd></div>
-      <div><dt>BS, in progress</dt><dd>Computer Science, Oregon State University. 36 of 60 credits, 3.46 GPA, Dean's List</dd></div>
-      <div><dt>Part 107</dt><dd>FAA sUAS Remote Pilot, through May 2027</dd></div>
-      <div><dt>Clearance</dt><dd>Active Top Secret, SCI eligibility</dd></div>
-      <div><dt>Learning now</dt><dd>Python, SQL, and AWS. Each one counts once a finished project is behind it.</dd></div>
-    </dl>
+    <h3 class="sub">Credits</h3>
+    <div class="creds">
+      <div class="cred-group">
+        <p class="cred-head">Looking for</p>
+        <ul class="cred-list">
+          <li><span class="cred-main">Test and integration, reliability and quality, solutions and implementation, technical program management</span><span class="cred-meta">Drones and autonomy, space, tech, gaming</span></li>
+        </ul>
+      </div>
+      <div class="cred-group">
+        <p class="cred-head">Education</p>
+        <ul class="cred-list">
+          <li><span class="cred-main">MBA</span><span class="cred-meta">Southern New Hampshire University, 2024</span></li>
+          <li><span class="cred-main">BS, Aviation and Aerospace, Unmanned Systems</span><span class="cred-meta">Everglades University, 2020</span></li>
+          <li><span class="cred-main">BS, Computer Science, in progress</span><span class="cred-meta">Oregon State University. 36 of 60 credits, 3.46 GPA, Dean's List</span></li>
+        </ul>
+      </div>
+      <div class="cred-group">
+        <p class="cred-head">Certs and clearance</p>
+        <ul class="cred-list">
+          <li><span class="cred-main">FAA Part 107, sUAS Remote Pilot</span><span class="cred-meta">Through May 2027</span></li>
+          <li><span class="cred-main">Active Top Secret</span><span class="cred-meta">SCI eligibility</span></li>
+        </ul>
+      </div>
+      <div class="cred-group">
+        <p class="cred-head">Learning now</p>
+        <ul class="cred-list">
+          <li><span class="cred-main">Python, SQL, AWS</span><span class="cred-meta">Each one counts once a finished project is behind it.</span></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
